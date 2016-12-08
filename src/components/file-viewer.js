@@ -1,5 +1,6 @@
 import Table from 'rc-table';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class FileViewer extends React.Component {
   constructor(props) {
@@ -13,11 +14,17 @@ class FileViewer extends React.Component {
     };
   }
 
+  onRowClick(index, record, event) {
+    const parentRow = ReactDOM.findDOMNode(event.target).parentNode;
+    parentRow.classList.toggle('selected');
+  }
+
   render() {
     return (
       <Table
         columns={this.state.columns}
         data={this.props.data}
+        onRowClick={this.onRowClick}
       />
             
     );
