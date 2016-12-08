@@ -1,0 +1,13 @@
+.rc-table-body table {
+    border-collapse: collapse;
+}
+
+.rc-table-body table, th, td {
+    border-top: 1px solid $silver-gray;
+    border-bottom: 1px solid $silver-gray;
+    padding: 15px;
+}
+
+.rc-table-body tr.selected {
+    background-color: $light-primary-color;
+}
