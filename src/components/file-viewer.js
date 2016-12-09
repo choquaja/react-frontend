@@ -54,9 +54,8 @@ class FileViewer extends React.Component {
         data={this.props.data}
         onRowClick={this.onRowClick}
       />
-            
     );
   }
 }
 
-export default FileViewer;
+export default FileViewerWrapper;
