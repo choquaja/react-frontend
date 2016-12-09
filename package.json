@@ -17,6 +17,7 @@
     "start": "react-scripts-with-sass start",
     "build": "react-scripts-with-sass build",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom -- --coverage",
     "eject": "react-scripts eject"
   }
 }
