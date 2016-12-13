@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/3Blades/react-frontend.svg?branch=master)](https://travis-ci.org/3Blades/react-frontend)
 [![codecov](https://codecov.io/gh/3Blades/react-frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/3Blades/react-frontend)
 
 # react-frontend
