@@ -22,6 +22,9 @@ install:
 
 script:
   - npm run test:coverage && codecov
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   slack: 3blades:ycSapbO8XmfCrdT0vX2yw090
