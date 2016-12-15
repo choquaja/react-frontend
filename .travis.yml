@@ -18,3 +18,6 @@ install:
 
 script:
   - npm run test:coverage && codecov
+
+notifications:
+  slack: 3blades:ycSapbO8XmfCrdT0vX2yw090
