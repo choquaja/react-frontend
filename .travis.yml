@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - "6"
 
+branches:  
+  only:
+    - master
+
 sudo: false
 
 cache:
@@ -18,3 +22,6 @@ install:
 
 script:
   - npm run test:coverage && codecov
+
+notifications:
+  slack: 3blades:ycSapbO8XmfCrdT0vX2yw090
