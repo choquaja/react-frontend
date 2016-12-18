@@ -8,6 +8,10 @@ branches:
 
 sudo: false
 
+addons:
+    code_climate:
+        repo_token: $CODE_CLIMATE
+
 cache:
   directories:
     - node_modules
