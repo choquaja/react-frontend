@@ -13,8 +13,8 @@ class BoardElementDragPreview extends React.Component {
   }
 
   render() {
-    styles.width = `${this.props.card.clientWidth || 243}px`;
-    styles.height = `${this.props.card.clientHeight || 243}px`;
+    styles.width = `${this.props.element.clientWidth || 243}px`;
+    styles.height = `${this.props.element.clientHeight || 243}px`;
 
     return (
       <div style={styles}>
