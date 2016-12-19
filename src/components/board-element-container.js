@@ -56,7 +56,7 @@ class BoardElementContainer extends React.Component {
     return connectDragSource(connectDropTarget(
       <div className="deck" style={{ opacity }}>
         <div className="deck-name">
-          <h3>{board.name}</h3>
+          {board.name}
         </div>
         <BoardElements
           moveElement={moveElement}
