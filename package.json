@@ -23,7 +23,8 @@
     "start": "react-scripts-with-sass start",
     "build": "react-scripts-with-sass build",
     "test": "react-scripts test --env=jsdom",
-    "test:coverage": "CI=true react-scripts test --env=jsdom -- --coverage",
+    "test:coverage": "CI=true react-scripts test --env=jsdom --coverage",
+    "test:codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
     "eject": "react-scripts eject"
   }
 }
