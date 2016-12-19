@@ -29,4 +29,19 @@
     &:hover {
         background-color: #f7f7f7;
     }
+    .board-element-name {
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 1.05em;
+    }
+    .board-element-content {
+        white-space: normal;
+    }
+}
+
+.deck-name {
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.15em;
 }
