@@ -1,7 +1,7 @@
 import React from 'react';
 import { DragLayer } from 'react-dnd';
 
-import { BoardElementDragPreview } from './board-element-drag-preview';
+import BoardElementDragPreview from './board-element-drag-preview';
 import { snapToGrid } from '../helpers/snap-to-grid';
 
 const layerStyles = {
@@ -41,7 +41,7 @@ function getElementStyles(props) {
 class CustomDragLayer extends React.Component {
   static propTypes = {
     element: React.PropTypes.object,
-    itemType: React.PropTypes.string,
+    elementType: React.PropTypes.string,
     initialOffset: React.PropTypes.shape({
       x: React.PropTypes.number.isRequired,
       y: React.PropTypes.number.isRequired
@@ -55,7 +55,6 @@ class CustomDragLayer extends React.Component {
   };
 
   renderItem(type, element) {
-    console.log(type);
     if (type === 'BoardElement') {
       return (
         <BoardElementDragPreview element={element} />
@@ -66,7 +65,7 @@ class CustomDragLayer extends React.Component {
   }
   
   render() {
-    const { element, itemType, isDragging } = this.props;
+    const { element, elementType, isDragging } = this.props;
 
     if (!isDragging) {
       return null;
@@ -75,7 +74,7 @@ class CustomDragLayer extends React.Component {
     return (
       <div style={layerStyles}>
         <div style={getElementStyles(this.props)}>
-          {this.renderItem(itemType, element)}
+          {this.renderItem(elementType, element)}
         </div>
       </div>
     );
@@ -84,7 +83,7 @@ class CustomDragLayer extends React.Component {
 
 export default DragLayer((monitor) => ({
   element: monitor.getItem(),
-  itemType: monitor.getItemType(),
+  elementType: monitor.getItemType(),
   initialOffset: monitor.getInitialSourceClientOffset(),
   currentOffset: monitor.getSourceClientOffset(),
   isDragging: monitor.isDragging()
