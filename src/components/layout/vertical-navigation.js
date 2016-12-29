@@ -1,5 +1,5 @@
 import React from 'react';
-import '../images/icon-sprite.svg';
+import '../../images/icon-sprite.svg';
 
 class VerticalNavigation extends React.Component {
   render() {
