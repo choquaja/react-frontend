@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+ul.tabs {
+    list-style-type: none;
+    text-align: center;
+    & .tab {
+        display: inline;
+    }
+}

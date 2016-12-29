@@ -1,0 +1,21 @@
+@import './variables.scss';
+
+.vertical-nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
+    & > li {
+        padding: 5px;
+        & a {
+            display: block;
+            width: 60px;
+        }
+        &:hover {
+            background-color: $cloud-gray;
+        }
+        &.active {
+            background-color: rgba(88, 178, 8, 0.5);
+        }
+    }
+}
