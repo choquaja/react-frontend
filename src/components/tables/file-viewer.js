@@ -13,7 +13,6 @@ class FileViewerWrapper extends React.Component {
     const element = ReactDOM.findDOMNode(event.target);
     if (element.tagName === 'TH') {
       const elementClass = element.className;
-      console.log(this);
       this.sortData(elementClass);
     }
   }
@@ -33,13 +32,25 @@ class FileViewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: [
+      columns: [ 
         { title: 'Name', dataIndex: 'name', key: 'name', className: 'name' },
         { title: 'Size', dataIndex: 'size', key: 'size', className: 'size' },
         { title: 'Last Modified', dataIndex: 'lastModified',
           key: 'lastModified', className: 'lastModified' },
-      ]
+      ],
+      data: []
     };
+  }
+
+  componentDidMount() {
+    const _this = this;
+    fetch().then(function(response) {
+      if (response.ok) {
+        _this.setState({
+          data: response,
+        });
+      }    
+    });
   }
 
   onRowClick(index, record, event) {
@@ -51,7 +62,7 @@ class FileViewer extends React.Component {
     return (
       <Table
         columns={this.state.columns}
-        data={this.props.data}
+        data={this.state.data}
         onRowClick={this.onRowClick}
       />
     );
