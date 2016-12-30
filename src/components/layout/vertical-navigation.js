@@ -9,25 +9,25 @@ class VerticalNavigation extends React.Component {
       <div className="vertical-nav">
         <ul className="vertical-nav-menu">
           <li>
-            <Link to={`${userName}/projects/${projectId}`}>Overview</Link>
+            <Link to={`/${userName}/projects/${projectId}`}>Overview</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/resources`}>Files</Link>
+            <Link to={`/${userName}/projects/${projectId}/resources`}>Files</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/workspaces`}>Workspaces</Link>
+            <Link to={`/${userName}/projects/${projectId}/workspaces`}>Workspaces</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/models`}>Models</Link>
+            <Link to={`/${userName}/projects/${projectId}/models`}>Models</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/jobs`}>Jobs</Link>
+            <Link to={`/${userName}/projects/${projectId}/jobs`}>Jobs</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/collaborators`}>Collaborators</Link>
+            <Link to={`/${userName}/projects/${projectId}/collaborators`}>Collaborators</Link>
           </li>
           <li>
-            <Link to={`${userName}/projects/${projectId}/settings`}>Settings</Link>
+            <Link to={`/${userName}/projects/${projectId}/settings`}>Settings</Link>
           </li>
         </ul>
       </div>
