@@ -2,7 +2,7 @@ import React from 'react';
 import { DragLayer } from 'react-dnd';
 
 import { BoardElementDragPreview } from './board-element-drag-preview';
-import { snapToGrid } from '../helpers/snap-to-grid';
+import { snapToGrid } from '../../helpers/snap-to-grid';
 
 const layerStyles = {
   position: 'fixed',
