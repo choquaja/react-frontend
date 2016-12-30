@@ -5,5 +5,21 @@ ul.tabs {
     text-align: center;
     & .tab {
         display: inline;
+        padding: 10px;
+        border-top: solid 1px $cloud-gray;
+        border-left: solid 1px $cloud-gray;
+        border-right: solid 1px $cloud-gray;
+        border-radius: 2px;
+        margin: 5px;
+    }
+    & .tab:hover {
+        border-top: solid 1px $primary-color;
+        border-left: solid 1px $primary-color;
+        border-right: solid 1px $primary-color;
+    }
+    & .tab.active {
+        border-top: solid 2px $primary-color;
+        border-left: solid 2px $primary-color;
+        border-right: solid 2px $primary-color;
     }
 }
