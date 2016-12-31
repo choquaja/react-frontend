@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Material from 'react-icons/lib/md';
-import { Link } from 'react-router';
+import NavigationLink from './navigation-link';
 
 class VerticalNavigation extends React.Component {
   render() {
@@ -8,38 +8,62 @@ class VerticalNavigation extends React.Component {
     return (
       <div className="vertical-nav">
         <ul className="vertical-nav-menu">
-          <li>
-            <Material.MdRemoveRedEye/>
-            <Link to={`/${userName}/projects/${projectId}`}>Overview</Link>
-          </li>
-          <li>
-            <Material.MdDashboard/>
-            <Link to={`/${userName}/projects/${projectId}/board`}>Board</Link>
-          </li>
-          <li>
-            <Material.MdFolder/>
-            <Link to={`/${userName}/projects/${projectId}/resources`}>Files</Link>
-          </li>
-          <li>
-            <Material.MdWork/>
-            <Link to={`/${userName}/projects/${projectId}/workspaces`}>Workspaces</Link>
-          </li>
-          <li>
-            <Material.MdFunctions/>
-            <Link to={`/${userName}/projects/${projectId}/models`}>Models</Link>
-          </li>
-          <li>
-            <Material.MdBuild/>
-            <Link to={`/${userName}/projects/${projectId}/jobs`}>Jobs</Link>
-          </li>
-          <li>
-            <Material.MdPeople/>
-            <Link to={`/${userName}/projects/${projectId}/collaborators`}>Collaborators</Link>
-          </li>
-          <li>
-            <Material.MdSettings/>
-            <Link to={`/${userName}/projects/${projectId}/settings`}>Settings</Link>
-          </li>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdRemoveRedEye}>
+              Overview
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/board`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdDashboard}>
+              Board
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/resources`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdFolder}>
+              Files
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/workspaces`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdWork}>
+              Workspaces
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/models`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdFunctions}>
+              Models
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/jobs`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdBuild}>
+              Jobs
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/collaborators`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdPeople}>
+              Collaborators
+          </NavigationLink>
+          <NavigationLink
+            to={`/${userName}/projects/${projectId}/settings`}
+            index={false}
+            onlyActiveOnIndex={false}
+            IconComponent={Material.MdSettings}>
+              Settings
+          </NavigationLink>
         </ul>
       </div>
     );

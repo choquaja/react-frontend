@@ -6,6 +6,7 @@
     padding: 0; font-size: 1.1em;
     & > li {
         padding: 5px;
+        padding-left: 10px;
         & a {
             display: inline-block;
             margin-left: 10px;
@@ -16,8 +17,8 @@
         &:hover {
             background-color: $cloud-gray;
         }
-        &.active {
-            background-color: rgba(88, 178, 8, 0.5);
-        }
+    }
+    & > li.active {
+        background-color: rgba(88, 178, 8, 0.5);
     }
 }
