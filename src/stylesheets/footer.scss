@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+footer {
+    margin-top: 30px;
+    padding: 10px 0;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid $cloud-gray;
+}
+
+.footer-separator {
+    margin: 0 10px;
+}
