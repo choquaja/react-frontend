@@ -1,0 +1,17 @@
+@import './variables.scss';
+
+.settings-buttons > button {
+    margin-right: 10px;
+    border: none;
+    color: white;
+    padding: 10px;
+    &.delete-project {
+        background-color: #e74c3c;
+    }
+    &.private-project {
+        background-color: #f39c12;
+    }
+    &.save {
+        background-color: $primary-color;
+    }
+}
