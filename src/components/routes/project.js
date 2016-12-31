@@ -5,7 +5,7 @@ import VerticalNavigation from '../layout/vertical-navigation';
 class Project extends React.Component {
   render() {
     return (
-      <div className="row container">
+      <div className="row">
         <div className="sidebar col-lg-2 col-sm-3">
           <VerticalNavigation {...this.props.params}/>
         </div>
