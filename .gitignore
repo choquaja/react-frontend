@@ -53,4 +53,3 @@ npm-debug.log
 
 # Don't include CSS files since we use Stylus
 *.css
-!src/stylesheets/bootstrap-grid.css
