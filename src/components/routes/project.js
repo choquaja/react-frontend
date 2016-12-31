@@ -9,7 +9,7 @@ class Project extends React.Component {
         <div className="sidebar col-lg-2 col-sm-3">
           <VerticalNavigation {...this.props.params}/>
         </div>
-        <div className="main col-lg-10 col-sm-9">
+        <div className="main col-lg-9 col-sm-8">
           {this.props.children}
         </div>
       </div>
