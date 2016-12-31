@@ -9,6 +9,9 @@ import Resources from './components/routes/resources';
 import Workspaces from './components/routes/workspaces';
 import Models from './components/routes/models';
 import Jobs from './components/routes/jobs';
+import NewWorkspace from './components/routes/new-workspace';
+import NewModel from './components/routes/new-model';
+import NewJob from './components/routes/new-job';
 import Collaborators from './components/routes/collaborators';
 import ProjectSettings from './components/routes/project-settings';
 
@@ -24,9 +27,15 @@ ReactDOM.render(
         </Route>
         <Route path="/:userName/projects/:projectId/workspaces" component={Workspaces}>
         </Route>
+        <Route path="/:userName/projects/:projectId/workspaces/new" component={NewWorkspace}>
+        </Route>
         <Route path="/:userName/projects/:projectId/models" component={Models}>
         </Route>
+        <Route path="/:userName/projects/:projectId/models/new" component={NewModel}>
+        </Route>
         <Route path="/:userName/projects/:projectId/jobs" component={Jobs}>
+        </Route>
+        <Route path="/:userName/projects/:projectId/jobs/new" component={NewJob}>
         </Route>
         <Route path="/:userName/projects/:projectId/collaborators" component={Collaborators}>
         </Route>
