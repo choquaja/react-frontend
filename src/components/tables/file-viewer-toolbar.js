@@ -4,7 +4,7 @@ import * as Material from 'react-icons/lib/md';
 class FileViewerToolbar extends React.Component {
   render() {
     return (
-      <div className="file-viewer-toolbar">
+      <div className="table-toolbar">
         <Material.MdDelete/>
         <Material.MdEdit/>
         <Material.MdContentCopy/>
