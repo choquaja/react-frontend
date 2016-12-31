@@ -5,7 +5,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import App from './components/routes/app';
 import Project from './components/routes/project';
 import Overview from './components/routes/overview';
-import Board from './components/board/board';
+import BoardWrapper from './components/routes/board-wrapper';
 import Resources from './components/routes/resources';
 import Workspaces from './components/routes/workspaces';
 import Models from './components/routes/models';
@@ -24,7 +24,7 @@ ReactDOM.render(
       <Route path="/:userName/projects/:projectId" component={Project}>
         <Route path="/:userName/projects/:projectId/overview" component={Overview}>
         </Route>
-        <Route path="/:userName/projects/:projectId/board" component={Board}>
+        <Route path="/:userName/projects/:projectId/board" component={BoardWrapper}>
         </Route>
         <Route path="/:userName/projects/:projectId/resources" component={Resources}>
         </Route>
