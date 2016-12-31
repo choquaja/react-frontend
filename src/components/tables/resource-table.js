@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from 'rc-table';
+import ResourceTableToolbar from './resource-table-toolbar';
 
 class ResourceTable extends React.Component {
   constructor(props) {
@@ -17,10 +18,13 @@ class ResourceTable extends React.Component {
 
   render() {
     return (
-      <Table
-        columns={this.state.columns}
-        data={this.state.data}
-      />
+      <div>
+        <ResourceTableToolbar/>
+        <Table
+          columns={this.state.columns}
+          data={this.state.data}
+        />
+      </div>
     );
   }
 }
