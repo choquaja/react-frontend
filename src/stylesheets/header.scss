@@ -3,14 +3,13 @@
 .header {
     border-bottom: 1px solid $cloud-gray;
     padding: 10px 10px 20px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
 }
 
 .search-wrapper {
-    position: relative;
-    display: inline-block;
-    float: right;
-    width: 40%;
     & > input {
         float: left;
         box-sizing: border-box;
@@ -30,10 +29,7 @@
 }
 
 .status-wrapper {
-    position: relative;
-    display: inline-block;
-    float: right;
-    width: 33%;
+    vertical-align: middle;
     p {
         display: inline;
         padding: 5px;
@@ -48,9 +44,10 @@
 }
 
 .header-logo {
-    width: 20%;
-    display: inline-block;
     img {
-        width: 100%;
+        vertical-align: middle;
+        display: block;
+        max-width: 100%;
+        height: auto;
     }
 }
