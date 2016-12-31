@@ -12,6 +12,9 @@ class VerticalNavigation extends React.Component {
             <Link to={`/${userName}/projects/${projectId}`}>Overview</Link>
           </li>
           <li>
+            <Link to={`/${userName}/projects/${projectId}/board`}>Board</Link>
+          </li>
+          <li>
             <Link to={`/${userName}/projects/${projectId}/resources`}>Files</Link>
           </li>
           <li>
