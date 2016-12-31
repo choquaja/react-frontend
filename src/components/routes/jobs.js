@@ -1,9 +1,10 @@
 import React from 'react';
+import ResourceTable from '../tables/resource-table';
 
 class Jobs extends React.Component {
   render() {
     return (
-      <h1> This is a jobs test </h1>
+      <ResourceTable/>
     );
   }
 }

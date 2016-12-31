@@ -1,6 +1,7 @@
 import Table from 'rc-table';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FileViewerToolbar from './file-viewer-toolbar';
 
 class FileViewerWrapper extends React.Component {
   sortData(key) {
@@ -60,11 +61,14 @@ class FileViewer extends React.Component {
 
   render() {
     return (
-      <Table
-        columns={this.state.columns}
-        data={this.state.data}
-        onRowClick={this.onRowClick}
-      />
+      <div>
+        <FileViewerToolbar/>
+        <Table
+          columns={this.state.columns}
+          data={this.state.data}
+          onRowClick={this.onRowClick}
+        />
+      </div>
     );
   }
 }

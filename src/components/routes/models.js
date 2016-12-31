@@ -1,9 +1,10 @@
 import React from 'react';
+import ResourceTable from '../tables/resource-table';
 
 class Models extends React.Component {
   render() {
     return (
-      <h1> This is a models test </h1>
+      <ResourceTable/>
     );
   }
 }
