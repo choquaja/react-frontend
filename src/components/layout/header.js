@@ -14,10 +14,6 @@ class Header extends React.Component {
             Search
           </button>
         </div>
-        <div className="status-wrapper col-lg-offset-2 col-md-4 col-md-offset-1 col-sm-5">
-          <p className="status">Status</p>
-          <p className="help">Help</p>
-        </div>
       </div>
     );
   }
