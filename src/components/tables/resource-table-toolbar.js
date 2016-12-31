@@ -8,6 +8,7 @@ class ResourceTableToolbar extends React.Component {
         <Material.MdPlayArrow/>
         <Material.MdPause/>
         <Material.MdDeleteForever/>
+        <Material.MdAddCircleOutline/>
       </div>
     );
   }
