@@ -54,8 +54,8 @@ class BoardElementContainer extends React.Component {
     const opacity = isDragging ? 0.5 : 1;
 
     return connectDragSource(connectDropTarget(
-      <div className="board" style={{ opacity }}>
-        <div className="board-name">{board.name}</div>      
+      <div className="deck" style={{ opacity }}>
+        <div className="deck-name">{board.name}</div>
         <BoardElements
           moveElement={moveElement}
           x={x}
