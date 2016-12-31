@@ -1,13 +1,13 @@
 import React from 'react';
-import * as Material from 'react-icons/md';
+import * as Material from 'react-icons/lib/md';
 
 class ResourceTableToolbar extends React.Component {
   render() {
     return (
       <div className="table-toolbar">
-        <Material.PlayArrow/>
-        <Material.Pause/>
-        <Material.DeleteForever/>
+        <Material.MdPlayArrow/>
+        <Material.MdPause/>
+        <Material.MdDeleteForever/>
       </div>
     );
   }
