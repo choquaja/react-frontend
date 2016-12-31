@@ -11,7 +11,7 @@ class App extends React.Component {
         </div>
         {this.props.children}
         <footer>
-          <div class="container">
+          <div className="container">
             &copy; 2016 3Blades. LLC
             <span className="footer-separator"> |</span>
             <a href="/terms-of-use/">Terms of Use</a>
