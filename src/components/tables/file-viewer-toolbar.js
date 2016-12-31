@@ -9,6 +9,9 @@ class FileViewerToolbar extends React.Component {
         <Material.MdEdit/>
         <Material.MdContentCopy/>
         <Material.MdCloudDownload/>
+        <Material.MdNoteAdd/>
+        <Material.MdCreateNewFolder/>
+        <Material.MdAddCircleOutline/>
       </div>
     );
   }
