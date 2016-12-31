@@ -9,7 +9,7 @@ class VerticalNavigation extends React.Component {
       <div className="vertical-nav">
         <ul className="vertical-nav-menu">
           <NavigationLink
-            to={`/${userName}/projects/${projectId}`}
+            to={`/${userName}/projects/${projectId}/overview`}
             index={false}
             onlyActiveOnIndex={false}
             IconComponent={Material.MdRemoveRedEye}>
