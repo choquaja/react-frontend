@@ -7,10 +7,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="header">
-          <Header/>
+        <div className="content">
+          <div className="header">
+            <Header/>
+          </div>
+          {this.props.children}
         </div>
-        {this.props.children}
         <Footer/>
       </div>
     );
