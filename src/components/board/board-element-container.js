@@ -1,5 +1,6 @@
 import React from 'react';
 import { DropTarget, DragSource } from 'react-dnd';
+import * as Material from 'react-icons/lib/md';
 
 import BoardElements from './board-elements';
 
@@ -64,6 +65,7 @@ class BoardElementContainer extends React.Component {
           stopScrolling={this.props.stopScrolling}
           isScrolling={this.props.isScrolling}
         />
+        <Material.MdAddCircleOutline className="add-board-element"/>
       </div>
     ));
   }
