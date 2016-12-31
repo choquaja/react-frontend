@@ -44,11 +44,11 @@ class FileViewer extends React.Component {
   }
 
   componentDidMount() {
-    const _this = this;
+    const that = this;
     fetch().then(function(response) {
       if (response.ok) {
-        _this.setState({
-          data: response,
+        that.setState({
+          data: response
         });
       }    
     });
