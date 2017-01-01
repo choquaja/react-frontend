@@ -2,6 +2,7 @@ import React from 'react';
 import ResourceTable from '../tables/resource-table';
 import * as Material from 'react-icons/lib/md';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class Models extends React.Component {
   constructor(props) {
@@ -34,10 +35,14 @@ class Models extends React.Component {
             <Material.MdAddCircleOutline/>
           </Link>
         </div>
-        <ResourceTable serverType={"models"}/>
+        <ResourceTable serverType={"models"} data={this.props.data}/>
       </div>
     );
   }
 }
 
-export default Models;
+const mapStateToProps = (state) => ({
+  data: state.models,
+});
+
+export default connect(mapStateToProps)(Models);

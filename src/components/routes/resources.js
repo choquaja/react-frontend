@@ -1,13 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import FileViewer from '../tables/file-viewer';
+import FileViewerWrapper from '../tables/file-viewer';
 
 class Resources extends React.Component {
   render() {
     return (
-      <FileViewer/>
+      <FileViewerWrapper data={this.props.data}/>
     );
   }
 }
 
-export default Resources;
+const mapStateToProps = (state) => ({
+  data: state.files,
+});
+
+export default connect(mapStateToProps)(Resources);

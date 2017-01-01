@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -22,11 +23,16 @@ class Overview extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.state.name}</h2>
-        <p>{this.state.description}</p>
+        <h2>{this.props.name}</h2>
+        <p>{this.props.description}</p>
       </div>
     );
   }
 }
 
-export default Overview;
+const mapStateToProps = (state) => ({
+  name: state.project.name,
+  description: state.project.description,
+});
+
+export default connect(mapStateToProps)(Overview)
