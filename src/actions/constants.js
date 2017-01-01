@@ -1,1 +1,11 @@
 export const MOVE_ELEMENT = 'MOVE_ELEMENT';
+
+export const RENAME_PROJECT = 'RENAME_PROJECT';
+
+export const DELETE_FILE = 'DELETE_FILE';
+
+export const DELETE_WORKSPACE = 'DELETE_WORKSPACE';
+export const START_WORKSPACE = 'START_WORKSPACE';
+export const STOP_WORKSPACE = 'STOP_WORKSPACE';
+
+export const DELETE_MODEL = 'DELETE_MODEL';
