@@ -34,24 +34,12 @@ class FileViewer extends React.Component {
     super(props);
     this.state = {
       columns: [ 
-        { title: 'Name', dataIndex: 'name', key: 'name', className: 'name' },
+        { title: 'Name', dataIndex: 'filePath', key: 'filePath', className: 'filePath' },
         { title: 'Size', dataIndex: 'size', key: 'size', className: 'size' },
-        { title: 'Last Modified', dataIndex: 'lastModified',
-          key: 'lastModified', className: 'lastModified' },
-      ],
-      data: []
+        { title: 'Author', dataIndex: 'authorName',
+          key: 'authorName', className: 'authorName' },
+      ]
     };
-  }
-
-  componentDidMount() {
-    const that = this;
-    fetch().then(function(response) {
-      if (response.ok) {
-        that.setState({
-          data: response
-        });
-      }    
-    });
   }
 
   onRowClick(index, record, event) {
@@ -65,7 +53,7 @@ class FileViewer extends React.Component {
         <FileViewerToolbar/>
         <Table
           columns={this.state.columns}
-          data={this.state.data}
+          data={this.props.data}
           onRowClick={this.onRowClick}
         />
       </div>

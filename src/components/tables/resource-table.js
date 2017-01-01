@@ -11,7 +11,6 @@ class ResourceTable extends React.Component {
         { title: 'Type', dataIndex: 'type', key: 'type', className: 'type' },
         { title: 'Resources', dataIndex: 'resources', key: 'resources', className: 'resources' },
       ],
-      data: []
     };
   }
 
@@ -20,7 +19,7 @@ class ResourceTable extends React.Component {
       <div>
         <Table
           columns={this.state.columns}
-          data={this.state.data}
+          data={this.props.data}
         />
       </div>
     );
