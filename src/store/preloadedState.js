@@ -5,6 +5,75 @@ const INITIAL_STATE = {
     description: 'Test descrption',
     isPrivate: false,
   },
+  jobs: [
+    {
+      id: '1',
+      name: 'Job 1',
+      startupScript: 'test-1.sh',
+      script: 'test.sh',
+      method: 'Test Method',
+      auto_restart: true,
+      schedule: 'minute',
+      envTypeId: {
+        id: '1',
+        name: 'EnvType 1',
+        imageName: 'Image 1',
+        Cmd: 'test'
+      },
+      resourcesId: {
+        id: '1',
+        name: 'Resource 1',
+        cpu: 2,
+        memory: 4,
+        active: true
+      },
+      envVars: {},
+    }
+  ],
+  models: [
+    {
+      id: '1',
+      name: 'Model 1',
+      startupScript: 'test-1.sh',
+      script: 'test.sh',
+      method: 'Test Method',
+      envTypeId: {
+        id: '1',
+        name: 'EnvType 1',
+        imageName: 'Image 1',
+        Cmd: 'test'
+      },
+      resourcesId: {
+        id: '1',
+        name: 'Resource 1',
+        cpu: 2,
+        memory: 4,
+        active: true
+      },
+      envVars: {},
+    }
+  ],
+  workspaces: [
+    {
+      id: '1',
+      name: 'Workspace 1',
+      startupScript: 'test-1.sh',
+      envTypeId: {
+        id: '1',
+        name: 'EnvType 1',
+        imageName: 'Image 1',
+        Cmd: 'test'
+      },
+      resourcesId: {
+        id: '1',
+        name: 'Resource 1',
+        cpu: 2,
+        memory: 4,
+        active: true
+      },
+      envVars: {},
+    }
+  ],
   files: [
     {
       fileId: '1',
@@ -27,7 +96,7 @@ const INITIAL_STATE = {
       public: true,
     }
   ],
-  boards: [
+  board: [
     {
       id: 1,
       name: 'Define Problem',
