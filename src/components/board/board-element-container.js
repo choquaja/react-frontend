@@ -56,11 +56,11 @@ class BoardElementContainer extends React.Component {
 
     return connectDragSource(connectDropTarget(
       <div className="deck" style={{ opacity }}>
-        <div className="deck-name">{board.name}</div>
+        <div className="deck-name">{board.get('name')}</div>
         <BoardElements
           moveElement={moveElement}
           x={x}
-          elements={board.elements}
+          elements={board.get('elements')}
           startScrolling={this.props.startScrolling}
           stopScrolling={this.props.stopScrolling}
           isScrolling={this.props.isScrolling}

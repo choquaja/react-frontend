@@ -73,8 +73,8 @@ class Board extends React.Component {
         <CustomDragLayer snapToGrid={false}/>
         {this.props.boards.map((board, i) =>
           <BoardElementContainer
-            key={board.id}
-            id={board.id}
+            key={board.get('id')}
+            id={board.get('id')}
             board={board}
             moveElement={this.moveElement}
             moveElements={this.moveElements}

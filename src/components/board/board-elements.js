@@ -108,7 +108,7 @@ class BoardElements extends React.Component {
             x={x}
             y={i}
             element={element}
-            key={element.id}
+            key={element.get('id')}
             stopScrolling={this.props.stopScrolling}
           />
         );
