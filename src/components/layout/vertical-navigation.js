@@ -23,32 +23,18 @@ class VerticalNavigation extends React.Component {
               Board
           </NavigationLink>
           <NavigationLink
-            to={`/${userName}/projects/${projectId}/resources`}
+            to={`/${userName}/projects/${projectId}/files`}
             index={false}
             onlyActiveOnIndex={false}
             IconComponent={Material.MdFolder}>
               Files
           </NavigationLink>
           <NavigationLink
-            to={`/${userName}/projects/${projectId}/workspaces`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdWork}>
-              Workspaces
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/models`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdFunctions}>
-              Models
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/jobs`}
+            to={`/${userName}/projects/${projectId}/resources`}
             index={false}
             onlyActiveOnIndex={false}
             IconComponent={Material.MdBuild}>
-              Jobs
+              Resources
           </NavigationLink>
           <NavigationLink
             to={`/${userName}/projects/${projectId}/collaborators`}
