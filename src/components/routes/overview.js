@@ -31,8 +31,8 @@ class Overview extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  name: state.project.name,
-  description: state.project.description,
+  name: state.project.get('name'),
+  description: state.project.get('description')
 });
 
 export default connect(mapStateToProps)(Overview)
