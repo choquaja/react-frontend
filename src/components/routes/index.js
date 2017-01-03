@@ -6,6 +6,7 @@ import Project from './project';
 import Overview from './overview';
 import BoardWrapper from './board-wrapper';
 import Files from './files';
+import Resources from './resources';
 import NewResource from './new-resource';
 import Collaborators from './collaborators';
 import ProjectSettings from './project-settings';
