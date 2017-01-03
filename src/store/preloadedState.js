@@ -33,6 +33,7 @@ export const jobs = Immutable.List([
   Immutable.Map({
     id: '1',
     name: 'Job 1',
+    type: 'job',
     startupScript: 'test-1.sh',
     script: 'test.sh',
     method: 'Test Method',
@@ -58,6 +59,7 @@ export const jobs = Immutable.List([
 export const models = Immutable.List([
   Immutable.Map({
     id: '1',
+    type: 'model',
     name: 'Model 1',
     startupScript: 'test-1.sh',
     script: 'test.sh',
@@ -82,6 +84,7 @@ export const models = Immutable.List([
 export const workspaces = Immutable.List([
   Immutable.Map({
     id: '1',
+    type: 'workspace',
     name: 'Workspace 1',
     startupScript: 'test-1.sh',
     envTypeId: Immutable.Map({
