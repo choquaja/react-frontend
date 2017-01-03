@@ -1,16 +1,26 @@
 @import './variables.scss';
 
-.rc-table-body table {
+table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.rc-table-body table, th, td {
+table tr {
+    line-height: 30px;
+}
+
+table, th, td {
     border-top: 1px solid $silver-gray;
     border-bottom: 1px solid $silver-gray;
     padding: 15px;
 }
 
-.rc-table-body tr.selected {
+table th {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+table tr.selected {
     background-color: $light-primary-color;
 }
