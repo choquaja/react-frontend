@@ -38,7 +38,7 @@ export const changeDescription = (newDescription) => ({
   newDescription,
 });
 
-export const toggleVisiblity = () => ({
+export const toggleVisibility = () => ({
   type: constants.TOGGLE_VISIBILITY,
 });
 
@@ -58,7 +58,7 @@ export const deleteCollaborator = (userId) => ({
 });
 
 export const changeCollaboratorRole = (userId, newRole) => ({
-  type: constatns.CHANGE_COLLABORATOR_ROLE,
+  type: constants.CHANGE_COLLABORATOR_ROLE,
   userId,
   newRole,
 });
