@@ -19,7 +19,7 @@ class ResourceTable extends React.Component {
       <div>
         <Table
           columns={this.state.columns}
-          data={this.props.data}
+          data={this.props.data.toJS()}
         />
       </div>
     );

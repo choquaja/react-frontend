@@ -53,7 +53,7 @@ class FileViewer extends React.Component {
         <FileViewerToolbar/>
         <Table
           columns={this.state.columns}
-          data={this.props.data}
+          data={this.props.data.toJS()}
           onRowClick={this.onRowClick}
         />
       </div>
