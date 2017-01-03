@@ -5,13 +5,8 @@ import App from './app';
 import Project from './project';
 import Overview from './overview';
 import BoardWrapper from './board-wrapper';
-import Resources from './resources';
-import Workspaces from './workspaces';
-import Models from './models';
-import Jobs from './jobs';
-import NewWorkspace from './new-workspace';
-import NewModel from './new-model';
-import NewJob from './new-job';
+import Files from './files';
+import NewResource from './new-resource';
 import Collaborators from './collaborators';
 import ProjectSettings from './project-settings';
 
@@ -22,19 +17,11 @@ export default (
       </Route>
       <Route path="/:userName/projects/:projectId/board" component={BoardWrapper}>
       </Route>
+      <Route path="/:userName/projects/:projectId/files" component={Files}>
+      </Route>
       <Route path="/:userName/projects/:projectId/resources" component={Resources}>
       </Route>
-      <Route path="/:userName/projects/:projectId/workspaces" component={Workspaces}>
-      </Route>
-      <Route path="/:userName/projects/:projectId/workspaces/new" component={NewWorkspace}>
-      </Route>
-      <Route path="/:userName/projects/:projectId/models" component={Models}>
-      </Route>
-      <Route path="/:userName/projects/:projectId/models/new" component={NewModel}>
-      </Route>
-      <Route path="/:userName/projects/:projectId/jobs" component={Jobs}>
-      </Route>
-      <Route path="/:userName/projects/:projectId/jobs/new" component={NewJob}>
+      <Route path="/:userName/projects/:projectId/resources/new" component={NewResource}>
       </Route>
       <Route path="/:userName/projects/:projectId/collaborators" component={Collaborators}>
       </Route>
