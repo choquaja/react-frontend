@@ -1,5 +1,27 @@
 import Immutable from 'immutable';
 
+export const collaborators = Immutable.List([
+  {
+    isOwner: false,
+    joined: 'Mon Jan 01 2017 01:01:01',
+    userId: '1',
+    username: 'tester1',
+    firstName: 'TestTwo',
+    lastName: 'TesterTwo',
+    email: 'tester1@test.com'
+  },
+  {
+    isOwner: false,
+    joined: 'Mon Jan 02 2017 02:02:02',
+    userId: '2',
+    username: 'tester2',
+    firstName: 'TestTwo',
+    lastName: 'TesterTwo',
+    email: 'tester@test.com'
+  }
+]);
+
+
 export const project = Immutable.Map({
   projectId: '1',
   name: 'Test Project',
