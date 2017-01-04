@@ -13,17 +13,35 @@ class Workspaces extends React.Component {
         { title: 'Name', dataIndex: 'name', key: ['name'], className: 'name' },
         { title: 'Status', dataIndex: 'status', key: ['status'], className: 'status' },
         { title: 'Type', dataIndex: 'type', key: ['type'], className: 'type' },
-        { title: 'Memory', dataIndex: 'memory', key: ['resourcesId', 'memory'], className: 'size' },
-        { title: 'CPUs', dataIndex: 'cpus', key: ['resourcesId', 'cpu'], className: 'size' },
+        { title: 'Memory', dataIndex: 'memory', key: ['resourcesId', 'memory'], className: 'memory' },
+        { title: 'CPUs', dataIndex: 'cpus', key: ['resourcesId', 'cpu'], className: 'cpus' },
         { title: 'Engine', dataIndex: 'engine', key: ['engine'], className: 'engine' },
       ],
     };
+  }
+
+  onRowClick() {
+    this.setState({
+      resourceSelected: {},
+    });
   }
 
   render() {
     const { userName, projectId } = this.props.params;
     const { workspaces, models, jobs } = this.props;
     const data = workspaces.concat(models, jobs);
+    let tabPane = null;
+    if (this.state.resourceSelected) {
+      tabPane = (
+        <Tabs className="resources-info">
+          <Tab label="General">General</Tab>
+          <Tab label="Environment Variables">Environment Variables</Tab>
+          <Tab label="SSH Keys">SSH Keys</Tab>
+          <Tab label="Activity">Activity</Tab>
+          <Tab label="Logs">Logs</Tab>
+        </Tabs>
+      );
+    }
     return (
       <div>
         <div className="table-toolbar">
