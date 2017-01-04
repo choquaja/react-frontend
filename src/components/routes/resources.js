@@ -38,13 +38,7 @@ class Workspaces extends React.Component {
           columns={this.state.columns}
           data={data}
         />
-        <Tabs className="resources-info">
-          <Tab label="General">General</Tab>
-          <Tab label="Environment Variables">Environment Variables</Tab>
-          <Tab label="SSH Keys">SSH Keys</Tab>
-          <Tab label="Activity">Activity</Tab>
-          <Tab label="Logs">Logs</Tab>
-        </Tabs>
+        {tabPane}
       </div>
     );
   }
