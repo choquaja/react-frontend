@@ -9,6 +9,10 @@ table tr {
     line-height: 30px;
 }
 
+table tr.selected {
+    background-color: $light-primary-color;
+}
+
 table, th, td {
     border-top: 1px solid $silver-gray;
     border-bottom: 1px solid $silver-gray;
