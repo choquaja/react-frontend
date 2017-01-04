@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from '../tables/table';
 import * as Material from 'react-icons/lib/md';
+import  { Tabs, Tab } from 'react-bootstrap-tabs';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
@@ -37,6 +38,13 @@ class Workspaces extends React.Component {
           columns={this.state.columns}
           data={data}
         />
+        <Tabs className="resources-info">
+          <Tab label="General">General</Tab>
+          <Tab label="Environment Variables">Environment Variables</Tab>
+          <Tab label="SSH Keys">SSH Keys</Tab>
+          <Tab label="Activity">Activity</Tab>
+          <Tab label="Logs">Logs</Tab>
+        </Tabs>
       </div>
     );
   }
