@@ -52,7 +52,9 @@ export const jobs = Immutable.List([
       memory: 4,
       active: true
     }),
-    envVars: Immutable.Map({}),
+    envVars: Immutable.Map({
+      'TEST_1': 'test_1', 
+    }),
   })
 ]);
 
