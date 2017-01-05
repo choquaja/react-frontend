@@ -6,13 +6,14 @@ class Table extends React.Component {
     this.onRowClick = this.onRowClick.bind(this);
   }
 
-  onRowClick(event, target) {
+  onRowClick(event, target, rowKey) {
     const currentlySelected = document.getElementsByClassName('selected');
     if (currentlySelected.length === 1) {
       currentlySelected.item(0).classList.toggle('selected');
     }
     const row = event.target.parentNode;
     row.classList.add('selected');
+    this.props.onRowClick(row.id);
   }
 
   render() {
@@ -30,7 +31,7 @@ class Table extends React.Component {
           {
             data.map((datum, index) => {
               return (
-                <tr key={index} onClick={this.onRowClick}>
+                <tr key={index} id={index} onClick={this.onRowClick}>
                   {
                     columns.map((column) => {
                       return <td
