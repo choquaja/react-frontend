@@ -2,6 +2,7 @@ import React from 'react';
 import Table from '../tables/table';
 import * as Material from 'react-icons/lib/md';
 import  { Tabs, Tab } from 'react-bootstrap-tabs';
+import TabPane from '../tab-pane/tab-pane';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
@@ -36,45 +37,7 @@ class Workspaces extends React.Component {
     const { userName, projectId } = this.props.params;
     let tabPane = null;
     if (this.state.resourceSelected) {
-      tabPane = (
-        <Tabs className="resources-info">
-          <Tab label="General">
-            <form>
-              <div className="form-group">
-                <label htmlFor="resourceName">Resource Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="projectName"
-                  placeholder={this.state.resourceSelected.get('name')}/>
-              </div>
-            </form>
-          </Tab>
-          <Tab label="Environment Variables">
-            <table>
-              <tbody>
-                <tr>
-                  <th>Variable Name</th>
-                  <th>Variable Value</th>
-                </tr>
-                {
-                  this.state.resourceSelected.get('envVars').entrySeq().map((pair) => {
-                    return (
-                      <tr>
-                        <td>{pair[0]}</td>
-                        <td>{pair[1]}</td>
-                      </tr>
-                    );
-                  })
-                }
-              </tbody>
-            </table>
-          </Tab>
-          <Tab label="SSH Keys">SSH Keys</Tab>
-          <Tab label="Activity">Activity</Tab>
-          <Tab label="Logs">Logs</Tab>
-        </Tabs>
-      );
+      tabPane = <TabPane resourceSelected={this.state.resourceSelected}/>
     }
     return (
       <div>
