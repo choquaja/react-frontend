@@ -2,6 +2,14 @@ import React from 'react';
 import  { Tabs, Tab } from 'react-bootstrap-tabs';
 
 class TabPane extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      serverLogs: [],
+    }
+  }
+
   render() {
     const { resourceSelected } = this.props;
     return (
@@ -40,7 +48,12 @@ class TabPane extends React.Component {
         </Tab>
         <Tab label="SSH Keys">SSH Keys</Tab>
         <Tab label="Activity">Activity</Tab>
-        <Tab label="Logs">Logs</Tab>
+        <Tab label="Logs">
+          <div className="resource-logs">
+            <p>This is a test</p>
+            <p>This is another test</p>
+          </div>
+        </Tab>
       </Tabs>
     );
   }
