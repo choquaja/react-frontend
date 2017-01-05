@@ -10,6 +10,19 @@ class TabPane extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.websocket = new WebSocket();
+    this.websocket.onmessage = (event) => {
+      this.setState({
+        serverLogs: this.state.serverLogs.concat([event.data])
+      });
+    };
+  }
+
+  componentWillUnmount() {
+    this.websocket.close();
+  }
+
   render() {
     const { resourceSelected } = this.props;
     return (
