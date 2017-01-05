@@ -8,6 +8,11 @@ import { connect } from 'react-redux';
 class Workspaces extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.onRowClick = this.onRowClick.bind(this);
+
+    const { workspaces, models, jobs } = props;
+    const data = workspaces.concat(models, jobs);
     this.state = {
       columns: [
         { title: 'Name', dataIndex: 'name', key: ['name'], className: 'name' },
@@ -17,25 +22,54 @@ class Workspaces extends React.Component {
         { title: 'CPUs', dataIndex: 'cpus', key: ['resourcesId', 'cpu'], className: 'cpus' },
         { title: 'Engine', dataIndex: 'engine', key: ['engine'], className: 'engine' },
       ],
+      data: data,
     };
   }
 
-  onRowClick() {
+  onRowClick(selected) {
     this.setState({
-      resourceSelected: {},
+      resourceSelected: this.state.data.get(selected),
     });
   }
 
   render() {
     const { userName, projectId } = this.props.params;
-    const { workspaces, models, jobs } = this.props;
-    const data = workspaces.concat(models, jobs);
     let tabPane = null;
     if (this.state.resourceSelected) {
       tabPane = (
         <Tabs className="resources-info">
-          <Tab label="General">General</Tab>
-          <Tab label="Environment Variables">Environment Variables</Tab>
+          <Tab label="General">
+            <form>
+              <div className="form-group">
+                <label htmlFor="resourceName">Resource Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="projectName"
+                  placeholder={this.state.resourceSelected.get('name')}/>
+              </div>
+            </form>
+          </Tab>
+          <Tab label="Environment Variables">
+            <table>
+              <tbody>
+                <tr>
+                  <th>Variable Name</th>
+                  <th>Variable Value</th>
+                </tr>
+                {
+                  this.state.resourceSelected.get('envVars').entrySeq().map((pair) => {
+                    return (
+                      <tr>
+                        <td>{pair[0]}</td>
+                        <td>{pair[1]}</td>
+                      </tr>
+                    );
+                  })
+                }
+              </tbody>
+            </table>
+          </Tab>
           <Tab label="SSH Keys">SSH Keys</Tab>
           <Tab label="Activity">Activity</Tab>
           <Tab label="Logs">Logs</Tab>
@@ -54,7 +88,8 @@ class Workspaces extends React.Component {
         </div>
         <Table
           columns={this.state.columns}
-          data={data}
+          data={this.state.data}
+          onRowClick={this.onRowClick}
         />
         {tabPane}
       </div>
