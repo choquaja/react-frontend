@@ -11,7 +11,7 @@ export default handleActions({
     return state.set('description', newDescription);
   },
   [constants.TOGGLE_VISIBILITY]: function(state, action) {
-    return state.set('isPivate', !state.get('isPrivate'));
+    return state.set('isPrivate', !state.get('isPrivate'));
   },
   [constants.DELETE_PROJECT]: function(state, action) {
     return null;
