@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from '../tables/table';
 import * as Material from 'react-icons/lib/md';
-import  { Tabs, Tab } from 'react-bootstrap-tabs';
 import TabPane from '../tab-pane/tab-pane';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
