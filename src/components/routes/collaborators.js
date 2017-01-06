@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Table from 'rc-table';
+import Table from '../tables/table';
+import { connect } from 'react-redux';
 import * as Material from 'react-icons/lib/md';
 
 class Collaborators extends React.Component {
@@ -8,26 +9,19 @@ class Collaborators extends React.Component {
     super(props);
     this.state = {
       columns: [
-        { title: 'Name', dataIndex: 'name', key: 'name', className: 'name' },
+        { title: 'First Name', dataIndex: 'firstName', key: ['firstName'], className: 'firstName' },
+        { title: 'Last Name', dataIndex: 'lastName', key: ['lastName'], className: 'lastName' },
         { title: 'Role', dataIndex: 'role', key: 'role', className: 'role' }
       ],
-      data: []
     };
   }
-
-  onAddCollabClick(event, target) {
-    const element = ReactDOM.findDOMNode(event.target);
-    console.log(element);
-    const form = element.closest(".form-inline"); 
-    console.log(form);
-  } 
 
   render() {
     return (
       <div>
         <Table
           columns={this.state.columns}
-          data={this.state.data}
+          data={this.props.collaborators}
         />
         <form className="form-inline add-collaborators">
           <input type="text" id="collaborator"/>
@@ -41,4 +35,8 @@ class Collaborators extends React.Component {
   }
 }
 
-export default Collaborators;
+const mapStateToProps = (state) => ({
+  collaborators: state.collaborators,
+});
+
+export default connect(mapStateToProps)(Collaborators);

@@ -6,6 +6,7 @@ import files from './files';
 import workspaces from './workspaces';
 import models from './models';
 import jobs from './jobs';
+import collaborators from './collaborators';
 
 const rootReducer = combineReducers({
   board,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   models,
   jobs,
   routing, 
+  collaborators
 }); 
 
 export default rootReducer;
