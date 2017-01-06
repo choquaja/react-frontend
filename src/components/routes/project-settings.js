@@ -80,7 +80,9 @@ export const mapDispatchToProps = (dispatch) => ({
     event.preventDefault();
     dispatch(toggleVisibility());
   },
-  onDeleteProject: () => dispatch(deleteProject()),
+  onDeleteProject: (event) => {
+    dispatch(deleteProject());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectSettings);

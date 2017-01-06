@@ -42,7 +42,7 @@ export const toggleVisibility = () => ({
   type: constants.TOGGLE_VISIBILITY,
 });
 
-export const DELETE_PROJECT = () => ({
+export const deleteProject = () => ({
   type: constants.DELETE_PROJECT,
 });
 
