@@ -10,20 +10,21 @@ import {
 class ProjectSettings extends React.Component {
   render() {
     const { onToggleVisibility, onDeleteProject, onSave } = this.props;
+    console.log(this.props.project.get('isPrivate'));
     return (
       <div>
         <form>
           <div className="form-group">
             <label htmlFor="projectName">Project Name</label>
-            <input type="text" className="form-control" id="projectName" placeholder={this.props.name}/>
+            <input type="text" className="form-control" id="projectName" placeholder={this.props.project.get('name')}/>
           </div>
           <div className="form-group">
             <label htmlFor="projectDesc">Project Description</label>
-            <textarea className="form-control" id="projectDesc" placeholder={this.props.description}/>
+            <textarea className="form-control" id="projectDesc" placeholder={this.props.project.get('description')}/>
           </div>
           <div className="settings-buttons">
             <button className="private-project" onClick={(event) => onToggleVisibility(event)}>
-              Make Project { this.props.isPrivate ? 'Public' : 'Private' }
+              Make Project { this.props.project.get('isPrivate') ? 'Public' : 'Private' }
             </button>
             <button className="delete-project" onClick={() => onDeleteProject()}>Delete Project</button>
             <button className="save" type="submit" onClick={() => onSave()}>Save</button>
@@ -35,9 +36,7 @@ class ProjectSettings extends React.Component {
 }
 
 export const mapStateToProps = (state) => ({
-  name: state.project.get('name'),
-  description: state.project.get('description'),
-  isPrivate: state.project.get('isPrivate')
+  project: state.project,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
