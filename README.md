@@ -6,13 +6,32 @@
 [![dependencies Status](https://david-dm.org/3blades/react-frontend/status.svg)](https://david-dm.org/3blades/react-frontend)
 [![slack in](https://slackin-tkscnxhpky.now.sh/badge.svg)](https://slackin-tkscnxhpky.now.sh/)
 
-# react-frontend
+# 3Blades Web UI
 #
-An API-agnostic frontend for 3Blades in React.
+An API-agnostic frontend for 3Blades in ReactJs.
 
-To run the application, use `npm run start` at the command line. 
+Clone repo and install dependencies:
 
-To run the test suite for the application, use `npm test` at the command line.
+    git clone https://github.com/3blades/react-frontend
+    cd react-frontend
+    npm install
+
+Run application:
+
+    npm run start
+
+Test:
+
+    npm test
 
 This project enforces the [Contributor Covenant](./CODE_OF_CONDUCT.md). Be kind
 and build a nice open source community with us.
+
+## Copyright and license
+
+Copyright © 2016-2017 3Blades, LLC. All rights reserved, except as follows. Code
+is released under the BSD 3.0 license. The README.md file, and files in the
+"docs" folder are licensed under the Creative Commons Attribution 4.0
+International License under the terms and conditions set forth in the file
+"LICENSE.docs". You may obtain a duplicate copy of the same license, titled
+CC-BY-SA-4.0, at http://creativecommons.org/licenses/by/4.0/.
