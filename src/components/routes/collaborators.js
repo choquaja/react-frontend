@@ -4,7 +4,7 @@ import Table from '../tables/table';
 import { connect } from 'react-redux';
 import * as Material from 'react-icons/lib/md';
 
-class Collaborators extends React.Component {
+export class Collaborators extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
