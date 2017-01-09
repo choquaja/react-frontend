@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Overview extends React.Component {
+export class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
