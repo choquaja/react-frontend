@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "6"
 
-branches:  
+branches:
   only:
     - master
 
@@ -19,16 +19,13 @@ cache:
 before_install:
   - "npm config set spin false"
   - "npm install -g npm@^2"
-  - "npm install -g codecov"
-  - "npm install -g codeclimate-test-reporter"
 
 install:
   - npm install
 
 script:
-  - npm run test:coverage && codecov
-  - npm run test:codeclimate
-  
+  - npm run test
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
