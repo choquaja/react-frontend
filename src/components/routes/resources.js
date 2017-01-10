@@ -5,7 +5,7 @@ import TabPane from '../tab-pane/tab-pane';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-class Workspaces extends React.Component {
+export class Resources extends React.Component {
   constructor(props) {
     super(props);
     
@@ -65,4 +65,4 @@ const mapStateToProps = (state) => ({
   jobs: state.jobs,
 });
 
-export default connect(mapStateToProps)(Workspaces);
+export default connect(mapStateToProps)(Resources);
