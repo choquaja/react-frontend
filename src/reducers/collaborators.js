@@ -10,11 +10,15 @@ export default handleActions({
   [constants.DELETE_COLLABORATOR]: function deleteCollaborator(state, action) {
     const { userId } = action;
     return state.filter((collaborator) => {
-      return collaborator.userId !== userId;
+      return collaborator.get('userId') !== userId;
     });
   },
   [constants.CHANGE_COLLABORATOR_ROLE]: function changeCollaboratorRole(state, action) {
     const { userId } = action;
-    return state.setIn([userId, 'isOwner'], !state.getIn([userId, 'isOwner']));
+    return state.update(state.findIndex((collaborator) => {
+      return collaborator.get('userId') === userId;
+    }), (collaborator) => {
+      return collaborator.set('isOwner', !collaborator.get('isOwner'));
+    });
   }
 }, {});
