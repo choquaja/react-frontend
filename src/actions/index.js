@@ -47,9 +47,9 @@ export const deleteProject = () => ({
 });
 
 /* COLLABORATOR ACTION CREATORS */
-export const addCollaborator = (userId) => ({
+export const addCollaborator = (user) => ({
   type: constants.ADD_COLLABORATOR,
-  userId,
+  user,
 });
 
 export const deleteCollaborator = (userId) => ({
@@ -57,10 +57,9 @@ export const deleteCollaborator = (userId) => ({
   userId,
 });
 
-export const changeCollaboratorRole = (userId, newRole) => ({
+export const changeCollaboratorRole = (userId) => ({
   type: constants.CHANGE_COLLABORATOR_ROLE,
   userId,
-  newRole,
 });
 
 /* FILE ACTION CREATORS */
