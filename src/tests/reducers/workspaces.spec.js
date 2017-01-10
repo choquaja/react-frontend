@@ -7,5 +7,5 @@ it('deletes a workspace', () => {
     type: 'DELETE_WORKSPACE',
     id: '1',
   });
-  expect(state.workspaces).toEqual([]);
+  expect(state.workspaces.size).toEqual(0);
 });
