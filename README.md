@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/3Blades/react-frontend/badges/gpa.svg)](https://codeclimate.com/github/3Blades/react-frontend)
 [![Requirements Status](https://requires.io/github/3Blades/react-frontend/requirements.svg?branch=master)](https://requires.io/github/3Blades/react-frontend/requirements/?branch=master)
 [![dependencies Status](https://david-dm.org/3blades/react-frontend/status.svg)](https://david-dm.org/3blades/react-frontend)
-[![slack in](https://slackin-tkscnxhpky.now.sh/badge.svg)](https://slackin-tkscnxhpky.now.sh/)
+[![slack in](https://slackin-pypmyuhqds.now.sh/badge.svg)](https://slackin-pypmyuhqds.now.sh/)
 
 # 3Blades Web UI
 #
