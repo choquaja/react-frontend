@@ -5,20 +5,29 @@ import * as constants from '../actions/constants';
 export default handleActions({
   [constants.DELETE_BOARD_ELEMENT]: function deleteBoardElement(state, action) {
     const { boardId, elementId } = action;
-    state.board.updateIn([boardId, 'elements'], (elements) => {
-      elements.filter((element) => {
-        return element.get('id') !== elementId;
-      });
+    return state.update(state.findIndex((board) => {
+      return board.get('id') === boardId;
+    }), (board) => {
+      return board.update('elements', (elements) => {
+        return elements.filter((element) => {
+          return element.get('id') !== elementId;
+        })
+      })
     });
   },
   [constants.ADD_BOARD_ELEMENT]: function addBoardElement(state, action) {
     const { boardId, title, content } = action;
-    const numElements = state.board.getIn([boardId, 'elements']).size;
-    state.board.getIn([boardId, 'elements']).push(Immutable.Map({
-      id: numElements + 1,
-      title,
-      content
-    }));
+    return state.update(state.findIndex((board) => {
+      return board.get('boardId') === boardId;
+    }), (board) => {
+      const elements = board.get('elements');
+      return elements.push(Immutable.Map({
+        key: elements.size,
+        id: elements.size,
+        title,
+        content,        
+      }));
+    });
   },
   [constants.DELETE_BOARD]: function deleteBoard(state, action) {
     const { boardId } = action;
@@ -35,6 +44,20 @@ export default handleActions({
   },
   [constants.EDIT_BOARD_ELEMENT]: function editBoardElement(state, action) {
     const { boardId, elementId, newTitle, newContent } = action;
+    return state.update(state.findIndex((board) => {
+      return board.get('id') === boardId;
+    }), (board) => {
+      return board.update('elements', (elements) => {
+        return elements.update(elements.findIndex((element) => {
+          console.log(element);
+          return element.get('id') === elementId;
+        }), (element) => {
+          console.log(element);
+          return element.set('title', newTitle)
+                        .set('content', newContent);
+        })
+      })
+    });
     return state.updateIn([boardId, 'elements', elementId], (element) => {
       element.set('title', newTitle).set('content', newContent);
     });
