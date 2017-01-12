@@ -1,10 +1,11 @@
 import * as constants from './constants';
 
 /* BOARD ACTION CREATORS */
-export const moveBoardElement = (element, newBoard) => ({
+export const moveBoardElement = (currentBoard, elementId, newBoard) => ({
   type: constants.MOVE_BOARD_ELEMENT,
-  element,
-  newBoard,
+  currentBoard,
+  elementId,
+  newBoard
 });
 
 export const addBoard = (title) => ({
@@ -14,23 +15,26 @@ export const addBoard = (title) => ({
 
 export const deleteBoard = (id) => ({
   type: constants.DELETE_BOARD,
+  id,
 });
 
-export const deleteBoardELement = (boardId, elementId) => ({
+export const deleteBoardElement = (boardId, elementId) => ({
   type: constants.DELETE_BOARD_ELEMENT,
   boardId,
   elementId,
 });
 
-export const addBoardElement = (boardId) => ({
+export const addBoardElement = (id, title, content) => ({
   type: constants.ADD_BOARD_ELEMENT,
-  boardId,
+  id,
+  title,
+  content,
 });
 
 /* PROJECT ACTION CREATORS */
-export const renameProject = (newName) => ({
+export const renameProject = (name) => ({
   type: constants.RENAME_PROJECT,
-  newName,
+  name,
 });
 
 export const changeDescription = (newDescription) => ({
@@ -52,37 +56,37 @@ export const addCollaborator = (user) => ({
   user,
 });
 
-export const deleteCollaborator = (userId) => ({
+export const deleteCollaborator = (id) => ({
   type: constants.DELETE_COLLABORATOR,
-  userId,
+  id,
 });
 
-export const changeCollaboratorRole = (userId) => ({
+export const changeCollaboratorRole = (id) => ({
   type: constants.CHANGE_COLLABORATOR_ROLE,
-  userId,
+  id,
 });
 
 /* FILE ACTION CREATORS */
-export const deleteFile = (fileId) => ({
+export const deleteFile = (id) => ({
   type: constants.DELETE_FILE,
-  fileId,
+  id,
 });
 
-export const editFile = (fileId, newContent) => ({
+export const editFile = (id, content) => ({
   type: constants.EDIT_FILE,
-  fileId,
-  newContent,
+  id,
+  content,
 });
 
-export const renameFile = (fileId, newName) => ({
+export const renameFile = (id, name) => ({
   type: constants.RENAME_FILE,
-  fileId,
-  newName,
+  id,
+  name,
 });
 
-export const duplicateFile = (fileId) => ({
+export const duplicateFile = (id) => ({
   type: constants.DUPLICATE_FILE,
-  fileId,
+  id,
 });
 
 /* WORKSPACE ACTION CREATORS */
