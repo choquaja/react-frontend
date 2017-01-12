@@ -18,7 +18,7 @@ it('adds a board element', () => {
   });
 });
 
-it.only('updates a board element\'s title', () => {
+it('updates a board element\'s title', () => {
   const initialState = preloadedState;
   const state = reducers(initialState, {
     type: 'EDIT_BOARD_ELEMENT',
@@ -35,9 +35,9 @@ it('updates a board element\'s content', () => {
     type: 'EDIT_BOARD_ELEMENT',
     boardId: 1,
     elementId: 1,
-    content: 'New Content',
+    newContent: 'New Content',
   });
-  expect(state.board.getIn([0, 'elements', 'content'])).toEqual('New Content');
+  expect(state.board.get(0).getIn(['elements', 0, 'content'])).toEqual('New Content');
 });
 
 it('deletes a board', () => {

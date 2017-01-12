@@ -49,17 +49,12 @@ export default handleActions({
     }), (board) => {
       return board.update('elements', (elements) => {
         return elements.update(elements.findIndex((element) => {
-          console.log(element);
           return element.get('id') === elementId;
         }), (element) => {
-          console.log(element);
           return element.set('title', newTitle)
                         .set('content', newContent);
         })
       })
-    });
-    return state.updateIn([boardId, 'elements', elementId], (element) => {
-      element.set('title', newTitle).set('content', newContent);
     });
   }
 }, {});
