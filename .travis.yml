@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - "6"
+  - "5"
+  - "4"
+  - "0.12"
+  - "0.11"
+  - "0.10"
+  - "iojs"
 
 branches:
   only:
@@ -27,7 +33,7 @@ script:
   - npm run test
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - ./bin/codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
 
 notifications:
   slack: 3blades:ycSapbO8XmfCrdT0vX2yw090
