@@ -19,6 +19,7 @@ cache:
 before_install:
   - "npm config set spin false"
   - "npm install -g npm@^2"
+  - "npm install -g codecov"
 
 install:
   - npm install
@@ -27,7 +28,6 @@ script:
   - npm run test
 
 after_success:
-  - npm run report-coverage
   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
