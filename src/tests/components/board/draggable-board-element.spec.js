@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Map } from 'immutable';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 import DraggableBoardElement from '../../../components/board/draggable-board-element';
+import BoardElement from '../../../components/board/draggable-board-element';
+
+import chai from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+chai.use(chaiEnzyme());
+const expect = chai.expect;
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -41,8 +47,10 @@ it('renders dragged elements with less opacity', () => {
     x: 20,
   };
 
-  const component = render(<OriginalDraggableBoardElement
+  const component = shallow(<OriginalDraggableBoardElement
     {...props}
     connectDragSource={identity}/>
   );
+
+  expect(component.find(BoardElement)).to.have.style('display', 0.5);
 });
