@@ -7,7 +7,7 @@ import {
   deleteProject,
 } from '../../actions';
 
-class ProjectSettings extends React.Component {
+export class ProjectSettings extends React.Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
