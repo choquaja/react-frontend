@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import FileViewerWrapper from '../tables/file-viewer';
 
-class Files extends React.Component {
+export class Files extends React.Component {
   render() {
     return (
       <FileViewerWrapper data={this.props.data}/>

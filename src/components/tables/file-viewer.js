@@ -1,4 +1,4 @@
-import Table from 'rc-table';
+import Table from '../tables/table';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FileViewerToolbar from './file-viewer-toolbar';
@@ -34,10 +34,10 @@ class FileViewer extends React.Component {
     super(props);
     this.state = {
       columns: [ 
-        { title: 'Name', dataIndex: 'filePath', key: 'filePath', className: 'filePath' },
-        { title: 'Size', dataIndex: 'size', key: 'size', className: 'size' },
+        { title: 'Name', dataIndex: 'filePath', key: ['filePath'], className: 'filePath' },
+        { title: 'Size', dataIndex: 'size', key: ['size'], className: 'size' },
         { title: 'Author', dataIndex: 'authorName',
-          key: 'authorName', className: 'authorName' },
+          key: ['authorName'], className: 'authorName' },
       ]
     };
   }
@@ -48,13 +48,13 @@ class FileViewer extends React.Component {
   }
 
   render() {
+    console.log(this.props.data);
     return (
       <div>
         <FileViewerToolbar/>
         <Table
           columns={this.state.columns}
-          data={this.props.data.toJS()}
-          onRowClick={this.onRowClick}
+          data={this.props.data}
         />
       </div>
     );

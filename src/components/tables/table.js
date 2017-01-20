@@ -30,6 +30,7 @@ class Table extends React.Component {
           </tr>
           {
             data.map((datum, index) => {
+              console.log(datum);
               return (
                 <tr key={index} id={index} onClick={this.onRowClick}>
                   {
