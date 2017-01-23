@@ -136,3 +136,62 @@ export const stopModel = (modelId) => ({
   type: constants.STOP_MODEL,
   modelId,
 });
+
+/* RESOURCE ACTION CREATORS */
+export const deleteResource = (resourceId, resourceType) => {
+  switch (resourceType) { 
+    case 'workspace':
+      return stopWorkspace(resourceId);
+      break;
+    case 'model':
+      return stopModel(resourceId);
+    case 'job':
+      return stopJob(resourceId);
+    default:
+      return;
+  }
+};
+
+export const startResource = (resourceId, resourceType) => {
+  switch (resourceType) { 
+    case 'workspace':
+      return startWorkspace(resourceId);
+    case 'model':
+      return startModel(resourceId);
+    case 'job':
+      return startJob(resourceId);
+    default:
+      return;
+  }
+};
+
+export const stopResource = (resourceId, resourceType) => {
+  switch (resourceType) { 
+    case 'workspace':
+      return stopWorkspace(resourceId);
+    case 'model':
+      return stopModel(resourceId);
+    case 'job':
+      return stopJob(resourceId);
+    default:
+      return;
+  }
+};
+
+export const deleteResources = (resources) => {
+  resources.map((resource) => {
+    return deleteResource(resource.id, resource.type);
+  });
+};
+
+export const stopResources = (resources) => {
+  resources.map((resource) => {
+    return deleteResource(resource.id, resource.type);
+  });
+};
+
+export const startResources = (resources) => {
+  resources.map((resource) => {
+    return startResource(resource.id, resource.type);
+  });
+};
