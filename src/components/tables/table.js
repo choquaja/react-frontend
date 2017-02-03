@@ -3,17 +3,17 @@ import React from 'react';
 class Table extends React.Component {
   constructor(props) {
     super(props);
-    this.onRowClick = this.onRowClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  onRowClick(event, target, rowKey) {
-    const currentlySelected = document.getElementsByClassName('selected');
-    if (currentlySelected.length === 1) {
-      currentlySelected.item(0).classList.toggle('selected');
-    }
-    const row = event.target.parentNode;
-    row.classList.add('selected');
-    this.props.onRowClick(row.id);
+  onClick(event, rowKey) {
+    const tagName = event.target.tagName;
+    const parent = tagName === 'tr' ? event.target : event.target.parentNode;
+    parent.classList.toggle('selected');
+    this.props.onRowClick({
+      id: parent.id,
+      type: parent.getElementsByTagName('td')[2].textContent,
+    });
   }
 
   render() {
@@ -32,12 +32,12 @@ class Table extends React.Component {
             data.map((datum, index) => {
               console.log(datum);
               return (
-                <tr key={index} id={index} onClick={this.onRowClick}>
+                <tr key={index} id={index} onClick={this.onClick}>
                   {
                     columns.map((column) => {
                       return <td
                               key={column.className}
-                              onClick={this.onRowClick}>
+                              onClick={this.onClick}>
                                 {datum.getIn(column.key)}
                             </td>;
                     })
