@@ -4,6 +4,11 @@ import * as Material from 'react-icons/lib/md';
 import TabPane from '../tab-pane/tab-pane';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import {
+  deleteResources,
+  startResources,
+  stopResources,
+} from '../../actions';
 
 export class Resources extends React.Component {
   constructor(props) {
@@ -23,13 +28,27 @@ export class Resources extends React.Component {
         { title: 'Engine', dataIndex: 'engine', key: ['engine'], className: 'engine' },
       ],
       data: data,
+      selectedResources: [],
     };
   }
 
   onRowClick(selected) {
-    this.setState({
-      resourceSelected: this.state.data.get(selected),
+    this.state.selectedResources.filter((resource) => {
+      return resource.id !== selected.id;
     });
+    this.state.selectedResources.push(selected);
+  }
+
+  onDelete(event) {
+    this.props.onDelete(this.state.selectedResources);
+  }
+
+  onStart(event) {
+    this.props.onStart(this.state.selectedResources);
+  }
+
+  onStop(event) {
+    this.props.onStop(this.state.selectedResources);
   }
 
   render() {
@@ -43,7 +62,7 @@ export class Resources extends React.Component {
         <div className="table-toolbar">
           <Material.MdPlayArrow/>
           <Material.MdPause/>
-          <Material.MdDeleteForever/>
+          <Material.MdDeleteForever onClick={this.onDelete}/>
           <Link to={`${userName}/projects/${projectId}/resources/new`}>
             <Material.MdAddCircleOutline/>
           </Link>
@@ -65,4 +84,16 @@ const mapStateToProps = (state) => ({
   jobs: state.jobs,
 });
 
-export default connect(mapStateToProps)(Resources);
+const mapDispatchToProps = (dispatch) => ({
+  onDelete: (resources) => {
+    dispatch(deleteResources(resources));
+  },
+  onStart: (resources) => {
+    dispatch(startResources(resources));
+  },
+  onStop: (resources) => {
+    dispatch(stopResources(resources));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Resources);
