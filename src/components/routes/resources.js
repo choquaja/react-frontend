@@ -2,7 +2,7 @@ import React from 'react';
 import Table from '../tables/table';
 import * as Material from 'react-icons/lib/md';
 import TabPane from '../tab-pane/tab-pane';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   deleteResources,
@@ -52,7 +52,7 @@ export class Resources extends React.Component {
   }
 
   render() {
-    const { userName, projectId } = this.props.params;
+    const { userName, projectId } = this.props.match.params;
     let tabPane = null;
     if (this.state.resourceSelected) {
       tabPane = <TabPane resourceSelected={this.state.resourceSelected}/>

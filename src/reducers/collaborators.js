@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions';
-import Immutable from 'immutable';
 import * as constants from '../actions/constants';
 
 export default handleActions({

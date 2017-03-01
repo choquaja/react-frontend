@@ -142,7 +142,6 @@ export const deleteResource = (resourceId, resourceType) => {
   switch (resourceType) { 
     case 'workspace':
       return stopWorkspace(resourceId);
-      break;
     case 'model':
       return stopModel(resourceId);
     case 'job':

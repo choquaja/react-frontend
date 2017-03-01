@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Table from '../tables/table';
 import { connect } from 'react-redux';
 import * as Material from 'react-icons/lib/md';

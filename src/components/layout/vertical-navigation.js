@@ -1,56 +1,56 @@
 import React from 'react';
 import * as Material from 'react-icons/lib/md';
-import NavigationLink from './navigation-link';
+import { NavLink } from 'react-router-dom';
 
 class VerticalNavigation extends React.Component {
   render() {
     const { userName, projectId } = this.props;
     return (
       <div className="vertical-nav">
-        <ul className="vertical-nav-menu">
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/overview`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdRemoveRedEye}>
-              Overview
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/board`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdDashboard}>
-              Board
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/files`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdFolder}>
-              Files
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/resources`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdBuild}>
-              Resources
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/collaborators`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdPeople}>
-              Collaborators
-          </NavigationLink>
-          <NavigationLink
-            to={`/${userName}/projects/${projectId}/settings`}
-            index={false}
-            onlyActiveOnIndex={false}
-            IconComponent={Material.MdSettings}>
-              Settings
-          </NavigationLink>
-        </ul>
+        <div className="vertical-nav-menu">
+          <NavLink
+            to={`/${userName}/${projectId}/overview`}
+            activeClassName="active"
+          >
+            <Material.MdRemoveRedEye className="vertical-nav-icon" />
+            Overview
+          </NavLink>
+          <NavLink
+            to={`/${userName}/${projectId}/board`}
+            activeClassName="active"
+          >
+            <Material.MdDashboard className="vertical-nav-icon" />
+            Board
+          </NavLink>
+          <NavLink
+            to={`/${userName}/${projectId}/files`}
+            activeClassName="active"
+          >
+            <Material.MdFolder className="vertical-nav-icon" />
+            Files
+          </NavLink>
+          <NavLink
+            to={`/${userName}/${projectId}/resources`}
+            activeClassName="active"
+          >
+            <Material.MdBuild className="vertical-nav-icon" />
+            Resources
+          </NavLink>
+          <NavLink
+            to={`/${userName}/${projectId}/collaborators`}
+            activeClassName="active"
+          >
+            <Material.MdPeople className="vertical-nav-icon" />
+            Collaborators
+          </NavLink>
+          <NavLink
+            to={`/${userName}/${projectId}/settings`}
+            activeClassName="active"
+          >
+            <Material.MdSettings className="vertical-nav-icon" />
+            Settings
+          </NavLink>
+        </div>
       </div>
     );
   }

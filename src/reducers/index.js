@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
 import board from './board';
 import project from './project';
 import files from './files';
@@ -15,8 +14,7 @@ const rootReducer = combineReducers({
   workspaces,
   models,
   jobs,
-  routing, 
   collaborators
-}); 
+});
 
 export default rootReducer;

@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <div className="row">
         <div className="header-logo col-sm-2">
-          <img src={logo}/>
+          <img src={logo} alt="3blades" />
         </div>
         <div className="search-wrapper col-lg-4 col-sm-5">
           <input type="text"/>
