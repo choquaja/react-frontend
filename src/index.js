@@ -4,8 +4,6 @@ import configureStore from './store/configureStore';
 import Main from './components/main';
 import INITIAL_STATE from './store/preloadedState';
 
-import './stylesheets/style.css';
-
 const store = configureStore(INITIAL_STATE);
 
 ReactDOM.render(

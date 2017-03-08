@@ -53,14 +53,14 @@ export const jobs = Immutable.List([
       active: true
     }),
     envVars: Immutable.Map({
-      'TEST_1': 'test_1', 
+      'TEST_1': 'test_1',
     }),
   })
 ]);
 
 export const models = Immutable.List([
   Immutable.Map({
-    id: '1',
+    id: '2',
     type: 'model',
     name: 'Model 1',
     startupScript: 'test-1.sh',
@@ -85,7 +85,7 @@ export const models = Immutable.List([
 
 export const workspaces = Immutable.List([
   Immutable.Map({
-    id: '1',
+    id: '3',
     type: 'workspace',
     name: 'Workspace 1',
     startupScript: 'test-1.sh',
@@ -177,7 +177,7 @@ export const board = Immutable.List([
   })
 ]);
 
-const INITIAL_STATE = { 
+const INITIAL_STATE = {
   project,
   jobs,
   models,

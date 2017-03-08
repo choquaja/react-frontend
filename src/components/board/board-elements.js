@@ -13,7 +13,7 @@ function getPlaceholderIndex(y, scrollY) {
   if (yPosition < BOARD_ELEMENT_HEIGHT / 2) {
     return -1;
   } else {
-    return Math.floor((yPosition - BOARD_ELEMENT_HEIGHT / 2) / 
+    return Math.floor((yPosition - BOARD_ELEMENT_HEIGHT / 2) /
       (BOARD_ELEMENT_HEIGHT + BOARD_ELEMENT_MARGIN));
   }
 }
@@ -42,7 +42,7 @@ const specs = {
   hover(props, monitor, component) {
     const placeholderIndex = getPlaceholderIndex(
       monitor.getClientOffset().y, ReactDOM.findDOMNode(component).scrollTop);
-    
+
     if (!props.isScrolling) {
       if (window.innerWidth - monitor.getClientOffset().x < 200) {
         props.startScrolling('toRight');
@@ -57,7 +57,7 @@ const specs = {
     }
 
     component.setState({ placeholderIndex });
-    
+
     const item = monitor.getItem();
     document.getElementById(item.id).style.display = 'none';
   }
@@ -96,7 +96,7 @@ class BoardElements extends React.Component {
       if (isOver && canDrop) {
         isPlacehold = false;
         if (i === 0 && placeholderIndex === -1) {
-          elementsList.push(<div key="placeholder" className="item placeholder" />);
+          elementsList.push(<div key="placeholder" />);
         } else if (placeholderIndex > i) {
           isPlacehold = true;
         }
@@ -104,7 +104,7 @@ class BoardElements extends React.Component {
 
       if (element !== undefined) {
         elementsList.push(
-          <DraggableBoardElement 
+          <DraggableBoardElement
             x={x}
             y={i}
             element={element}
@@ -115,20 +115,20 @@ class BoardElements extends React.Component {
       }
 
       if (isOver && canDrop && placeholderIndex === i) {
-        elementsList.push(<div key="placeholder" className="item placeholder" />);
+        elementsList.push(<div key="placeholder" />);
       }
     });
 
     if (isPlacehold) {
-      elementsList.push(<div key="placeholder" className="item placeholder" />);
+      elementsList.push(<div key="placeholder" />);
     }
 
     if (isOver && canDrop && elements.length === 0) {
-      elementsList.push(<div key="placeholder" className="item placeholder" />);
+      elementsList.push(<div key="placeholder" />);
     }
 
     return connectDropTarget(
-      <div className="board-items">
+      <div>
         {elementsList}
       </div>
     );
@@ -141,4 +141,3 @@ export default DropTarget('boardElement', specs, (connectDragSource, monitor) =>
   canDrop: monitor.canDrop(),
   item: monitor.getItem()
 }))(BoardElements);
-

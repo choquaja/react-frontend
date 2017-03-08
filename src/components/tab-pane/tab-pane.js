@@ -1,5 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import  { Tabs, Tab } from 'react-bootstrap-tabs';
+
+const Logs = styled.div`
+  background-color: #151515;
+  padding: 15px;
+  color: #00CC00;
+  font-family: monospace;
+  border-radius: 5px;
+  min-height: 400px;
+`;
+
+const LogLine = styled.p`
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
 
 class TabPane extends React.Component {
   constructor(props) {
@@ -62,10 +77,10 @@ class TabPane extends React.Component {
         <Tab label="SSH Keys">SSH Keys</Tab>
         <Tab label="Activity">Activity</Tab>
         <Tab label="Logs">
-          <div className="resource-logs">
-            <p>This is a test</p>
-            <p>This is another test</p>
-          </div>
+          <Logs>
+            <LogLine>This is a test</LogLine>
+            <LogLine>This is another test</LogLine>
+          </Logs>
         </Tab>
       </Tabs>
     );

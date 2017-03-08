@@ -1,4 +1,5 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { connect } from 'react-redux';
 import {
   renameProject,
@@ -6,6 +7,17 @@ import {
   toggleVisibility,
   deleteProject,
 } from '../../actions';
+import { getThemeColor } from '../styles';
+
+const Button = styled.button`
+  margin-right: 10px;
+  border: none;
+  color: white;
+  padding: 10px;
+  ${props => props.delete && `background-color: #f39c12;`}
+  ${props => props.private && `background-color: #e74c3c;`}
+  ${props => props.save && css`background-color: ${getThemeColor('primary')}`}
+`
 
 export class ProjectSettings extends React.Component {
   constructor(props) {
@@ -47,18 +59,18 @@ export class ProjectSettings extends React.Component {
               onChange={this.onChange}/>
           </div>
           <div className="settings-buttons">
-            <button className="private-project" onClick={(event) => onToggleVisibility(event)}>
+            <Button onClick={onToggleVisibility} private>
               Make Project { this.props.project.get('isPrivate') ? 'Public' : 'Private' }
-            </button>
-            <button className="delete-project" onClick={() => onDeleteProject()}>Delete Project</button>
-            <button
-              className="save"
+            </Button>
+            <Button onClick={onDeleteProject} delete>Delete Project</Button>
+            <Button
               type="submit"
+              save
               onClick={(event) => {
                 event.preventDefault();
                 onSave(this.state.projectName, this.state.projectDesc); } }>
                 Save
-            </button>
+            </Button>
           </div>
         </form>
       </div>

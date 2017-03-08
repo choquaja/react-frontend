@@ -1,8 +1,40 @@
 import React from 'react';
+import styled from 'styled-components';
+import { getThemeColor } from '../styles'
 import { DropTarget, DragSource } from 'react-dnd';
 import * as Material from 'react-icons/lib/md';
 
 import BoardElements from './board-elements';
+
+const Deck = styled.div`
+  width: 270px;
+  display: inline-block;
+  height: 100%;
+  overflow: hidden;
+  min-height: 100px;
+  border-color: ${getThemeColor('cloudGray')};
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,.5);
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  vertical-align: top;
+`;
+
+const DeckName = styled.div`
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.15em;
+`;
+
+const AddBoardElement = styled(Material.MdAddCircleOutline)`
+  margin-left: -15px;
+  margin-bottom: -15px;
+  font-size: 20px;
+`;
 
 const listSource = {
   beginDrag(props) {
@@ -54,19 +86,20 @@ class BoardElementContainer extends React.Component {
     const { connectDropTarget, connectDragSource, board, x, moveElement, isDragging } = this.props;
     const opacity = isDragging ? 0.5 : 1;
 
+    // React DND needs a <div /> here; fusses about styled-components
     return connectDragSource(connectDropTarget(
-      <div className="deck" style={{ opacity }}>
-        <div className="deck-name">{board.get('name')}</div>
-        <BoardElements
-          moveElement={moveElement}
-          x={x}
-          elements={board.get('elements')}
-          startScrolling={this.props.startScrolling}
-          stopScrolling={this.props.stopScrolling}
-          isScrolling={this.props.isScrolling}
-        />
-        <Material.MdAddCircleOutline className="add-board-element"/>
-      </div>
+        <Deck style={{ opacity }}>
+          <DeckName>{board.get('name')}</DeckName>
+          <BoardElements
+            moveElement={moveElement}
+            x={x}
+            elements={board.get('elements')}
+            startScrolling={this.props.startScrolling}
+            stopScrolling={this.props.stopScrolling}
+            isScrolling={this.props.isScrolling}
+          />
+          <AddBoardElement />
+        </Deck>
     ));
   }
 }

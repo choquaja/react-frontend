@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Table from '../tables/table';
 import * as Material from 'react-icons/lib/md';
 import TabPane from '../tab-pane/tab-pane';
@@ -10,10 +11,34 @@ import {
   stopResources,
 } from '../../actions';
 
+const TableToolbar = styled.div`
+  font-size: 18px;
+  float: right;
+  margin-bottom: 10px;
+`;
+
+const iconStyles = `
+  margin-right: 5px;
+  margin-left: 5px;
+`;
+
+const IconPlay = styled(Material.MdPlayArrow)`${iconStyles}`;
+const IconPause = styled(Material.MdPause)`${iconStyles}`;
+const IconDelete = styled(Material.MdDeleteForever)`${iconStyles}`;
+const IconAdd = styled(Material.MdAddCircleOutline)`${iconStyles}`;
+
+const clickStateReducer = selected => ({ selectedResources: previousResources }) => {
+  const resourcePresent = previousResources.map(v => v.id).includes(selected.id)
+  const selectedResources = resourcePresent
+    ? previousResources.filter(resource => resource.id !== selected.id)
+    : [...previousResources, selected]
+  return { selectedResources };
+}
+
 export class Resources extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.onRowClick = this.onRowClick.bind(this);
 
     const { workspaces, models, jobs } = props;
@@ -33,10 +58,7 @@ export class Resources extends React.Component {
   }
 
   onRowClick(selected) {
-    this.state.selectedResources.filter((resource) => {
-      return resource.id !== selected.id;
-    });
-    this.state.selectedResources.push(selected);
+    this.setState(clickStateReducer(selected))
   }
 
   onDelete(event) {
@@ -52,21 +74,24 @@ export class Resources extends React.Component {
   }
 
   render() {
-    const { userName, projectId } = this.props.match.params;
+    // const { userName, projectId } = this.props.match.params;
     let tabPane = null;
-    if (this.state.resourceSelected) {
-      tabPane = <TabPane resourceSelected={this.state.resourceSelected}/>
+    if (this.state.selectedResources.length === 1) {
+      console.log('tabPane', this.state)
+      const resourceSelected = this.state.data.find(resource => resource.get('id') === this.state.selectedResources[0].id)
+      console.log('tabPane', resourceSelected)
+      tabPane = <TabPane resourceSelected={resourceSelected}/>
     }
     return (
       <div>
-        <div className="table-toolbar">
-          <Material.MdPlayArrow/>
-          <Material.MdPause/>
-          <Material.MdDeleteForever onClick={this.onDelete}/>
-          <Link to={`${userName}/projects/${projectId}/resources/new`}>
-            <Material.MdAddCircleOutline/>
+        <TableToolbar>
+          <IconPlay/>
+          <IconPause/>
+          <IconDelete onClick={this.onDelete}/>
+          <Link to="resources/new">
+            <IconAdd/>
           </Link>
-        </div>
+        </TableToolbar>
         <Table
           columns={this.state.columns}
           data={this.state.data}

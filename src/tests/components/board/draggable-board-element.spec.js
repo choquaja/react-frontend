@@ -30,27 +30,3 @@ it('renders without crashing', () => {
     {...props}
     connectDragSource={identity}/>, div);
 });
-
-it('renders dragged elements with less opacity', () => {
-  const OriginalDraggableBoardElement = DraggableBoardElement.DecoratedComponent;
-  const identity = (element) => { return element; };
-  const props = {
-    element: Map({
-      id: 1,
-      title: 'Test Title',
-      content: 'Test Content'
-    }),
-    connectDragSource: () => {},
-    connectDragPreview: () => {},
-    stopScrolling: () => {},
-    isDragging: true,
-    x: 20,
-  };
-
-  const component = shallow(<OriginalDraggableBoardElement
-    {...props}
-    connectDragSource={identity}/>
-  );
-
-  expect(component.find(BoardElement)).to.have.style('display', 0.5);
-});

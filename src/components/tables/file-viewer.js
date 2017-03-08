@@ -33,7 +33,7 @@ class FileViewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: [ 
+      columns: [
         { title: 'Name', dataIndex: 'filePath', key: ['filePath'], className: 'filePath' },
         { title: 'Size', dataIndex: 'size', key: ['size'], className: 'size' },
         { title: 'Author', dataIndex: 'authorName',
@@ -48,7 +48,6 @@ class FileViewer extends React.Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <div>
         <FileViewerToolbar/>

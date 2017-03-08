@@ -1,4 +1,35 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
+import { getThemeColor } from '../styles';
+
+const commonStyles = css`
+  border-top: 1px solid ${getThemeColor('silverGray')};
+  border-bottom: 1px solid ${getThemeColor('silverGray')};
+`;
+
+const TabelEl = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  ${commonStyles}
+`;
+
+const Tr = styled.tr`
+  line-height: 30px;
+  &[class~="selected"] {
+    background-color: ${getThemeColor('primaryLight')};
+  }
+`;
+
+const Th = styled.th`
+  ${commonStyles}
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: left;
+`;
+
+const Td = styled.td`
+  ${commonStyles}
+`;
 
 class Table extends React.Component {
   constructor(props) {
@@ -19,35 +50,33 @@ class Table extends React.Component {
   render() {
     const { columns, data } = this.props;
     return (
-      <table className="table">
+      <TabelEl>
         <tbody>
-          <tr>
+          <Tr>
             {
               columns.map((column) => {
-                return <th key={column.title}>{column.title}</th>;
+                return <Th key={column.title}>{column.title}</Th>;
               })
             }
-          </tr>
+          </Tr>
           {
             data.map((datum, index) => {
-              console.log(datum);
               return (
-                <tr key={index} id={index} onClick={this.onClick}>
+                <Tr key={index} id={index} onClick={this.onClick}>
                   {
                     columns.map((column) => {
-                      return <td
-                              key={column.className}
-                              onClick={this.onClick}>
+                      return <Td
+                              key={column.className}>
                                 {datum.getIn(column.key)}
-                            </td>;
+                            </Td>;
                     })
                   }
-                </tr>
+                </Tr>
               );
             })
           }
         </tbody>
-      </table>
+      </TabelEl>
     );
   }
 }

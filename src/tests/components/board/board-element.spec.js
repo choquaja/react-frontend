@@ -30,6 +30,6 @@ it('renders the board title and content', () => {
     <BoardElement {...props}/>
   );
 
-  expect(component.find('.board-element-name').text()).toEqual('Test Title');
-  expect(component.find('.board-element-content').text()).toEqual('Test Content');
+  expect(component.find('div > div:nth-child(0n+1)').text()).toEqual('Test Title');
+  expect(component.find('div > div:nth-child(0n+2)').text()).toEqual('Test Content');
 });
