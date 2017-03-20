@@ -1,0 +1,20 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.js"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+  ],
+  "testEnvironment": "node",
+  "testURL": "http://localhost",
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest",
+    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+  ],
+  "testMatch": [
+    "**/__tests__/**/*.spec.js"
+  ]
+}

@@ -1,12 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import configureStore from './store/configureStore';
-import Main from './components/main';
-import INITIAL_STATE from './store/preloadedState';
+import { render } from 'react-dom';
+import Main from './components/Main';
 
-const store = configureStore(INITIAL_STATE);
-
-ReactDOM.render(
-  <Main store={store} />,
-  document.getElementById('root')
+render(
+  <Main />,
+  document.getElementById('root'),
 );

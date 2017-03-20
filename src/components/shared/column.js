@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { getThemeDefaultColumns } from '../styles'
+import { themeDefaultColumns } from '../../services/theme';
 
-const round = (number, places = 2) => Math.round(number * (10 ** places)) / (10 ** places)
-const getSize = props => props.size || getThemeDefaultColumns(props)
-const getWidth = props => round((getSize(props) / getThemeDefaultColumns(props)) * 100, 2)
+const round = (number, places = 2) => Math.round(number * (10 ** places)) / (10 ** places);
+const getSize = props => props.size || themeDefaultColumns(props);
+const getWidth = props => round((getSize(props) / themeDefaultColumns(props)) * 100, 2);
 
 const Column = styled.div`
   width: calc(${getWidth}% - 20px);
