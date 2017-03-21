@@ -2,6 +2,21 @@
   "name": "react-frontend",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node config/start.js",
+    "build": "node config/build.js",
+    "test": "node config/test.js --config=.jestrc --env=jsdom",
+    "lint:fix": "eslint --fix",
+    "lint": "eslint",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add",
+      "npm test -- --nowatch --bail --findRelatedTests"
+    ]
+  },
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.1.1",
@@ -18,7 +33,6 @@
     "enzyme": "^2.7.1",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-loader": "^1.6.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.2",
@@ -27,8 +41,10 @@
     "history": "^4.6.1",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.4",
+    "husky": "^0.13.2",
     "immutable": "^3.8.1",
     "jest": "^19.0.2",
+    "lint-staged": "^3.4.0",
     "rc-table": "^5.2.2",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.2",
@@ -50,12 +66,5 @@
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-manifest-plugin": "^1.1.0"
-  },
-  "scripts": {
-    "start": "node config/start.js",
-    "build": "node config/build.js",
-    "test": "node config/test.js --config=.jestrc --env=jsdom",
-    "lint:fix": "eslint --fix src",
-    "lint": "eslint src"
   }
 }

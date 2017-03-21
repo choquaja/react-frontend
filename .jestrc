@@ -2,6 +2,10 @@
   "collectCoverageFrom": [
     "src/**/*.js"
   ],
+  "coverageReporters": [
+    "json",
+    "lcov"
+  ],
   "testPathIgnorePatterns": [
     "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
   ],

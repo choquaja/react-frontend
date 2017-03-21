@@ -80,7 +80,7 @@ export class Settings extends React.Component {
                 onSave(this.state.projectName, this.state.projectDesc);
               }}
             >
-                Save
+              Save
             </Button>
           </div>
         </form>

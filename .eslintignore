@@ -1,0 +1,3 @@
+# ignore all JS files expect those in src/
+*.js
+!src/**/*.js

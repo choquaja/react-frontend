@@ -30,12 +30,6 @@ module.exports = (env = {}) => {
     module: {
       loaders: [
         {
-          test: /\.(js|jsx)$/,
-          enforce: 'pre',
-          loader: 'eslint-loader',
-          include: paths.appSrc,
-        },
-        {
           exclude: [
             /\.html$/,
             /\.(js|jsx)$/,
