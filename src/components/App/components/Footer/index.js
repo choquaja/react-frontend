@@ -1,35 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themeColor } from '../../../../services/theme';
-import ResponsiveContainer from '../../../shared/responsive-container';
+import PageWidth from '../../../PageWidth';
+import Status from './components/Status';
 
 const FooterWrapper = styled.footer`
-  margin-top: 30px;
-  height: 50px;
-  padding: 10px 0;
-  font-size: 14px;
   text-align: center;
   border-top: 1px solid ${themeColor('cloudGray')};
+  font-size: 1.2rem;
 `;
 
 const FooterSeparator = styled.span`
-  margin: 0 10px;
+  margin: 0 1rem;
+`;
+
+const FooterLink = styled.a`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 function Footer() {
   return (
     <FooterWrapper>
-      <ResponsiveContainer>
+      <PageWidth>
         &copy; 2017 3Blades. LLC
-        <FooterSeparator> |</FooterSeparator>
-        <a href="/terms-of-use/">Terms of Use</a>
         <FooterSeparator>|</FooterSeparator>
-        <a href="/privacy-policy/">Privacy Policy</a>
+        <FooterLink href="https://www.3blades.io/legal/terms-and-conditions/" target="_blank">Terms of Use</FooterLink>
         <FooterSeparator>|</FooterSeparator>
-        <a href="http://status.3blades.io">Status</a>
+        <FooterLink href="https://www.3blades.io/legal/privacy-policy/" target="_blank">Privacy Policy</FooterLink>
         <FooterSeparator>|</FooterSeparator>
-        <a href="https://support.3blades.io/hc/en-us">Help</a>
-      </ResponsiveContainer>
+        <FooterLink href="http://status.3blades.io"><Status /></FooterLink>
+      </PageWidth>
     </FooterWrapper>
   );
 }

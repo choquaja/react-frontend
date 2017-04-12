@@ -15,7 +15,7 @@ export const theme = {
     silverGray: '#bdc3c7',
   },
   fonts: {
-    body: "'Nunito', sans-serif",
+    body: "'Nunito Sans', sans-serif",
     heading: "'Roboto', sans-serif",
   },
 };

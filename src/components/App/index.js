@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import PageWidth from '../../components/PageWidth';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { themeBreakpoint } from '../../services/theme';
@@ -9,10 +10,14 @@ const VerticalGrid = styled.div`
   flex-direction: column;
   height: 100%;
   min-width: ${themeBreakpoint('md')};
+  overflow: hidden;
 `;
 
 const Content = styled.div`
   flex: 1;
+  padding: 2rem 0;
+  background-color: #f2f7fa;
+  overflow: auto;
 `;
 
 function App(props) {
@@ -20,7 +25,9 @@ function App(props) {
     <VerticalGrid>
       <Header />
       <Content>
-        {props.children}
+        <PageWidth>
+          {props.children}
+        </PageWidth>
       </Content>
       <Footer />
     </VerticalGrid>

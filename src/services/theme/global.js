@@ -1,8 +1,10 @@
 import { injectGlobal } from 'styled-components';
+import normalize from 'polished/lib/mixins/normalize';
 import { theme, themeFont } from '.';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
+  ${normalize()}
   * {
     box-sizing: border-box;
   }
