@@ -8,7 +8,9 @@
     "test": "node config/test.js --config=.jestrc --env=jsdom",
     "lint:fix": "eslint --fix",
     "lint": "eslint",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -67,6 +69,8 @@
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.4.2",
-    "webpack-manifest-plugin": "^1.1.0"
-  }
+    "webpack-manifest-plugin": "^1.1.0",
+    "snyk": "^1.29.0"
+  },
+  "snyk": true
 }
