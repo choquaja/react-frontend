@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+.add-collaborators {
+  margin-top: 20px; }
+  .add-collaborators button {
+    border: none;
+    background-color: #58b208;
+    color: white; }
+  .add-collaborators button > svg {
+    margin-left: 10px;
+    margin-right: 10px; }

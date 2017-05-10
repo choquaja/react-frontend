@@ -1,15 +1,107 @@
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import * as Material from 'react-icons/lib/md';
+import Button from '../../../../components/Button/index';
 
-export default function Email(props) {
+const Title = styled.h1`
+  font-size: 2em;
+`;
+
+const h3 = styled.h3`
+  font-size: 1em;
+`;
+
+const Container = styled.div`
+  display: flex;
+`;
+
+const Column1 = styled.div`
+  width: 20%;
+`;
+
+const Column2 = styled.div`
+  width: 70%;
+`;
+
+const Input = styled.input`
+  font-size: 1.25em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+  }
+`;
+
+const ButtonImg = styled(Button)`
+  outline: 0;
+  border: none;
+  padding: 0;
+  background-color: #f2994a;
+  color: white;
+  border: none;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.6rem;
+  height: 3.6rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  padding: .5em 1.25em;
+  text-transform: none;
+  text-align: center;
+  touch-action: manipulation;
+`;
+
+const ButtonImg1 = styled(Button)`
+  padding: 0;
+  background-color: #f2f7fa;
+  border-style: none;
+  width: 150px;
+  text-align: left;
+  box-shadow: none;
+`;
+
+const iconStyles = `
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+`;
+
+const IconPerson = styled(Material.MdPerson)`${iconStyles}`;
+const IconSettings = styled(Material.MdSettingsApplications)`${iconStyles}`;
+const IconEmail = styled(Material.MdEmail)`${iconStyles}`;
+const IconSSH = styled(Material.MdVpnKey)`${iconStyles}`;
+const IconIntegrations = styled(Material.MdCompareArrows)`${iconStyles}`;
+
+export default function Profile() {
   return (
-    <p>You are at {props.match.url}</p>
+    <Container>
+      <Column1>
+        <Title>Username</Title>
+        <ButtonImg1><IconPerson />Profile</ButtonImg1>
+        <ButtonImg1><IconSettings />Settings</ButtonImg1>
+        <ButtonImg1><IconEmail />Emails</ButtonImg1>
+        <ButtonImg1><IconSSH />SSH Keys</ButtonImg1>
+        <ButtonImg1><IconIntegrations />Integrations</ButtonImg1>
+      </Column1>
+      <Column2>
+        <Title>Emails</Title>
+        <p>Your primary email address will be used for account-related notifications
+        (e.g. account changes and billing receipts)</p>
+        <h3>Add Email Address</h3>
+        <Input type="text" />
+        <h5><ButtonImg>Add</ButtonImg></h5>
+      </Column2>
+    </Container>
   );
 }
 
-Email.defaultProps = {
+Profile.defaultProps = {
 
 };
 
-Email.propTypes = {
+Profile.propTypes = {
   match: PropTypes.object.isRequired,
 };

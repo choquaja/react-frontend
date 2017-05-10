@@ -11,7 +11,7 @@ export default function Account(props) {
   const { url } = props.match;
   return (
     <Switch>
-      <Redirect from={`${url}/`} to={`${url}/profile`} exact />
+      <Redirect from={`${url}`} to={`${url}/profile`} exact />
       <Route path={`${url}/profile`} component={Profile} />
       <Route path={`${url}/settings`} component={Settings} />
       <Route path={`${url}/email`} component={Email} />
