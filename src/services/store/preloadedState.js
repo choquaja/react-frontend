@@ -2,30 +2,29 @@ import Immutable from 'immutable';
 
 export const collaborators = Immutable.List([
   Immutable.Map({
-    isOwner: false,
+    id: '1',
+    owner: false,
     joined: 'Mon Jan 01 2017 01:01:01',
-    userId: '1',
-    username: 'tester1',
-    firstName: 'TestTwo',
-    lastName: 'TesterTwo',
-    email: 'tester1@test.com',
+    username: 'bobshirley',
+    firstName: 'Bob',
+    lastName: 'Shirley',
+    email: 'bob@shirleysolutions.com',
   }),
   Immutable.Map({
-    isOwner: false,
+    id: '2',
+    owner: false,
     joined: 'Mon Jan 02 2017 02:02:02',
-    userId: '2',
-    username: 'tester2',
-    firstName: 'TestTwo',
-    lastName: 'TesterTwoTwo',
-    email: 'tester@test.com',
+    username: 'tfoster',
+    firstName: 'Tina',
+    lastName: 'Foster',
+    email: 'tfoster@bigdatawizardry.io',
   }),
 ]);
 
-
 export const settings = Immutable.Map({
-  projectId: '1',
-  name: 'Test Project',
-  description: 'Test descrption',
+  id: '1',
+  name: 'MonaLisa',
+  description: 'An introductory project',
   isPrivate: false,
 });
 
@@ -123,61 +122,17 @@ export const files = Immutable.List([
   }),
 ]);
 
-export const board = Immutable.List([
-  Immutable.Map({
-    id: 1,
-    name: 'Define Problem',
-    elements: Immutable.List([
-      Immutable.Map({ key: 1, id: 1, title: 'Title 1', content: 'Content 1' }),
-      Immutable.Map({ key: 2, id: 2, title: 'Title 2', content: 'Content 2' }),
-      Immutable.Map({ key: 3, id: 3, title: 'Title 3', content: 'Content 3' }),
-    ]),
-  }),
-  Immutable.Map({
-    id: 2,
-    name: 'Prepare Data',
-    elements: Immutable.List([
-      Immutable.Map({ key: 1, id: 1, title: 'Title 1', content: 'Content 1' }),
-      Immutable.Map({ key: 2, id: 2, title: 'Title 2', content: 'Content 2' }),
-      Immutable.Map({ key: 3, id: 3, title: 'Title 3', content: 'Content 3' }),
-    ]),
-  }),
-  Immutable.Map({
-    id: 3,
-    name: 'Model Factory',
-    elements: Immutable.List([
-      Immutable.Map({ key: 1, id: 1, title: 'Title 1', content: 'Content 1' }),
-      Immutable.Map({ key: 2, id: 2, title: 'Title 2', content: 'Content 2' }),
-      Immutable.Map({ key: 3, id: 3, title: 'Title 3', content: 'Content 3' }),
-    ]),
-  }),
-  Immutable.Map({
-    id: 4,
-    name: 'Tune Algorithms',
-    elements: Immutable.List([
-      Immutable.Map({ key: 1, id: 1, title: 'Title 1', content: 'Content 1' }),
-      Immutable.Map({ key: 2, id: 2, title: 'Title 2', content: 'Content 2' }),
-      Immutable.Map({ key: 3, id: 3, title: 'Title 3', content: 'Content 3' }),
-    ]),
-  }),
-  Immutable.Map({
-    id: 5,
-    name: 'Visualize',
-    elements: Immutable.List([
-      Immutable.Map({ key: 1, id: 1, title: 'Title 1', content: 'Content 1' }),
-      Immutable.Map({ key: 2, id: 2, title: 'Title 2', content: 'Content 2' }),
-      Immutable.Map({ key: 3, id: 3, title: 'Title 3', content: 'Content 3' }),
-    ]),
-  }),
+export const home = Immutable.List([
+  settings,
 ]);
 
 const INITIAL_STATE = {
   scenes: {
+    home,
     project: {
       settings,
       resources,
       files,
-      board,
       collaborators,
     },
   },

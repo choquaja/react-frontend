@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import New from './scenes/New';
 

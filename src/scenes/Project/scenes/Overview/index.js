@@ -1,23 +1,17 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+// import PropTypes from 'prop-types';
+import CardTitle from '../../../../components/CardTitle';
+import NoContent from '../../../../components/NoContent';
+// import LoadingIndicator from '../../../../components/LoadingIndicator';
 
-export function Overview(props) {
+export default function Overview() {
   return (
     <div>
-      <h2>{props.name}</h2>
-      <p>{props.description}</p>
+      <CardTitle>Overview</CardTitle>
+      <NoContent>
+        You&apos;re project doesn&apos;t contain a README.md file.<br />
+        Why don&apos;t you <a href="#empty">create one?</a>
+      </NoContent>
     </div>
   );
 }
-
-Overview.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = state => ({
-  name: state.scenes.project.settings.get('name'),
-  description: state.scenes.project.settings.get('description'),
-});
-
-export default connect(mapStateToProps)(Overview);

@@ -5,7 +5,7 @@ const round = (number, places = 2) => Math.round(number * (10 ** places)) / (10 
 const getSize = props => props.size;
 const getWidth = props => round((getSize(props) / themeDefaultColumns(props)) * 100, 2);
 const setWidth = props => css`
-  width: calc(${getWidth(props)}% - 20px);
+  width: calc(${getWidth(props)}% - 2rem);
 `;
 const getFlex = props => props.flex || '1 1 auto';
 const setFlex = props => css`
@@ -18,8 +18,8 @@ const handleSizing = (props) => {
 
 const Column = styled.div`
   ${handleSizing}
-  margin: 0 10px;
-  padding: 0 10px;
+  margin: 0 1rem;
+  padding: 0 1rem;
   position: relative;
 `;
 

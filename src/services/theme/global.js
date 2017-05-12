@@ -26,6 +26,15 @@ injectGlobal`
     padding: 0;
     font-family: ${themeFont('body')({ theme })};
     font-size: 1.4rem;
+    background-color: #f2f7fa;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${themeFont('heading')({ theme })};
   }
 `;
 /* eslint-enable */

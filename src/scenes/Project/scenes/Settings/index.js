@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   renameProject,
@@ -7,17 +7,12 @@ import {
   toggleVisibility,
   deleteProject,
 } from './actions';
-import { themeColor } from '../../../../services/theme';
-
-const Button = styled.button`
-  margin-right: 10px;
-  border: none;
-  color: white;
-  padding: 10px;
-  ${props => props.delete && 'background-color: #f39c12;'}
-  ${props => props.private && 'background-color: #e74c3c;'}
-  ${props => props.save && css`background-color: ${themeColor('primary')}`}
-`;
+import Button from '../../../../components/Button';
+import FormInput from '../../../../components/FormInput';
+import FormTextarea from '../../../../components/FormTextarea';
+import CardTitle from '../../../../components/CardTitle';
+import FormLabel from '../../../../components/FormLabel';
+import FormGroup from '../../../../components/FormGroup';
 
 export class Settings extends React.Component {
   static propTypes = {
@@ -29,61 +24,61 @@ export class Settings extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this);
     this.state = {
-      projectName: '',
-      projectDesc: '',
+      projectName: props.settings.get('name'),
+      projectDesc: props.settings.get('description'),
     };
   }
 
-  onChange(event) {
+  onChange = (event) => {
     event.preventDefault();
     this.setState({
       [event.target.id]: event.target.value,
     });
   }
 
+  onSave = (event) => {
+    event.preventDefault();
+    this.props.onSave(this.state.projectName, this.state.projectDesc);
+  }
+
   render() {
-    const { onToggleVisibility, onDeleteProject, onSave } = this.props;
+    const { onToggleVisibility, onDeleteProject } = this.props;
+    const isPrivate = this.props.settings.get('isPrivate');
     return (
       <div>
-        <form>
-          <div className="form-group">
-            <label htmlFor="projectName">Project Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="projectName"
-              placeholder={this.props.settings.get('name')}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="projectDesc">Project Description</label>
-            <textarea
-              className="form-control"
-              id="projectDesc"
-              placeholder={this.props.settings.get('description')}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="settings-buttons">
-            <Button onClick={onToggleVisibility} private>
-              Make Project { this.props.settings.get('isPrivate') ? 'Public' : 'Private' }
-            </Button>
-            <Button onClick={onDeleteProject} delete>Delete Project</Button>
-            <Button
-              type="submit"
-              save
-              onClick={(event) => {
-                event.preventDefault();
-                onSave(this.state.projectName, this.state.projectDesc);
-              }}
-            >
-              Save
-            </Button>
-          </div>
-        </form>
+        <CardTitle>Settings</CardTitle>
+        <FormGroup>
+          <FormLabel htmlFor="projectName">Project Name</FormLabel>
+          <FormInput
+            id="projectName"
+            placeholder="Project Name"
+            onChange={this.onChange}
+            value={this.state.projectName}
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel htmlFor="projectDesc">Project Description</FormLabel>
+          <FormTextarea
+            id="projectDesc"
+            placeholder="Project Description"
+            onChange={this.onChange}
+            value={this.state.projectDesc}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Button onClick={this.onSave} success>Save</Button>
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Make this project { isPrivate ? 'public' : 'private' }</FormLabel>
+          <Button onClick={onToggleVisibility} warning>
+            Make { isPrivate ? 'Public' : 'Private' }
+          </Button>
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>Delete this project forever</FormLabel>
+          <Button onClick={onDeleteProject} error>Delete Project</Button>
+        </FormGroup>
       </div>
     );
   }
@@ -94,16 +89,14 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  onSave: (newName, newDescription) => {
+  onSave(newName, newDescription) {
     if (newName) dispatch(renameProject(newName));
     if (newDescription) dispatch(changeDescription(newDescription));
   },
-  onToggleVisibility: (event) => {
-    event.preventDefault();
+  onToggleVisibility() {
     dispatch(toggleVisibility());
   },
-  onDeleteProject: (event) => {
-    event.preventDefault();
+  onDeleteProject() {
     dispatch(deleteProject());
   },
 });

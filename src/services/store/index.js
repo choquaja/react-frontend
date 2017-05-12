@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
-import rootReducer from '../../reducer';
+import { createLogicMiddleware } from 'redux-logic';
+import rootReducer, { logic } from '../../reducer';
 import preloadedState from './preloadedState';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -9,6 +10,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 const middlewares = [
   (!isProd && createLogger()),
+  createLogicMiddleware(logic, {}),
 ].filter(Boolean);
 
 export const configureStore = (initialState) => {

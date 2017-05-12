@@ -1,15 +1,91 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Field, reduxForm, SubmissionError, propTypes } from 'redux-form';
+import * as types from './actions';
+import CardTitle from '../../../../components/CardTitle';
+import Button from '../../../../components/Button';
+import FormInput from '../../../../components/FormInput';
+import FormLabel from '../../../../components/FormLabel';
+import FormGroup from '../../../../components/FormGroup';
 
-export default function Login(props) {
+const PasswordResetLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: #7ae43b;
+  text-align: center;
+`;
+
+const Error = styled.div`
+  padding: .4em 1.4em;
+  color: red;
+`;
+
+const renderUsername = field => (
+  <FormGroup>
+    <FormLabel>Username</FormLabel>
+    <FormInput {...field.input} placeholder="Username" full />
+    {field.meta.touched && field.meta.error &&
+    <Error>{field.meta.error}</Error>}
+  </FormGroup>
+);
+
+const renderPassword = field => (
+  <FormGroup>
+    <FormLabel>Password</FormLabel>
+    <FormInput {...field.input} type="password" placeholder="Password" full />
+    {field.meta.touched && field.meta.error &&
+    <Error>{field.meta.error}</Error>}
+  </FormGroup>
+);
+
+export function Login(props) {
   return (
-    <p>You are at {props.match.url}</p>
+    <form onSubmit={props.handleSubmit}>
+      <CardTitle invert>Sign In</CardTitle>
+      <Field name="username" component={renderUsername} />
+      <Field name="password" component={renderPassword} />
+      <FormGroup>
+        <Button type="submit" success block flat full>Login</Button>
+      </FormGroup>
+      <FormGroup>
+        <PasswordResetLink to="/auth/reset-password">Forgot password?</PasswordResetLink>
+      </FormGroup>
+    </form>
   );
 }
 
-Login.defaultProps = {
-
-};
-
 Login.propTypes = {
-  match: PropTypes.object.isRequired,
+  // history: PropTypes.object.isRequired,
+  ...propTypes,
 };
+
+export default compose(
+  connect(null, dispatch => ({
+    doLogin() {
+      dispatch({ type: types.MOCK_LOGIN });
+    },
+  })),
+  reduxForm({
+    form: 'login',
+    onSubmit(values, dispatch, props) {
+      const fields = [
+        { key: 'username', value: 'foo', error: 'Your username is invalid.' },
+        { key: 'password', value: 'abc123abc', error: 'Your password is invalid.' },
+      ].filter(field => values[field.key] !== field.value);
+      if (fields.length > 0) {
+        throw new SubmissionError(fields.reduce(
+          (errors, field) => ({ ...errors, [field.key]: field.error }),
+          {},
+        ));
+      }
+      // console.log('onSubmit', values, props);
+      // props.doLogin();
+      props.history.push('/');
+    },
+  }),
+)(Login);

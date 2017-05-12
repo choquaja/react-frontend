@@ -1,76 +1,70 @@
-import React, { PropTypes } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import * as Material from 'react-icons/lib/md';
+import { MdRemoveRedEye, MdFolder, MdBuild, MdPeople, MdSettings } from 'react-icons/lib/md';
 import { themeColor } from '../../../../services/theme';
+
+const iconStyles = css`
+  margin-right: .8rem;
+`;
+
+const OverviewIcon = styled(MdRemoveRedEye)`${iconStyles}`;
+const FilesIcon = styled(MdFolder)`${iconStyles}`;
+const ResourcesIcon = styled(MdBuild)`${iconStyles}`;
+const CollaboratorsIcon = styled(MdPeople)`${iconStyles}`;
+const SettingsIcon = styled(MdSettings)`${iconStyles}`;
 
 const VerticalNavLink = styled(NavLink)`
   display: block;
-  padding: 5px;
-  padding-left: 10px;
-  margin-left: 10px;
+  padding: 1.2rem .8rem;
   color: inherit;
   text-decoration: none;
   &:hover {
     background-color: ${themeColor('cloudGray')};
   }
   &[class~="active"] {
-    background-color: rgba(88, 178, 8, 0.5);
+    background-color: #f2994a;
+    color: white;
   }
 `;
 
-function Navigation({ userName, projectId }) {
+const NavWrapper = styled.div`
+  font-size: 1.1em;
+`;
+
+
+function Navigation({ userName, projectName }) {
+  const projectPath = `/${userName}/${projectName}`;
   return (
-    <div>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/overview`}
-        activeClassName="active"
-      >
-        <Material.MdRemoveRedEye className="vertical-nav-icon" />
+    <NavWrapper>
+      <VerticalNavLink to={`${projectPath}/overview`} activeClassName="active">
+        <OverviewIcon size={20} />
         Overview
       </VerticalNavLink>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/board`}
-        activeClassName="active"
-      >
-        <Material.MdDashboard className="vertical-nav-icon" />
-        Board
-      </VerticalNavLink>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/files`}
-        activeClassName="active"
-      >
-        <Material.MdFolder className="vertical-nav-icon" />
+      <VerticalNavLink to={`${projectPath}/files`} activeClassName="active">
+        <FilesIcon size={20} />
         Files
       </VerticalNavLink>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/resources`}
-        activeClassName="active"
-      >
-        <Material.MdBuild className="vertical-nav-icon" />
+      <VerticalNavLink to={`${projectPath}/resources`} activeClassName="active">
+        <ResourcesIcon size={19} />
         Resources
       </VerticalNavLink>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/collaborators`}
-        activeClassName="active"
-      >
-        <Material.MdPeople className="vertical-nav-icon" />
+      <VerticalNavLink to={`${projectPath}/collaborators`} activeClassName="active">
+        <CollaboratorsIcon size={20} />
         Collaborators
       </VerticalNavLink>
-      <VerticalNavLink
-        to={`/${userName}/${projectId}/settings`}
-        activeClassName="active"
-      >
-        <Material.MdSettings className="vertical-nav-icon" />
+      <VerticalNavLink to={`${projectPath}/settings`} activeClassName="active">
+        <SettingsIcon size={20} />
         Settings
       </VerticalNavLink>
-    </div>
+    </NavWrapper>
   );
 }
 
 Navigation.propTypes = {
   userName: PropTypes.string.isRequired,
-  projectId: PropTypes.string.isRequired,
+  projectName: PropTypes.string.isRequired,
 };
 
 export default Navigation;

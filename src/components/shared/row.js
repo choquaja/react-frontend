@@ -8,6 +8,9 @@ const Row = styled.div`
   flex-wrap: wrap;
   justify-content: ${getJustify};
   align-items: ${getAlign};
+  & + & {
+    margin-top: 2rem;
+  }
 `;
 
 export default Row;
