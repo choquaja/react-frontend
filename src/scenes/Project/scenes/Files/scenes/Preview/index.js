@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'codemirror/lib/codemirror.css';
-import 'notebook-preview/styles/main.css';
+// import 'notebook-preview/styles/main.css';
 import 'notebook-preview/styles/theme-light.css';
 import NotebookPreview from 'notebook-preview';
 import notebookJSON from './Finance_Book.ipynb.json';
