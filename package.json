@@ -50,6 +50,7 @@
     "immutable": "^3.8.1",
     "jest": "^19.0.2",
     "lint-staged": "^3.4.0",
+    "lodash": "^4.17.4",
     "notebook-preview": "^0.2.4",
     "polished": "^1.0.0",
     "prop-types": "^15.5.8",
