@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Login from './scenes/Login';
-// import Logout from './scenes/Logout';
+import Logout from './scenes/Logout';
 import ResetPassword from './scenes/ResetPassword';
 import DoResetPassword from './scenes/DoResetPassword';
 import ContentCard from '../../components/ContentCard';
@@ -39,9 +39,9 @@ export default function Auth(props) {
           <Logo src={logo} />
           <Switch>
             <Redirect from={`${url}/`} to={`${url}/login`} exact />
-            <Redirect from={`${url}/logout`} to={`${url}/login`} exact />
+            {/* <Redirect from={`${url}/logout`} to={`${url}/login`} exact /> */}
             <Route path={`${url}/login`} component={Login} />
-            {/* <Route path={`${url}/logout`} component={Logout} /> */}
+            <Route path={`${url}/logout`} component={Logout} />
             <Route path={`${url}/reset-password`} component={ResetPassword} />
             <Route path={`${url}/do-reset-password`} component={DoResetPassword} />
           </Switch>
