@@ -15,8 +15,6 @@ const loginLogic = createLogic({
     const reject = getReject(action);
     const next = getNext(action);
     try {
-      // const creds = { username: 'foo', password: 'abc123abc' };
-      // const response = await axios.post('https://go-pilot.3blades.io/auth/jwt-token-auth/', creds);
       const response = await api.auth.login(action.payload);
       login(response.data.token);
       resolve();

@@ -37,13 +37,3 @@ const api = callsList.reduce((obj, call, index) => {
 api.helpers = helpers;
 
 export default api;
-
-// Script to get the endpoints from the HTML Swagger page
-// console.log(JSON.stringify(jQuery('.operation').map((i, el) => ({
-//   name: `${el.id.split('_')[0]}.`,
-//   method: $(el).find('.http_method').text().trim(),
-//   path: (
-//     $(el).find('.path').text().trim().includes('{')
-//     ? `() => \`${$(el).find('.path').text().trim().substr(1).replace('{', '${')}\``
-//     : `() => '${$(el).find('.path').text().trim().substr(1)}'`)
-// })).toArray()))
