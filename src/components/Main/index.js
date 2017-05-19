@@ -9,6 +9,7 @@ import '../../services/theme/global';
 
 import Auth from '../../scenes/Auth';
 import Protected from './components/Protected';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const store = configureStore(INITIAL_STATE);
 
@@ -19,7 +20,7 @@ function Main() {
         <ThemeProvider theme={theme}>
           <Switch>
             <Route path="/auth" component={Auth} />
-            <Route path="/" component={Protected} />
+            <ProtectedRoute path="/" component={Protected} />
           </Switch>
         </ThemeProvider>
       </Router>
