@@ -1,2 +1,4 @@
-/* eslint-disable */
-export const MOCK_LOGIN = 'Login.MOCK_LOGIN';
+import { createAction } from '../../../../services/store/helpers';
+import * as types from './types';
+
+export const login = createAction(types.LOGIN);
