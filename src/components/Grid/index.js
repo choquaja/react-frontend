@@ -58,14 +58,17 @@ const TableHeadingCellComponent = ({
      </TableHeadingCellEl>
   );
 TableHeadingCellComponent.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
   onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-  sortProperty: PropTypes.func.isRequired,
-  customHeadingComponent: PropTypes.node,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  sortProperty: PropTypes.object,
+  customHeadingComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 TableHeadingCellComponent.defaultProps = {
+  onMouseEnter: () => null,
+  onMouseLeave: () => null,
+  sortProperty: {},
   customHeadingComponent: () => null,
 };
 
@@ -91,6 +94,15 @@ class Grid extends Component {
     pageProperties: PropTypes.object,
     selectable: PropTypes.bool,
     filterable: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    events: {},
+    sortProperties: {},
+    pageProperties: {},
+    selectable: false,
+    filterable: true,
+    children: null,
   }
 
   constructor(props) {
@@ -170,13 +182,5 @@ class Grid extends Component {
     );
   }
 }
-
-Grid.defaultProps = {
-  sortProperties: {},
-  pageProperties: {},
-  selectable: false,
-  filterable: true,
-  children: null,
-};
 
 export default Grid;

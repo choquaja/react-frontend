@@ -32,8 +32,8 @@ const LayoutComponentFactory = ({ filterable, header }) => {
   );
 
   LayoutComponent.propTypes = {
-    Table: PropTypes.node.isRequired,
-    Filter: PropTypes.node.isRequired,
+    Table: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+    Filter: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   };
 
   return LayoutComponent;
