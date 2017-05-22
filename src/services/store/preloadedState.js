@@ -122,13 +122,8 @@ export const files = Immutable.List([
   }),
 ]);
 
-export const home = Immutable.List([
-  settings,
-]);
-
 const INITIAL_STATE = {
   scenes: {
-    home,
     project: {
       settings,
       resources,
