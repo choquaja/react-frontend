@@ -7,7 +7,7 @@ const getResolve = getOr(() => {})('meta.resolve');
 const getReject = getOr(() => {})('meta.reject');
 const getNext = getOr('/')('meta.next');
 
-const loginLogic = createLogic({
+export const loginLogic = createLogic({
   type: types.LOGIN,
   latest: true,
   async process({ getState, action, api, history }, dispatch, done) {
