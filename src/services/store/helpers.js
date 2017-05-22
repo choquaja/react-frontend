@@ -8,3 +8,9 @@ export const createAction = (
   payloadCreator = payload,
   metaCreator = meta,
 ) => createActionCreator(type, payloadCreator, metaCreator);
+
+export const INITIAL_DATA_STATE = {
+  loading: false,
+  data: null,
+  error: null,
+};
