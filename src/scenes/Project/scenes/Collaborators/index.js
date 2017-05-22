@@ -1,54 +1,47 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import * as Material from 'react-icons/lib/md';
-import { themeColor } from '../../../../services/theme';
-import Table from '../../../../components/Table';
+import { MdGroupAdd } from 'react-icons/lib/md';
+import Grid from '../../../../components/Grid';
+import FormInput from '../../../../components/FormInput';
+import Button from '../../../../components/Button';
+import CardTitle from '../../../../components/CardTitle';
 
-const Form = styled.form`
-  margin-top: 20px;
+const Form = styled.div`
+  display: flex;
+  margin-top: 2rem;
 `;
 
-const Submit = styled.button`
-  border: none;
-  background-color: ${themeColor('primary')};
-  color: white;
+const AddCollaboratorInput = styled(FormInput)`
+  width: 22rem;
 `;
 
-const AddIcon = styled(Material.MdGroupAdd)`
-  margin-left: 10px;
-  margin-right: 10px;
+const AddIcon = styled(MdGroupAdd)`
+  margin-right: .5rem;
 `;
 
-export class Collaborators extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      columns: [
-        { title: 'First Name', dataIndex: 'firstName', key: ['firstName'], className: 'firstName' },
-        { title: 'Last Name', dataIndex: 'lastName', key: ['lastName'], className: 'lastName' },
-        { title: 'Role', dataIndex: 'role', key: 'role', className: 'role' },
-      ],
-    };
-  }
+const columns = [
+  { id: 'id', title: 'ID' },
+  { id: 'firstName', title: 'First Name' },
+  { id: 'lastName', title: 'Last Name' },
+  { id: 'role', title: 'Role' },
+];
 
-  render() {
-    return (
-      <div>
-        <Table
-          columns={this.state.columns}
-          data={this.props.collaborators}
-        />
-        <Form>
-          <input type="text" id="collaborator" />
-          <Submit type="submit">
-            <AddIcon />
-            Add Collaborator
-          </Submit>
-        </Form>
-      </div>
-    );
-  }
+export function Collaborators(props) {
+  return (
+    <div>
+      <CardTitle>Collaborators</CardTitle>
+      <Grid columns={columns} data={props.collaborators.toJS()} filterable={false} />
+      <Form>
+        <AddCollaboratorInput placeholder="Search by username or email" small grouped />
+        <Button type="submit" small secondary grouped>
+          <AddIcon />
+          Add
+        </Button>
+      </Form>
+    </div>
+  );
 }
 
 Collaborators.propTypes = {

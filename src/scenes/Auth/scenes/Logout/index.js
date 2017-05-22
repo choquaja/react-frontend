@@ -1,15 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { logout } from '../../../../services/authToken';
 
-export default function Logout(props) {
+export default function Logout() {
+  logout();
   return (
-    <p>You are at {props.match.url}</p>
+    <Redirect push to="/auth/login" />
   );
 }
-
-Logout.defaultProps = {
-
-};
-
-Logout.propTypes = {
-  match: PropTypes.object.isRequired,
-};

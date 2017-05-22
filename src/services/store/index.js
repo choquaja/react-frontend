@@ -1,7 +1,12 @@
+import createBrowserHistory from 'history/createBrowserHistory';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
-import rootReducer from '../../reducer';
+import { createLogicMiddleware } from 'redux-logic';
+import rootReducer, { logic } from '../../reducer';
 import preloadedState from './preloadedState';
+import api from '../../services/api';
+
+export const history = createBrowserHistory();
 
 const isProd = process.env.NODE_ENV === 'production';
 /* eslint-disable no-underscore-dangle */
@@ -9,6 +14,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 const middlewares = [
   (!isProd && createLogger()),
+  createLogicMiddleware(logic, { api, history }),
 ].filter(Boolean);
 
 export const configureStore = (initialState) => {
