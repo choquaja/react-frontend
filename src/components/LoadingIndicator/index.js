@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import animation from 'polished/lib/shorthands/animation';
 import sizeHelper from 'polished/lib/shorthands/size';
-import logo from './images/mark.svg';
+import logo from './images/logo-spinner.svg';
 
-const loadingAnim = keyframes`
+const spin = keyframes`
   from {
     transform: rotate(0deg)
   }
@@ -14,20 +14,38 @@ const loadingAnim = keyframes`
   }
 `;
 
-const sizeToRems = num => (`${num / 10}rem`);
-// const getSizeArray = num => ([sizeToRems(num), sizeToRems(num)]);
-
-const AnimatedImg = styled.img`
-  ${props => sizeHelper(sizeToRems(props.size))}
-  ${animation([loadingAnim, '70s', 'infinite', 'cubic-bezier(0.45, 0.02, 0.57, 0.99);'])}
+const fadeIn = keyframes`
+  to {
+    opacity: 1;
+  }
 `;
 
+const sizeToRems = num => (`${num / 10}rem`);
+
+const AnimatedImg = styled.img`
+  opacity: 0;
+  ${props => sizeHelper(sizeToRems(props.size))}
+  ${animation(
+    [spin, '4s', 'infinite', 'cubic-bezier(0.45, 0.02, 0.57, 0.99)'],
+    [fadeIn, '.5s', 'ease-in'],
+  )}
+  animation-delay: .5s;
+  animation-fill-mode: none, forwards;
+  transform-origin: center center;
+`;
+
+const ImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
 export default function LoadingIndicator({ size }) {
   return (
-    <div>
+    <ImgWrapper>
       <AnimatedImg src={logo} size={size} />
-    </div>
+    </ImgWrapper>
   );
 }
 

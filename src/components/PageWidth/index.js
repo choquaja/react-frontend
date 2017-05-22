@@ -10,6 +10,7 @@ const setWidth = (props) => {
 const PageWidth = styled.div`
   ${setWidth}
   margin: 0 auto;
+  height: 100%;
 `;
 
 PageWidth.propTypes = {
