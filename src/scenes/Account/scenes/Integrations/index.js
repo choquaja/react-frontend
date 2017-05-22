@@ -1,16 +1,32 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 
-export default function Integrations(props) {
+const Title = styled.h1`
+  font-size: 2em;
+`;
+
+const Container = styled.div`
+  display: flex;
+`;
+
+const Column2 = styled.div`
+  width: 70%;
+`;
+
+export default function Profile() {
   return (
-    <p>You are at {props.match.url}</p>
+    <Container>
+      <Column2>
+        <Title>Integrations</Title>
+      </Column2>
+    </Container>
   );
 }
 
-Integrations.defaultProps = {
+Profile.defaultProps = {
 
 };
 
-Integrations.propTypes = {
+Profile.propTypes = {
   match: PropTypes.object.isRequired,
 };
