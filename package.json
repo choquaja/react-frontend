@@ -50,6 +50,7 @@
     "rc-table": "^5.2.2",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.2",
+    "react-avatar-editor": "^9.1.1",
     "react-bootstrap-tabs": "1.0.0",
     "react-dev-utils": "^0.5.2",
     "react-dnd": "^2.1.4",
@@ -68,5 +69,10 @@
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-manifest-plugin": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^7.0.0"
   }
 }
