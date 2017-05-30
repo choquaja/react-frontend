@@ -4,9 +4,10 @@ import createLogger from 'redux-logger';
 import { createLogicMiddleware } from 'redux-logic';
 import rootReducer, { logic } from '../../reducer';
 import preloadedState from './preloadedState';
-import api from '../../services/api';
+import apiCreator from '../../services/api';
 
 export const history = createBrowserHistory();
+export const api = apiCreator({ history });
 
 const isProd = process.env.NODE_ENV === 'production';
 /* eslint-disable no-underscore-dangle */
