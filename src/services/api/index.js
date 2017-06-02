@@ -7,13 +7,16 @@ const instance = axios.create({
   baseURL: 'https://go-pilot.3blades.io/',
 });
 
-const prepareAxios = ({ history }) => call => (data, options = {}) => instance({
+const prepareAxios = ({ history }) => call => (data, options = {}, cancelled$) => instance({
   ...options,
   data,
   method: call.method,
   url: call.path(options.urlParams),
   headers: (isLoggedIn() && { Authorization: `JWT ${getToken()}` }),
-}).catch(helpers.redirectIfAuthInvalid({ history }));
+  cancelToken: helpers.createCancelToken(cancelled$),
+})
+.catch(helpers.redirectIfAuthInvalid({ history }))
+.catch(helpers.filterCancelledRequests);
 
 const apiCreator = ({ history }) => {
   const curriedAxios = prepareAxios({ history });

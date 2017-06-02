@@ -1,3 +1,4 @@
+import { CancelToken, isCancel } from 'axios';
 import getOr from 'lodash/fp/getOr';
 import { SubmissionError } from 'redux-form';
 import { logout } from '../authToken';
@@ -22,4 +23,16 @@ export const redirectIfAuthInvalid = ({ history }) => (error) => {
     });
   }
   return error;
+};
+
+export const createCancelToken = cancelled$ => new CancelToken((cancel) => {
+  if (cancelled$) cancelled$.subscribe(action => cancel(action));
+});
+
+export const filterCancelledRequests = (error) => {
+  if (isCancel(error)) {
+    console.log('Request cancelled', error.message); // eslint-disable-line
+  } else {
+    throw error;
+  }
 };
