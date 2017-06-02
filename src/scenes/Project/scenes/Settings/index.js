@@ -1,104 +1,78 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  renameProject,
-  changeDescription,
-  toggleVisibility,
-  deleteProject,
-} from './actions';
+import PropTypes from 'prop-types';
+import connector from './connector';
+import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Button from '../../../../components/Button';
 import FormInput from '../../../../components/FormInput';
 import FormTextarea from '../../../../components/FormTextarea';
 import CardTitle from '../../../../components/CardTitle';
 import FormLabel from '../../../../components/FormLabel';
 import FormGroup from '../../../../components/FormGroup';
+import AnimFade from '../../../../components/AnimFade';
 
 export class Settings extends React.Component {
   static propTypes = {
-    onToggleVisibility: PropTypes.func.isRequired,
-    onDeleteProject: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    settings: PropTypes.object.isRequired,
+    // actions: PropTypes.object.isRequired,
+    // account: PropTypes.string.isRequired,
+    // id: PropTypes.string.isRequired,
+    data: PropTypes.object,
+    loading: PropTypes.bool.isRequired,
+    // match: PropTypes.object.isRequired,
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      projectName: props.settings.get('name'),
-      projectDesc: props.settings.get('description'),
-    };
+  static defaultProps = {
+    data: {},
   }
 
-  onChange = (event) => {
-    event.preventDefault();
-    this.setState({
-      [event.target.id]: event.target.value,
-    });
+  componentDidMount = () => {
+    // const { account, id: project } = this.props;
+    // const { fileId: id } = this.props.match.params;
+    // this.props.actions.getProjectRequest({ account, project });
   }
 
-  onSave = (event) => {
-    event.preventDefault();
-    this.props.onSave(this.state.projectName, this.state.projectDesc);
-  }
+  noop = () => {}
 
   render() {
-    const { onToggleVisibility, onDeleteProject } = this.props;
-    const isPrivate = this.props.settings.get('isPrivate');
+    const { loading, data } = this.props;
+    if (loading && !data) return <LoadingIndicator size={128} />;
+    const isPrivate = data.private;
     return (
-      <div>
-        <CardTitle>Settings</CardTitle>
-        <FormGroup>
-          <FormLabel htmlFor="projectName">Project Name</FormLabel>
-          <FormInput
-            id="projectName"
-            placeholder="Project Name"
-            onChange={this.onChange}
-            value={this.state.projectName}
-          />
-        </FormGroup>
-        <FormGroup>
-          <FormLabel htmlFor="projectDesc">Project Description</FormLabel>
-          <FormTextarea
-            id="projectDesc"
-            placeholder="Project Description"
-            onChange={this.onChange}
-            value={this.state.projectDesc}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Button onClick={this.onSave} success>Save</Button>
-        </FormGroup>
-        <FormGroup>
-          <FormLabel>Make this project { isPrivate ? 'public' : 'private' }</FormLabel>
-          <Button onClick={onToggleVisibility} warning>
-            Make { isPrivate ? 'Public' : 'Private' }
-          </Button>
-        </FormGroup>
-        <FormGroup>
-          <FormLabel>Delete this project forever</FormLabel>
-          <Button onClick={onDeleteProject} error>Delete Project</Button>
-        </FormGroup>
-      </div>
+      <AnimFade>
+        <div key="div">
+          <CardTitle>Settings</CardTitle>
+          <FormGroup>
+            <FormLabel htmlFor="projectName">Project Name</FormLabel>
+            <FormInput
+              id="projectName"
+              placeholder="Project Name"
+              defaultValue={data.name}
+            />
+          </FormGroup>
+          <FormGroup>
+            <FormLabel htmlFor="projectDesc">Project Description</FormLabel>
+            <FormTextarea
+              id="projectDesc"
+              placeholder="Project Description"
+              defaultValue={data.description}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Button onClick={this.noop} success>Save</Button>
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>Make this project { isPrivate ? 'public' : 'private' }</FormLabel>
+            <Button onClick={this.noop} warning>
+              Make { isPrivate ? 'Public' : 'Private' }
+            </Button>
+          </FormGroup>
+          <FormGroup>
+            <FormLabel>Delete this project forever</FormLabel>
+            <Button onClick={this.noop} error>Delete Project</Button>
+          </FormGroup>
+        </div>
+      </AnimFade>
     );
   }
 }
 
-export const mapStateToProps = state => ({
-  settings: state.scenes.project.settings,
-});
-
-export const mapDispatchToProps = dispatch => ({
-  onSave(newName, newDescription) {
-    if (newName) dispatch(renameProject(newName));
-    if (newDescription) dispatch(changeDescription(newDescription));
-  },
-  onToggleVisibility() {
-    dispatch(toggleVisibility());
-  },
-  onDeleteProject() {
-    dispatch(deleteProject());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connector(Settings);
