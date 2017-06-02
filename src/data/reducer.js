@@ -1,13 +1,10 @@
 import { combineReducers } from 'redux';
-import projects from './projects/reducer';
-import projectsLogic from './projects/logic';
+import entities from './entities/reducer';
 
 const rootReducer = combineReducers({
-  projects,
+  entities,
 });
 
 export default rootReducer;
 
-export const logic = [
-  ...projectsLogic,
-];
+export const logic = [];
