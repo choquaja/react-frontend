@@ -1,8 +1,18 @@
-import { handleActions } from 'redux-actions';
-import * as types from './types';
+import { combineReducers } from 'redux';
+import edit, { editLogic } from './scenes/Edit/reducer';
+import list, { listLogic } from './scenes/List/reducer';
+import preview, { previewLogic } from './scenes/Preview/reducer';
 
-export default handleActions({
-  [types.DELETE_FILE](state) {
-    return state;
-  },
-}, {});
+const rootReducer = combineReducers({
+  edit,
+  list,
+  preview,
+});
+
+export default rootReducer;
+
+export const filesLogic = [
+  ...editLogic,
+  ...listLogic,
+  ...previewLogic,
+];
