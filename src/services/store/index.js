@@ -3,7 +3,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 import { createLogicMiddleware } from 'redux-logic';
 import rootReducer, { logic } from '../../reducer';
-import preloadedState from './preloadedState';
 import apiCreator from '../../services/api';
 
 export const history = createBrowserHistory();
@@ -28,4 +27,4 @@ export const configureStore = (initialState) => {
   return store;
 };
 
-export const INITIAL_STATE = preloadedState;
+export const INITIAL_STATE = {};
