@@ -1,26 +1,19 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { connect } from 'react-redux';
+import connector from './connector';
 // import styled, { css } from 'styled-components';
 // import { Link } from 'react-router-dom';
 // import { MdPlayArrow, MdPause, MdDeleteForever, MdAddCircleOutline } from 'react-icons/lib/md';
 // import TabPane from '../../../../components/TabPane';
+import ServerDetails from './scenes/ServerDetails';
 import SelectedContainer from './components/SelectedContainer';
-// import ServerDetails from './components/ServerDetails';
+import StatusCell from './components/StatusCell';
 import Grid from '../../../../components/Grid';
 import CardTitle from '../../../../components/CardTitle';
-// import {
-//   deleteResources,
-//   startResources,
-//   stopResources,
-// } from './actions';
+import LoadingIndicator from '../../../../components/LoadingIndicator';
+import NoContent from '../../../../components/NoContent';
+import AnimFade from '../../../../components/AnimFade';
 
-// const TableToolbar = styled.div`
-//   font-size: 18px;
-//   float: right;
-//   margin-bottom: 10px;
-// `;
-//
 // const iconStyles = css`
 //   margin-right: 5px;
 //   margin-left: 5px;
@@ -32,49 +25,56 @@ import CardTitle from '../../../../components/CardTitle';
 // const IconAdd = styled(MdAddCircleOutline)`${iconStyles}`;
 
 const columns = [
-  { id: 'id', title: 'ID' },
+  // { id: 'id', title: 'ID' },
   { id: 'name', title: 'Name' },
-  { id: 'status', title: 'Status' },
-  { id: 'type', title: 'Type' },
+  { id: 'status', title: 'Status', customComponent: StatusCell },
+  { id: 'config.type', title: 'Type' },
 ];
 
-export function Resources(props) {
-  return (
-    <SelectedContainer>
-      {({ handleSelected: onSelected }) => (
-        <div>
-          <CardTitle>Resources</CardTitle>
-          <Grid
-            columns={columns}
-            events={{ onSelected }}
-            data={props.resources.toJS()}
-            selectable
-          />
-          {/* {selected.length === 1 && <ServerDetails id={selected[0]} />} */}
-        </div>
-      )}
-    </SelectedContainer>
-  );
+export class Resources extends Component {
+  componentDidMount = () => {
+    const { account, id: project } = this.props;
+    this.props.actions.getServersRequest({ account, project });
+  }
+
+  render() {
+    const { loading, data } = this.props;
+    if (loading && !data) return <LoadingIndicator size={128} />;
+    return (
+      <SelectedContainer>
+        {({ handleSelected: onSelected, selected }) => (
+          <AnimFade>
+            <div key="div">
+              <CardTitle>Resources</CardTitle>
+              {data && data.length > 0 ? (
+                <Grid
+                  columns={columns}
+                  events={{ onSelected }}
+                  data={data}
+                  selectable
+                />
+              ) : (
+                <NoContent>You don&apos;t have any servers!</NoContent>
+              )}
+              {selected.length === 1 && <ServerDetails id={selected[0]} />}
+            </div>
+          </AnimFade>
+        )}
+      </SelectedContainer>
+    );
+  }
 }
 
 Resources.propTypes = {
-  resources: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  account: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  data: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-  resources: state.scenes.project.resources,
-});
-//
-// const mapDispatchToProps = dispatch => ({
-//   onDelete: (resources) => {
-//     dispatch(deleteResources(resources));
-//   },
-//   onStart: (resources) => {
-//     dispatch(startResources(resources));
-//   },
-//   onStop: (resources) => {
-//     dispatch(stopResources(resources));
-//   },
-// });
+Resources.defaultProps = {
+  data: [],
+};
 
-export default connect(mapStateToProps)(Resources);
+export default connector(Resources);

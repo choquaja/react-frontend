@@ -1,12 +1,13 @@
-import { handleActions } from 'redux-actions';
-import * as types from './types';
+import { createDataReducer } from '../../../../services/store/helpers';
+import { types } from './constants';
+import logic from './logic';
 
-export default handleActions({
-  [types.DELETE_RESOURCE]: function deleteResource(state, action) {
-    const { id } = action;
-    return state.filter(resource => resource.get('id') !== id);
-  },
-  [types.START_WORKSPACE]: function startWorkspace(state) {
-    return state;
-  },
-}, {});
+export default createDataReducer(
+  types.GET_SERVERS_REQUEST,
+  types.GET_SERVERS_SUCCESS,
+  types.GET_SERVERS_FAIL,
+);
+
+export const resourcesLogic = [
+  ...logic,
+];
