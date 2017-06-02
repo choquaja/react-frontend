@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import project from './Project/reducer';
+import home, { homeLogic } from './Home/reducer';
+import project, { projectLogic } from './Project/reducer';
 import { logic as authLogic } from './Auth/reducer';
 
 const rootReducer = combineReducers({
+  home,
   project,
 });
 
@@ -10,4 +12,6 @@ export default rootReducer;
 
 export const logic = [
   ...authLogic,
+  ...homeLogic,
+  ...projectLogic,
 ];
