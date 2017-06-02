@@ -1,12 +1,15 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 import { MdGroupAdd } from 'react-icons/lib/md';
+import connector from './connector';
+import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Grid from '../../../../components/Grid';
 import FormInput from '../../../../components/FormInput';
 import Button from '../../../../components/Button';
 import CardTitle from '../../../../components/CardTitle';
+import NoContent from '../../../../components/NoContent';
+import AnimFade from '../../../../components/AnimFade';
 
 const Form = styled.div`
   display: flex;
@@ -22,34 +25,57 @@ const AddIcon = styled(MdGroupAdd)`
 `;
 
 const columns = [
-  { id: 'id', title: 'ID' },
+  // { id: 'id', title: 'ID' },
+  { id: 'username', title: 'User' },
+  { id: 'email', title: 'Email' },
   { id: 'firstName', title: 'First Name' },
   { id: 'lastName', title: 'Last Name' },
-  { id: 'role', title: 'Role' },
+  { id: 'owner', title: 'Role' },
 ];
 
-export function Collaborators(props) {
-  return (
-    <div>
-      <CardTitle>Collaborators</CardTitle>
-      <Grid columns={columns} data={props.collaborators.toJS()} filterable={false} />
-      <Form>
-        <AddCollaboratorInput placeholder="Search by username or email" small grouped />
-        <Button type="submit" small secondary grouped>
-          <AddIcon />
-          Add
-        </Button>
-      </Form>
-    </div>
-  );
+class Collaborators extends Component {
+  componentDidMount = () => {
+    const { account, id: project } = this.props;
+    this.props.actions.getCollaboratorsRequest({ account, project });
+  }
+
+  render() {
+    const { loading, data } = this.props;
+    if (loading && !data) return <LoadingIndicator size={128} />;
+    return (
+      <AnimFade>
+        <div key="div">
+          <CardTitle>Collaborators</CardTitle>
+          {data ? (
+            <Grid columns={columns} data={data} filterable={false} />
+          ) : (
+            <NoContent>
+              There are no collaborators on this project.<br />
+            </NoContent>
+          )}
+          <Form>
+            <AddCollaboratorInput placeholder="Search by username or email" small grouped />
+            <Button type="submit" small secondary grouped>
+              <AddIcon />
+              Add
+            </Button>
+          </Form>
+        </div>
+      </AnimFade>
+    );
+  }
 }
 
 Collaborators.propTypes = {
-  collaborators: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  account: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  data: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-  collaborators: state.scenes.project.collaborators,
-});
+Collaborators.defaultProps = {
+  data: [],
+};
 
-export default connect(mapStateToProps)(Collaborators);
+export default connector(Collaborators);
