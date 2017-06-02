@@ -1,4 +1,4 @@
-import { createAction as createActionCreator } from 'redux-actions';
+import { handleActions, createAction as createActionCreator } from 'redux-actions';
 
 const payload = x => x;
 const meta = (x, y) => y;
@@ -14,3 +14,34 @@ export const INITIAL_DATA_STATE = {
   data: null,
   error: null,
 };
+
+export const createDataReducer = (
+  TYPE_REQUEST,
+  TYPE_SUCCESS,
+  TYPE_FAIL,
+  TYPE_RESET = 'ignore',
+) => handleActions({
+  [TYPE_REQUEST](state) {
+    return {
+      ...state,
+      loading: true,
+    };
+  },
+  [TYPE_SUCCESS](state, action) {
+    return {
+      ...state,
+      loading: false,
+      data: action.payload,
+    };
+  },
+  [TYPE_FAIL](state, action) {
+    return {
+      ...state,
+      loading: false,
+      error: action.payload,
+    };
+  },
+  [TYPE_RESET]() {
+    return INITIAL_DATA_STATE;
+  },
+}, INITIAL_DATA_STATE);
