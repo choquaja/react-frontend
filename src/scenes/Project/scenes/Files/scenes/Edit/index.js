@@ -8,6 +8,7 @@ import 'brace/mode/markdown';
 import 'brace/mode/python';
 import connector from './connector';
 import LoadingIndicator from '../../../../../../components/LoadingIndicator';
+import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import AnimFade from '../../../../../../components/AnimFade';
@@ -53,7 +54,7 @@ class Edit extends Component {
     if (loading && !data) return <LoadingIndicator size={128} />;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Editing: {data && data.path}</CardTitle>
           {data ? (
             <AceEditor
@@ -69,7 +70,7 @@ class Edit extends Component {
               Why don&apos;t you <a href="#empty">create one?</a>
             </NoContent>
           )}
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }

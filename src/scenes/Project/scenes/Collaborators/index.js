@@ -7,6 +7,7 @@ import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Grid from '../../../../components/Grid';
 import FormInput from '../../../../components/FormInput';
 import Button from '../../../../components/Button';
+import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
 import AnimFade from '../../../../components/AnimFade';
@@ -44,7 +45,7 @@ class Collaborators extends Component {
     if (loading && !data) return <LoadingIndicator size={128} />;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Collaborators</CardTitle>
           {data ? (
             <Grid columns={columns} data={data} filterable={false} />
@@ -60,7 +61,7 @@ class Collaborators extends Component {
               Add
             </Button>
           </Form>
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }

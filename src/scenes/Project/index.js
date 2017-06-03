@@ -62,17 +62,15 @@ class Project extends Component {
               </ContentCard>
             </Column>
             <Column size={9}>
-              <ContentCard column>
-                <Switch>
-                  <Redirect from={`${url}/`} to={`${url}/overview`} exact />
-                  <Route path={`${url}/overview`} component={Overview} />
-                  <Route path={`${url}/files`} component={Files} />
-                  <Route path={`${url}/resources/new`} component={NewResource} />
-                  <Route path={`${url}/resources`} component={Resources} />
-                  <Route path={`${url}/collaborators`} component={Collaborators} />
-                  <Route path={`${url}/settings`} component={Settings} />
-                </Switch>
-              </ContentCard>
+              <Switch>
+                <Redirect from={`${url}/`} to={`${url}/overview`} exact />
+                <Route path={`${url}/overview`} component={Overview} />
+                <Route path={`${url}/files`} component={Files} />
+                <Route path={`${url}/resources/new`} component={NewResource} />
+                <Route path={`${url}/resources`} component={Resources} />
+                <Route path={`${url}/collaborators`} component={Collaborators} />
+                <Route path={`${url}/settings`} component={Settings} />
+              </Switch>
             </Column>
           </Row>
         </div>

@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connector from './connector';
 import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Button from '../../../../components/Button';
 import FormInput from '../../../../components/FormInput';
 import FormTextarea from '../../../../components/FormTextarea';
+import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import FormLabel from '../../../../components/FormLabel';
 import FormGroup from '../../../../components/FormGroup';
 import AnimFade from '../../../../components/AnimFade';
 
-export class Settings extends React.Component {
+export class Settings extends Component {
   static propTypes = {
     // actions: PropTypes.object.isRequired,
     // account: PropTypes.string.isRequired,
@@ -38,7 +39,7 @@ export class Settings extends React.Component {
     const isPrivate = data.private;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Settings</CardTitle>
           <FormGroup>
             <FormLabel htmlFor="projectName">Project Name</FormLabel>
@@ -69,7 +70,7 @@ export class Settings extends React.Component {
             <FormLabel>Delete this project forever</FormLabel>
             <Button onClick={this.noop} error>Delete Project</Button>
           </FormGroup>
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }

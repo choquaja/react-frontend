@@ -9,6 +9,7 @@ import ServerDetails from './scenes/ServerDetails';
 import SelectedContainer from './components/SelectedContainer';
 import StatusCell from './components/StatusCell';
 import Grid from '../../../../components/Grid';
+import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import LoadingIndicator from '../../../../components/LoadingIndicator';
 import NoContent from '../../../../components/NoContent';
@@ -44,7 +45,7 @@ export class Resources extends Component {
       <SelectedContainer>
         {({ handleSelected: onSelected, selected }) => (
           <AnimFade>
-            <div key="div">
+            <ContentCard column key="card">
               <CardTitle>Resources</CardTitle>
               {data && data.length > 0 ? (
                 <Grid
@@ -56,8 +57,8 @@ export class Resources extends Component {
               ) : (
                 <NoContent>You don&apos;t have any servers!</NoContent>
               )}
-              {selected.length === 1 && <ServerDetails id={selected[0]} />}
-            </div>
+              {selected.length === 1 && <ServerDetails server={selected[0]} />}
+            </ContentCard>
           </AnimFade>
         )}
       </SelectedContainer>

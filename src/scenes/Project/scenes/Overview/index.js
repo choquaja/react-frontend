@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connector from './connector';
+import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
 import LoadingIndicator from '../../../../components/LoadingIndicator';
@@ -17,7 +18,7 @@ class Overview extends Component {
     if (loading && !data) return <LoadingIndicator size={128} />;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Overview</CardTitle>
           {data ? (
             <p>{window.atob(data.content)}</p>
@@ -27,7 +28,7 @@ class Overview extends Component {
               Why don&apos;t you <a href="#empty">create one?</a>
             </NoContent>
           )}
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }

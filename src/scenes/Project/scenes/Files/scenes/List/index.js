@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connector from './connector';
 import LoadingIndicator from '../../../../../../components/LoadingIndicator';
+import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import FileManager from './components/FileManager';
@@ -30,7 +31,7 @@ class List extends Component {
     if (loading && !data) return <LoadingIndicator size={128} />;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Files</CardTitle>
           {data && data.length > 0 ? (
             <FileManager files={data} />
@@ -40,7 +41,7 @@ class List extends Component {
               Why don&apos;t you <a href="#empty">create one?</a>
             </NoContent>
           )}
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }

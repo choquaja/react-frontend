@@ -6,6 +6,7 @@ import NotebookPreview from '@nteract/notebook-preview';
 import Markdown from 'react-remarkable';
 import connector from './connector';
 import LoadingIndicator from '../../../../../../components/LoadingIndicator';
+import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import AnimFade from '../../../../../../components/AnimFade';
@@ -49,7 +50,7 @@ class Preview extends Component {
     if (loading && !data) return <LoadingIndicator size={128} />;
     return (
       <AnimFade>
-        <div key="div">
+        <ContentCard column key="card">
           <CardTitle>Previewing: {data && data.path}</CardTitle>
           {data ? (
             getPreviewComponent(data)
@@ -59,7 +60,7 @@ class Preview extends Component {
               Why don&apos;t you <a href="#empty">create one?</a>
             </NoContent>
           )}
-        </div>
+        </ContentCard>
       </AnimFade>
     );
   }
