@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import { createDataReducer } from '../../services/store/helpers';
+import { combineReducers, compose } from 'redux';
+import { createDataReducer, resetReducer } from '../../services/store/helpers';
 import { types } from './constants';
 import overview, { overviewLogic } from './scenes/Overview/reducer';
 // import settings from './scenes/Settings/reducer';
@@ -12,10 +12,14 @@ const reducer = createDataReducer(
   types.GET_PROJECT_REQUEST,
   types.GET_PROJECT_SUCCESS,
   types.GET_PROJECT_FAIL,
-  types.RESET_PROJECT,
 );
 
-const rootReducer = combineReducers({
+const rootReducer = compose(
+  // This is here to clear the whole project branch of
+  // our Redux store when leaving the Project scene
+  resetReducer(types.RESET_PROJECT),
+  combineReducers,
+)({
   details: reducer,
   overview,
   // settings,

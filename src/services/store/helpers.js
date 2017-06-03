@@ -45,3 +45,10 @@ export const createDataReducer = (
     return INITIAL_DATA_STATE;
   },
 }, INITIAL_DATA_STATE);
+
+export const resetReducer = TYPE_RESET => reducer => (state, action) => {
+  if (action.type === TYPE_RESET) {
+    state = undefined; // eslint-disable-line
+  }
+  return reducer(state, action);
+};
