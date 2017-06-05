@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import timingFunctions from 'polished/lib/mixins/timingFunctions';
 import profileImg from './images/profile.png';
 import Button from '../../../../../../../../../Button';
+import connector from './connector';
 
 class ProfileDropdownContainer extends Component {
   state = {
@@ -99,13 +100,13 @@ const DropdownLink = styled(Link)`
   }
 `;
 
-function ProfileDropdown() {
+function ProfileDropdown({ avatar }) {
   return (
     <ProfileDropdownContainer>
       {({ handleClick, open }) => (
         <ProfileDropdownGroup>
           <ProfileImgButton flat onClick={handleClick}>
-            <ProfileImg src={profileImg} />
+            <ProfileImg src={avatar || profileImg} />
           </ProfileImgButton>
           <DropdownList open={open}>
             <DropdownItem><DropdownStaticText>User Name</DropdownStaticText></DropdownItem>
@@ -122,4 +123,12 @@ function ProfileDropdown() {
   );
 }
 
-export default ProfileDropdown;
+ProfileDropdown.propTypes = {
+  avatar: PropTypes.string.isRequired,
+};
+
+ProfileDropdown.defaultProps = {
+  avatar: '',
+};
+
+export default connector(ProfileDropdown);
