@@ -6,7 +6,7 @@ export default createDataReducer(
   types.GET_COLLABORATORS_REQUEST,
   types.GET_COLLABORATORS_SUCCESS,
   types.GET_COLLABORATORS_FAIL,
-);
+)();
 
 export const collaboratorsLogic = [
   ...logic,

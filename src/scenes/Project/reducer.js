@@ -12,7 +12,7 @@ const reducer = createDataReducer(
   types.GET_PROJECT_REQUEST,
   types.GET_PROJECT_SUCCESS,
   types.GET_PROJECT_FAIL,
-);
+)();
 
 const rootReducer = compose(
   // This is here to clear the whole project branch of

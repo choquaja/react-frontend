@@ -6,7 +6,7 @@ export default createDataReducer(
   types.GET_FILE_REQUEST,
   types.GET_FILE_SUCCESS,
   types.GET_FILE_FAIL,
-);
+)();
 
 export const editLogic = [
   ...logic,

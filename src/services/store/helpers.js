@@ -20,7 +20,7 @@ export const createDataReducer = (
   TYPE_SUCCESS,
   TYPE_FAIL,
   TYPE_RESET = 'ignore',
-) => handleActions({
+) => (reducer = {}, initialState = {}) => handleActions({
   [TYPE_REQUEST](state) {
     return {
       ...state,
@@ -42,9 +42,10 @@ export const createDataReducer = (
     };
   },
   [TYPE_RESET]() {
-    return INITIAL_DATA_STATE;
+    return { ...INITIAL_DATA_STATE, ...initialState };
   },
-}, INITIAL_DATA_STATE);
+  ...reducer,
+}, { ...INITIAL_DATA_STATE, ...initialState });
 
 export const resetReducer = TYPE_RESET => reducer => (state, action) => {
   if (action.type === TYPE_RESET) {

@@ -6,7 +6,7 @@ export default createDataReducer(
   types.GET_PROJECTS_REQUEST,
   types.GET_PROJECTS_SUCCESS,
   types.GET_PROJECTS_FAIL,
-);
+)();
 
 export const homeLogic = [
   ...logic,
