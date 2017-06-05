@@ -53,7 +53,6 @@ const Button = styled.button`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  -webkit-appearance: button;
   ${''/* box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px; */}
   box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
   ${props => props.flat && css`box-shadow: none;`}
