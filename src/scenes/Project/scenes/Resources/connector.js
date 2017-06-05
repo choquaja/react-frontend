@@ -11,14 +11,16 @@ const dataSelector = createSelector(
   state => state.scenes.project.details.data,
   state => state.scenes.project.resources.data,
   state => state.scenes.project.resources.loading,
+  state => state.scenes.project.resources.selected,
   state => state.data.entities,
-  (projectId, resourceIds, loading, entities) => {
+  (projectId, resourceIds, loading, selected, entities) => {
     const project = denormalize(projectId, projectSchema, entities);
     return {
       account: get(project, 'owner', ''),
       id: get(project, 'id', ''),
       data: denormalize(resourceIds, [resourceSchema], entities),
       loading,
+      selected,
     };
   },
 );

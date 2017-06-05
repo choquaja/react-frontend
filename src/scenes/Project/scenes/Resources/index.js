@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import connector from './connector';
+import ServerActions from './scenes/ServerActions';
 import ServerDetails from './scenes/ServerDetails';
-import SelectedContainer from './components/SelectedContainer';
 import StatusCell from './components/StatusCell';
-import Grid from '../../../../components/Grid';
+import Grid, { GridWrapper, GridActions } from '../../../../components/Grid';
 import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import LoadingIndicator from '../../../../components/LoadingIndicator';
@@ -19,35 +19,38 @@ const columns = [
 ];
 
 function Resources(props) {
-  const { loading, data } = props;
+  const { loading, data, selected, actions } = props;
   if (loading && !data) return <LoadingIndicator size={128} />;
   return (
-    <SelectedContainer>
-      {({ handleSelected: onSelected, selected }) => (
-        <AnimFade>
-          <ContentCard column key="card">
-            <CardTitle>Resources</CardTitle>
-            {data && data.length > 0 ? (
-              <Grid
-                columns={columns}
-                events={{ onSelected }}
-                data={data}
-                selectable
-              />
-            ) : (
-              <NoContent>You don&apos;t have any servers!</NoContent>
-            )}
-            {selected.length === 1 && <ServerDetails server={selected[0]} />}
-          </ContentCard>
-        </AnimFade>
-      )}
-    </SelectedContainer>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Resources</CardTitle>
+        {data && data.length > 0 ? (
+          <GridWrapper>
+            <GridActions>
+              <ServerActions serverList={selected} />
+            </GridActions>
+            <Grid
+              columns={columns}
+              events={{ onSelected: actions.updateSelected }}
+              data={data}
+              selectable
+            />
+          </GridWrapper>
+        ) : (
+          <NoContent>You don&apos;t have any servers!</NoContent>
+        )}
+        {selected.length === 1 && <ServerDetails server={selected[0]} />}
+      </ContentCard>
+    </AnimFade>
   );
 }
 
 Resources.propTypes = {
+  actions: PropTypes.object.isRequired,
   data: PropTypes.array,
   loading: PropTypes.bool.isRequired,
+  selected: PropTypes.array.isRequired,
 };
 
 Resources.defaultProps = {
