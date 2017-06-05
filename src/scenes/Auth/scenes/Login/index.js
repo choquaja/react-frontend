@@ -5,12 +5,13 @@ import styled from 'styled-components';
 import { Field, reduxForm, propTypes } from 'redux-form';
 import get from 'lodash/fp/get';
 import validator from '../../../../services/validator';
-import { login } from './actions';
-import CardTitle from '../../../../components/CardTitle';
 import Button from '../../../../components/Button';
+import CardTitle from '../../../../components/CardTitle';
+import FormError from '../../../../components/FormError';
 import FormInput from '../../../../components/FormInput';
 import FormLabel from '../../../../components/FormLabel';
 import FormGroup from '../../../../components/FormGroup';
+import { login } from './actions';
 
 const PasswordResetLink = styled(Link)`
   display: block;
@@ -20,17 +21,12 @@ const PasswordResetLink = styled(Link)`
   text-align: center;
 `;
 
-const Error = styled.div`
-  padding: .4em 1.4em;
-  color: red;
-`;
-
 const renderUsername = field => (
   <FormGroup>
     <FormLabel>Username</FormLabel>
     <FormInput {...field.input} placeholder="Username" full />
     {field.meta.touched && field.meta.error &&
-    <Error>{field.meta.error}</Error>}
+    <FormError>{field.meta.error}</FormError>}
   </FormGroup>
 );
 
@@ -39,19 +35,20 @@ const renderPassword = field => (
     <FormLabel>Password</FormLabel>
     <FormInput {...field.input} type="password" placeholder="Password" full />
     {field.meta.touched && field.meta.error &&
-    <Error>{field.meta.error}</Error>}
+    <FormError>{field.meta.error}</FormError>}
   </FormGroup>
 );
 
 export function Login(props) {
+  const { handleSubmit, error, submitting, valid } = props;
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <CardTitle invert>Sign In</CardTitle>
-      {props.error && <Error>{props.error}<br />Please try again.</Error>}
+      {error && <FormError>{error}<br />Please try again.</FormError>}
       <Field name="username" component={renderUsername} />
       <Field name="password" component={renderPassword} />
       <FormGroup>
-        <Button type="submit" success block flat full disabled={props.submitting}>Login</Button>
+        <Button type="submit" success block flat full disabled={!valid || submitting}>Login</Button>
       </FormGroup>
       <FormGroup>
         <PasswordResetLink to="/auth/reset-password">Forgot password?</PasswordResetLink>
