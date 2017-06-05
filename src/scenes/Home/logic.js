@@ -1,17 +1,16 @@
 import { createLogic } from 'redux-logic';
-import jwtDecode from 'jwt-decode';
 import { normalize } from 'normalizr';
+import get from 'lodash/fp/get';
 import { types, actions } from './constants';
 import { actions as entityActions } from '../../data/entities/constants';
-import { getToken } from '../../services/authToken';
 import { projectSchema } from '../../services/api/schema';
 
 export const getProjectsLogic = createLogic({
   type: types.GET_PROJECTS_REQUEST,
   latest: true,
-  async process({ action, api }, dispatch, done) {
-    const { username } = jwtDecode(getToken());
-    const urlParams = { account: username };
+  async process({ getState, action, api }, dispatch, done) {
+    const account = get('data.user.data.username')(getState());
+    const urlParams = { account };
     try {
       const response = await api.projects.list(null, { urlParams });
       const normalized = normalize(response.data, [projectSchema]);
