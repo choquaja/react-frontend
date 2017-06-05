@@ -184,3 +184,13 @@ class Grid extends Component {
 }
 
 export default Grid;
+
+export const GridWrapper = styled.div`
+  position: relative;
+`;
+
+export const GridActions = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
