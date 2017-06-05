@@ -1,4 +1,5 @@
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
+import { lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
@@ -17,4 +18,15 @@ const dataSelector = createSelector(
 
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
 
-export default connect(dataSelector, mapDispatchToProps);
+export default compose(
+  connect(dataSelector, mapDispatchToProps),
+  lifecycle({
+    componentWillMount() {
+      const { userName: account, projectName: project } = this.props.match.params;
+      this.props.actions.getProjectRequest({ account, project });
+    },
+    componentWillUnmount() {
+      this.props.actions.resetProject();
+    },
+  }),
+);

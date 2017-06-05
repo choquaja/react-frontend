@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import Grid from '../../components/Grid';
-// import Button from '../../components/Button';
+import Button from '../../components/Button';
 import PageWidth from '../../components/PageWidth';
 import CardTitle from '../../components/CardTitle';
 import ContentCard from '../../components/ContentCard';
@@ -16,33 +17,34 @@ const columns = [
   { id: 'description', title: 'Description' },
 ];
 
-export class Home extends Component {
-  componentDidMount = () => {
-    this.props.actions.getProjectsRequest();
-  }
+const Link = Button.withComponent(NavLink).extend`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-decoration: none;
+`;
 
-  render() {
-    const { loading, data } = this.props;
-    if (loading && !data) return <LoadingIndicator size={256} />;
-    return (
-      <PageWidth small>
-        <AnimFade>
-          <ContentCard key="ContentCard">
-            <CardTitle>My Projects</CardTitle>
-            {data ? (
-              <Grid columns={columns} data={data} filterable={false} />
-            ) : (
-              <NoContent>You don&apos;t have any projects!</NoContent>
-            )}
-          </ContentCard>
-        </AnimFade>
-      </PageWidth>
-    );
-  }
+function Home(props) {
+  const { loading, data } = props;
+  if (loading && !data) return <LoadingIndicator size={256} />;
+  return (
+    <PageWidth small>
+      <AnimFade>
+        <ContentCard key="ContentCard">
+          <CardTitle>My Projects</CardTitle>
+          <Link to="/projects/new" success small>Add Project</Link>
+          {data ? (
+            <Grid columns={columns} data={data} filterable={false} />
+          ) : (
+            <NoContent>You don&apos;t have any projects!</NoContent>
+          )}
+        </ContentCard>
+      </AnimFade>
+    </PageWidth>
+  );
 }
 
 Home.propTypes = {
-  actions: PropTypes.object.isRequired,
   data: PropTypes.array,
   loading: PropTypes.bool.isRequired,
 };

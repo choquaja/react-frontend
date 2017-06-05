@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { MdGroupAdd } from 'react-icons/lib/md';
@@ -34,43 +34,33 @@ const columns = [
   { id: 'owner', title: 'Role' },
 ];
 
-class Collaborators extends Component {
-  componentDidMount = () => {
-    const { account, id: project } = this.props;
-    this.props.actions.getCollaboratorsRequest({ account, project });
-  }
-
-  render() {
-    const { loading, data } = this.props;
-    if (loading && !data) return <LoadingIndicator size={128} />;
-    return (
-      <AnimFade>
-        <ContentCard column key="card">
-          <CardTitle>Collaborators</CardTitle>
-          {data ? (
-            <Grid columns={columns} data={data} filterable={false} />
-          ) : (
-            <NoContent>
-              There are no collaborators on this project.<br />
-            </NoContent>
-          )}
-          <Form>
-            <AddCollaboratorInput placeholder="Search by username or email" small grouped />
-            <Button type="submit" small secondary grouped>
-              <AddIcon />
-              Add
-            </Button>
-          </Form>
-        </ContentCard>
-      </AnimFade>
-    );
-  }
+function Collaborators(props) {
+  const { loading, data } = props;
+  if (loading && !data) return <LoadingIndicator size={128} />;
+  return (
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Collaborators</CardTitle>
+        {data ? (
+          <Grid columns={columns} data={data} filterable={false} />
+        ) : (
+          <NoContent>
+            There are no collaborators on this project.<br />
+          </NoContent>
+        )}
+        <Form>
+          <AddCollaboratorInput placeholder="Search by username or email" small grouped />
+          <Button type="submit" small secondary grouped>
+            <AddIcon />
+            Add
+          </Button>
+        </Form>
+      </ContentCard>
+    </AnimFade>
+  );
 }
 
 Collaborators.propTypes = {
-  actions: PropTypes.object.isRequired,
-  account: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   data: PropTypes.array,
   loading: PropTypes.bool.isRequired,
 };
