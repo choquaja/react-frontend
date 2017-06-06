@@ -7,20 +7,29 @@ Interested in making a contribution? Great! Just read through this guide and you
 - [Forks](#forks)
 - [Commit Messages](#commit-messages)
 - [Issues](#issues)
-- [Contribution tips and guidelines](#contribution-tips-and-guidelines)
+- [Contribution tips and guidelines](#quick-contribution-tips-and-guidelines)
 
 ## Forks
 
 We encourage the use of forks, even for our core maintainers. The following steps describe the procedure to create a new fork and contribute back to the upstream repo:
 
-1. Fork `https://github.com/3blades/react-frontend` repository to your user organization.
-1. Clone your copy of `https://github.com/your-username/react-frontend` onto your machine using
-`git clone https://github.com/your-username/react-frontend`.
-1. Specify a new remote upstream repository that will be synced with the fork: `git remote add upstream https://github.com/3blades/react-frontend.git`
-1. Verify correct `upstream` configuration: `git remote -v`
-1. Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, `upstream/master`.
-1. Checkout your fork's local `feature` or `fix` branch: `git checkout my-fix-or-feature-branch`.
-1. Make the necessary changes in your `my-fix-or-feature-branch` branch. .
+### Clone the repo
+
+1. Fork this repository.
+1. Clone your forked repo onto your machine: `git clone https://github.com/<yourusername>/react-frontend`
+1. Enter the cloned repo directory: `cd react-frontend`
+1. Add the 3Blades repo as a new remote upstream repository: `git remote add upstream https://github.com/3blades/react-frontend.git`
+1. Verify that `upstream` was added correctly: `git remote -v`
+1. Fetch the latest branches for all remotes: `git fetch --all`
+1. Set your local `master` branch to track `upstream/master`: `git branch -u upstream/master master`
+
+Initial setup is complete. Your local `master` branch now tracks to the `master` branch in the `3blades/react-frontend` repository so you will always have the most up-to-date code when running `git pull` when on `master`.
+
+### Contribute code
+
+1. On `master`, pull the latest changes from `3blades/react-frontend`: `git pull`
+1. Create a local branch for your feature or fix: `git checkout -b my-fix-or-feature-branch`
+1. Make the necessary changes in your `my-fix-or-feature-branch` branch.
 1. Merge the changes from your local `my-fix-or-feature-branch` branch with `upstream/master`, ensuring that your local changes are in sync with upstream master branch: `git merge upstream/master`.
 1. Submit a pull request to `https://github.com/3blades/react-frontend` and await review.
 
