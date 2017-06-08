@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import connector from './connector';
 import ServerActions from './scenes/ServerActions';
 import ServerDetails from './scenes/ServerDetails';
-import StatusCell from './components/StatusCell';
+import StatusUpdater from './components/StatusUpdater';
 import Grid, { GridWrapper, GridActions } from '../../../../components/Grid';
 import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
@@ -14,12 +15,12 @@ import AnimFade from '../../../../components/AnimFade';
 const columns = [
   // { id: 'id', title: 'ID' },
   { id: 'name', title: 'Name' },
-  { id: 'status', title: 'Status', customComponent: StatusCell },
+  { id: 'status', title: 'Status' },
   { id: 'config.type', title: 'Type' },
 ];
 
 function Resources(props) {
-  const { loading, data, selected, actions } = props;
+  const { loading, data, selected, actions, match: { url } } = props;
   if (loading && !data) return <LoadingIndicator size={128} />;
   return (
     <AnimFade>
@@ -27,6 +28,7 @@ function Resources(props) {
         <CardTitle>Resources</CardTitle>
         {data && data.length > 0 ? (
           <GridWrapper>
+            {data.map(server => <StatusUpdater key={server.id} server={server} />)}
             <GridActions>
               <ServerActions serverList={selected} />
             </GridActions>
@@ -38,7 +40,7 @@ function Resources(props) {
             />
           </GridWrapper>
         ) : (
-          <NoContent>You don&apos;t have any servers!</NoContent>
+          <NoContent>You don&apos;t have any servers yet.<br />Why don&apos;t you <Link to={`${url}/new`}>create one</Link>?</NoContent>
         )}
         {selected.length === 1 && <ServerDetails server={selected[0]} />}
       </ContentCard>
@@ -50,6 +52,7 @@ Resources.propTypes = {
   actions: PropTypes.object.isRequired,
   data: PropTypes.array,
   loading: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
   selected: PropTypes.array.isRequired,
 };
 
