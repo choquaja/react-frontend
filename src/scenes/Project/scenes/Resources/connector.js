@@ -13,12 +13,15 @@ const dataSelector = createSelector(
   state => state.scenes.project.resources.loading,
   state => state.scenes.project.resources.selected,
   state => state.data.entities,
-  (projectId, resourceIds, loading, selected, entities) => {
+  (projectId, resourceIds, loading, selectedList, entities) => {
     const project = denormalize(projectId, projectSchema, entities);
+    const servers = denormalize(resourceIds, [resourceSchema], entities) || [];
+    const selectedIds = selectedList.map(x => x.id);
+    const selected = servers.filter(x => selectedIds.includes(x.id));
     return {
       account: get(project, 'owner', ''),
       id: get(project, 'id', ''),
-      data: denormalize(resourceIds, [resourceSchema], entities),
+      data: servers.filter(Boolean),
       loading,
       selected,
     };
