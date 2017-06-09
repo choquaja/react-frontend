@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 import borderRadius from 'polished/lib/shorthands/borderRadius';
 import placeholder from 'polished/lib/mixins/placeholder';
+import { themeColor } from '../theme';
 
 export const groupedElement = ({ borderWidth, radiusWidth }) => css`
   box-shadow: none;
@@ -22,9 +23,9 @@ export const formElementStyles = css`
   ${props => props.block && css`display: block;`}
   width: 30rem;
   ${props => props.full && css`width: 100%;`}
-  color: #333;
-  background-color: white;
-  border: 1px solid #e2e2e2;
+  color: ${themeColor('tertiary')};
+  background-color: ${themeColor('white')};
+  border: 1px solid ${themeColor('gray2')};
   border-radius: 2px;
   padding: .7em 1.4em;
   ${props => props.large && css`
@@ -37,11 +38,11 @@ export const formElementStyles = css`
   `}
   &:disabled {
     cursor: default;
-    background: #e2e2e2;
+    background: ${themeColor('gray2')};
     opacity: .4;
   }
   ${placeholder(css`
-    color: #808080;
+    color: ${themeColor('gray3')};
     font-style: italic;
   `)}
 `;

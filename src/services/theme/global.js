@@ -1,6 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import normalize from 'polished/lib/mixins/normalize';
-import { theme, themeFont } from '.';
+import { theme, themeFont, themeColor } from '.';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
@@ -26,7 +26,8 @@ injectGlobal`
     padding: 0;
     font-family: ${themeFont('body')({ theme })};
     font-size: 1.4rem;
-    background-color: #f2f7fa;
+    background-color: ${themeColor('backdrop')({ theme })};
+    color: ${themeColor('tertiary')({ theme })};
   }
   h1,
   h2,
