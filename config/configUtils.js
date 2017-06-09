@@ -21,7 +21,8 @@ const paths = {
 function getGlobals() {
   const raw = {
     'NODE_ENV': process.env.NODE_ENV || 'development',
-    'PUBLIC_URL': paths.publicUrl
+    'PUBLIC_URL': paths.publicUrl,
+    'API_URL': process.env.API_URL,
   };
 
   const stringified = {
@@ -30,7 +31,8 @@ function getGlobals() {
       .reduce((env, key) => {
         env[key] = JSON.stringify(raw[key]);
         return env;
-      }, {})
+      }, {}),
+    '__API_URL__': JSON.stringify(raw.API_URL)
   };
 
   return { raw, stringified };

@@ -4,7 +4,7 @@ import callsList from './callsList';
 import * as helpers from './helpers';
 
 const instance = axios.create({
-  baseURL: 'https://go-pilot.3blades.io/',
+  baseURL: __API_URL__,
 });
 
 const prepareAxios = ({ history }) => call => (data, options = {}, cancelled$) => instance({
