@@ -9,6 +9,7 @@ import FormDropdown from '../../../../../../components/FormDropdown';
 import FormLabel from '../../../../../../components/FormLabel';
 import FormGroup from '../../../../../../components/FormGroup';
 import { actions } from './constants';
+import connector from './connector';
 
 const renderInput = ({ input, meta, label, ...rest }) => ( // eslint-disable-line
   <FormGroup>
@@ -29,13 +30,12 @@ const renderDropdown = ({ input, meta, label, ...rest }) => ( // eslint-disable-
 );
 
 const typeOptions = [{ value: 'jupyter', label: 'Jupyter Notebook' }];
-const sizeOptions = [{ value: '184941cd-3fc4-41ab-b2f4-7fc170cca7b2', label: 'Nano (512MB)' }];
 const typeToImageMap = {
   jupyter: '3blades/datascience-notebook',
 };
 
 export function NewForm(props) {
-  const { handleSubmit, error, submitting, valid } = props;
+  const { handleSubmit, error, submitting, valid, data } = props;
   return (
     <form onSubmit={handleSubmit}>
       {error && <Error>{error}<br />Please try again.</Error>}
@@ -49,7 +49,7 @@ export function NewForm(props) {
         name="environment_resources"
         component={renderDropdown}
         label="Server Size"
-        options={sizeOptions}
+        options={data.sizeOptions}
       />
       <Field
         name="config.type"
@@ -89,6 +89,7 @@ const initialValues = {
 };
 
 export default compose(
+  connector,
   reduxForm({
     form: 'newResource',
     validate,
