@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Field, reduxForm, propTypes } from 'redux-form';
 import get from 'lodash/fp/get';
+import { themeColor } from '../../../../services/theme';
 import validator from '../../../../services/validator';
 import Button from '../../../../components/Button';
 import CardTitle from '../../../../components/CardTitle';
@@ -17,8 +18,9 @@ const PasswordResetLink = styled(Link)`
   display: block;
   text-decoration: none;
   font-size: 1.1em;
-  color: #7ae43b;
+  color: ${themeColor('secondary')};
   text-align: center;
+  font-weight: 600;
 `;
 
 const renderUsername = field => (

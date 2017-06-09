@@ -21,11 +21,11 @@ const VerticalNavLink = styled(NavLink)`
   color: inherit;
   text-decoration: none;
   &:hover {
-    background-color: ${themeColor('cloudGray')};
+    background-color: ${themeColor('gray2')};
   }
   &[class~="active"] {
-    background-color: #f2994a;
-    color: white;
+    background-color: ${themeColor('primary')};
+    color: ${themeColor('white')};
   }
 `;
 

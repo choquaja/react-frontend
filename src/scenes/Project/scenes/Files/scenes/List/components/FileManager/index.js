@@ -5,13 +5,14 @@ import styled, { css } from 'styled-components';
 import { MdDelete, MdAdd, MdEdit } from 'react-icons/lib/md';
 import File from './components/File';
 import { getFileTree } from './services/tree';
+import { themeColor } from '../../../../../../../../services/theme';
 
 const renderFiles = ({ files, ...rest }) => files.map(file =>
   <File key={file.path} file={file} {...rest} />,
 );
 
 const TreeFrame = styled.div`
-  border: 1px solid #f2f7fa;
+  border: 1px solid ${themeColor('gray6')};
   padding: 1rem;
   max-height: 60rem;
   overflow-y: auto;

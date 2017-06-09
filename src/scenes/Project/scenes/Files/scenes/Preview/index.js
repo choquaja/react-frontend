@@ -10,9 +10,10 @@ import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import AnimFade from '../../../../../../components/AnimFade';
+import { themeColor } from '../../../../../../services/theme';
 
 const MarkdownContainer = styled.div`
-  border: 1px solid #ccc;
+  border: 1px solid ${themeColor('gray3')};
   border-radius: 3px;
   padding: 1rem;
 `;

@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { themeColor } from '../../services/theme';
 
 const isInverted = props => props.invert && css`
   margin: -1rem -1rem 1rem;
   padding: 1rem;
-  background: #333;
-  color: white;
+  background: ${themeColor('gray6')};
+  color: ${themeColor('white')};
 `;
 
 const CardTitle = styled.h1`

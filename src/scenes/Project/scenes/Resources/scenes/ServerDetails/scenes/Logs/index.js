@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AnimFade from '../../../../../../../../components/AnimFade';
+import { themeColor } from '../../../../../../../../services/theme';
 
 const LogList = styled.div`
   padding: 1rem;
   min-height: 10rem;
   max-height: 40rem;
   overflow-y: auto;
-  background: #182752;
+  background: ${themeColor('tertiary')};
 `;
 
 const LogLine = styled.div`
-  color: #fff;
+  color: ${themeColor('white')};
   font-size: .9em;
   font-family: monospace;
 `;
