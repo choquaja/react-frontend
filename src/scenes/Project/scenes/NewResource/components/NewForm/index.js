@@ -30,6 +30,9 @@ const renderDropdown = ({ input, meta, label, ...rest }) => ( // eslint-disable-
 
 const typeOptions = [{ value: 'jupyter', label: 'Jupyter Notebook' }];
 const sizeOptions = [{ value: '184941cd-3fc4-41ab-b2f4-7fc170cca7b2', label: 'Nano (512MB)' }];
+const typeToImageMap = {
+  jupyter: '3blades/datascience-notebook',
+};
 
 export function NewForm(props) {
   const { handleSubmit, error, submitting, valid } = props;
@@ -91,8 +94,12 @@ export default compose(
     validate,
     initialValues,
     onSubmit(values, dispatch) {
+      const updatedValues = {
+        ...values,
+        image_name: typeToImageMap[values.config.type],
+      };
       return new Promise((resolve, reject) => {
-        dispatch(actions.newResource(values, { resolve, reject }));
+        dispatch(actions.newResource(updatedValues, { resolve, reject }));
       });
     },
   }),
