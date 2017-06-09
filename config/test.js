@@ -1,3 +1,4 @@
+require('dotenv').config({ silent: true })
 process.env.NODE_ENV = 'test';
 
 const jest = require('jest');
