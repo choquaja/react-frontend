@@ -50,7 +50,7 @@ function Collaborators(props) {
         )}
         <Form>
           <AddCollaboratorInput placeholder="Search by username or email" small grouped />
-          <Button type="submit" small secondary grouped>
+          <Button type="submit" small secondary grouped disabled>
             <AddIcon />
             Add
           </Button>

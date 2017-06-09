@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MdPlayArrow, MdDeleteForever, MdStop, MdAddCircleOutline } from 'react-icons/lib/md';
+import { MdPlayArrow, MdDeleteForever, MdStop, MdAdd } from 'react-icons/lib/md';
 import Button from '../../../../../../components/Button';
 import connector from './connector';
 
@@ -13,7 +13,7 @@ const iconStyles = css`
 const IconPlay = styled(MdPlayArrow)`${iconStyles}`;
 const IconStop = styled(MdStop)`${iconStyles}`;
 const IconDelete = styled(MdDeleteForever)`${iconStyles}`;
-const IconAdd = styled(MdAddCircleOutline)`${iconStyles}`;
+const IconAdd = styled(MdAdd)`${iconStyles}`;
 const serverState = {
   RUNNING: 'Running',
   STOPPED: 'Stopped',
