@@ -28,7 +28,7 @@ function ServerActions({ serverList, actions: { serverStart, serverStop, serverD
   const allStopped = serversExist && serverList.every(x => x.status === serverState.STOPPED);
   return (
     <div>
-      <ButtonLink to="new" small grouped primary>
+      <ButtonLink to="resources/new" small grouped primary>
         <IconAdd size={20} /> Add Resource
       </ButtonLink>
       <Button onClick={serverStart(serverList)} disabled={!allStopped} small grouped success>
