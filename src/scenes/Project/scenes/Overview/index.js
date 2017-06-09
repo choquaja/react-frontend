@@ -7,7 +7,7 @@ import NoContent from '../../../../components/NoContent';
 import LoadingIndicator from '../../../../components/LoadingIndicator';
 import AnimFade from '../../../../components/AnimFade';
 
-function Overview(props) {
+export function Overview(props) {
   const { loading, data } = props;
   if (loading && !data) return <LoadingIndicator size={128} />;
   return (

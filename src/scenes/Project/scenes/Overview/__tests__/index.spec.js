@@ -1,26 +1,40 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Overview } from '../';
 
-it('renders without crashing', () => {
-  const props = {
-    name: 'testName',
-    description: 'Test description',
-  };
+describe('Overview', () => {
+  it('renders without crashing', () => {
+    const props = {
+      loading: false,
+    };
+    shallow(<Overview {...props} />);
+  });
 
-  shallow(<Overview {...props} />);
-});
+  it('renders loading indicator', () => {
+    const props = {
+      loading: true,
+      data: null,
+    };
+    const component = shallow(<Overview {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 
-it('renders name and description', () => {
-  const props = {
-    name: 'testName',
-    description: 'Test description',
-  };
+  it('renders empty content message', () => {
+    const props = {
+      loading: false,
+      data: null,
+    };
+    const component = shallow(<Overview {...props} />);
+    expect(component).toMatchSnapshot();
+  });
 
-  const component = render(
-    <Overview {...props} />,
-  );
-
-  expect(component.find('h2').text()).toEqual(props.name);
-  expect(component.find('p').text()).toEqual(props.description);
+  it('renders data regardless of loading', () => {
+    const props = {
+      data: { content: '# Sample Title' },
+    };
+    const component1 = shallow(<Overview {...props} loading={false} />);
+    expect(component1).toMatchSnapshot();
+    const component2 = shallow(<Overview {...props} loading />);
+    expect(component2).toMatchSnapshot();
+  });
 });
