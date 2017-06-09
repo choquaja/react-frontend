@@ -4,7 +4,8 @@ module.exports = {
     "document": true,
     "window": true,
     "expect": true,
-    "it": true
+    "it": true,
+    "describe": true
   },
   "parser": "babel-eslint",
   "rules": {
