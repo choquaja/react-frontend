@@ -31,19 +31,6 @@ const Input = styled.input`
   }
 `;
 
-const ButtonImg = styled(Button)`
-  background-color: #f2994a;
-  color: white;
-  border: none;
-  font-family: inherit;
-  font-size: 1.6rem;
-  height: 3.6rem;
-  font-weight: 700;
-  letter-spacing: normal;
-  padding: .5em 1.25em;
-  text-align: center;
-`;
-
 export default function Profile() {
   return (
     <Container>
@@ -59,7 +46,7 @@ export default function Profile() {
           scale={0.5}
           rotate={0}
         />
-        <h5><ButtonImg>Upload new picture</ButtonImg></h5>
+        <Button primary block>Upload new picture</Button>
         <h3>First name</h3>
         <Input />
         <h3>Last name</h3>
@@ -74,7 +61,7 @@ export default function Profile() {
         <Input />
         <h3>Timezone</h3>
         <Input />
-        <h5><ButtonImg>Update Profile</ButtonImg></h5>
+        <Button primary block>Update Profile</Button>
       </Column2>
     </Container>
   );

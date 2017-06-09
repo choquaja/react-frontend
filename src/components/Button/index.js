@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import darken from 'polished/lib/color/darken';
 import timingFunctions from 'polished/lib/mixins/timingFunctions';
+import { themeColor } from '../../services/theme';
 import { groupedElement } from '../../services/theme/helpers';
 
 const darkenColor = scale => color => darken(scale, color);
@@ -9,7 +10,7 @@ const darkenHover = darkenColor(0.12);
 const darkenActive = darkenColor(0.24);
 
 const createButtonVariant = bg => css`
-  color: white;
+  color: ${themeColor('white')};
   background-color: ${bg};
   border-color: ${bg};
   &:hover:not(:disabled) {
@@ -26,10 +27,10 @@ const Button = styled.button`
   display: inline-block;
   ${props => props.block && css`display: block;`}
   ${props => props.full && css`width: 100%;`}
-  background-color: #e2e2e2;
-  border: 1px solid #e2e2e2;
-  border-radius: 2px;
-  color: #333;
+  background-color: ${themeColor('gray1')};
+  border: 1px solid ${themeColor('gray3')};
+  border-radius: 3px;
+  color: ${themeColor('tertiary')};
   cursor: pointer;
   font-family: inherit;
   font-size: 1.6rem;
@@ -44,39 +45,33 @@ const Button = styled.button`
   `}
   font-weight: 700;
   letter-spacing: normal;
-  ${''/* height: 40px; */}
-  ${''/* line-height: 20px; */}
   padding: .5em 1.25em;
+  text-decoration: none;
   text-transform: none;
   text-align: center;
   touch-action: manipulation;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  -webkit-appearance: button;
-  ${''/* box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px; */}
   box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
   ${props => props.flat && css`box-shadow: none;`}
   transition: all .15s ${timingFunctions('easeIn')};
-  &:hover:not(:disabled) {
-    background-color: ${darkenHover('#c4c4c4')};
-    border-color: ${darkenHover('#c4c4c4')};
-  }
+  &:hover:not(:disabled),
   &:active:not(:disabled) {
-    background-color: ${darkenActive('#c4c4c4')};
-    border-color: ${darkenActive('#c4c4c4')};
+    background-color: ${props => darkenHover(themeColor('gray2')(props))};
+    border-color: ${props => darkenHover(themeColor('gray2')(props))};
   }
   &:disabled {
     cursor: default;
-    opacity: .4;
+    opacity: .35;
   }
-  ${props => props.grouped && groupedElement({ borderWidth: '1px', radiusWidth: '2px' })}
-  ${props => props.primary && createButtonVariant('#f2994a')}
-  ${props => props.secondary && createButtonVariant('#886cff')}
-  ${props => props.success && createButtonVariant('#7ae43b')}
-  ${props => props.info && createButtonVariant('#1fa2f3')}
-  ${props => props.warning && createButtonVariant('#ffbc01')}
-  ${props => props.error && createButtonVariant('#ff3f80')}
+  ${props => props.grouped && groupedElement({ borderWidth: '1px', radiusWidth: '3px' })}
+  ${props => props.primary && createButtonVariant(themeColor('primary')(props))}
+  ${props => props.secondary && createButtonVariant(themeColor('secondary')(props))}
+  ${props => props.success && createButtonVariant(themeColor('success')(props))}
+  ${props => props.info && createButtonVariant(themeColor('info')(props))}
+  ${props => props.warning && createButtonVariant(themeColor('warning')(props))}
+  ${props => props.error && createButtonVariant(themeColor('error')(props))}
 `;
 
 Button.propTypes = {

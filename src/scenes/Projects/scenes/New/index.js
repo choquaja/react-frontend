@@ -1,16 +1,21 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PageWidth from '../../../../components/PageWidth';
+import CardTitle from '../../../../components/CardTitle';
+import ContentCard from '../../../../components/ContentCard';
+import AnimFade from '../../../../components/AnimFade';
+import NewForm from './components/NewForm';
 
-export default function New(props) {
+function New() {
   return (
-    <p>You are at {props.match.url}</p>
+    <PageWidth small>
+      <AnimFade>
+        <ContentCard key="ContentCard">
+          <CardTitle>Add Project</CardTitle>
+          <NewForm />
+        </ContentCard>
+      </AnimFade>
+    </PageWidth>
   );
 }
 
-New.defaultProps = {
-
-};
-
-New.propTypes = {
-  match: PropTypes.object.isRequired,
-};
+export default New;

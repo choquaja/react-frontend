@@ -12,7 +12,7 @@ const VerticalNavLink = styled(NavLink)`
   color: inherit;
   text-decoration: none;
   &:hover {
-    background-color: ${themeColor('cloudGray')};
+    background-color: ${themeColor('gray2')};
   }
   &[class~="active"] {
     background-color: rgba(88, 178, 8, 0.5);

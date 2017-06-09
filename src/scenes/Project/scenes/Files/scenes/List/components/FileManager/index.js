@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { MdDelete, MdAdd, MdEdit } from 'react-icons/lib/md';
-import CardTitle from '../../../../../../../../components/CardTitle';
-import fakeFiles from '../../../fakeData';
 import File from './components/File';
 import { getFileTree } from './services/tree';
+import { themeColor } from '../../../../../../../../services/theme';
 
 const renderFiles = ({ files, ...rest }) => files.map(file =>
   <File key={file.path} file={file} {...rest} />,
 );
 
 const TreeFrame = styled.div`
-  border: 1px solid #f2f7fa;
+  border: 1px solid ${themeColor('gray6')};
   padding: 1rem;
   max-height: 60rem;
   overflow-y: auto;
@@ -74,7 +73,7 @@ const getFileByPath = (files, path) => files.find(file => file.path === path);
 class DataConnector extends Component {
   constructor(props) {
     super(props);
-    this.files = getFileTree(fakeFiles);
+    this.files = getFileTree(props.files);
   }
 
   state = {
@@ -88,7 +87,7 @@ class DataConnector extends Component {
 
   editCurrentFile = () => {
     if (this.state.selected.length !== 1) return;
-    const file = getFileByPath(fakeFiles, this.state.selected[0]);
+    const file = getFileByPath(this.props.files, this.state.selected[0]);
     const url = `${this.props.match.url}/edit/${file.id}`;
     this.props.history.push(url);
   }
@@ -106,19 +105,19 @@ class DataConnector extends Component {
 }
 
 DataConnector.propTypes = {
+  files: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 const RouterDataConnector = withRouter(DataConnector);
 
-function FileManager() {
+function FileManager({ files: fileArray }) {
   return (
-    <RouterDataConnector>
+    <RouterDataConnector files={fileArray}>
       {({ files, selected, updateSelected, editCurrentFile }) => (
         <div>
-          <CardTitle>Files</CardTitle>
           <Toolbar>
             <ToolbarLeft>
               <IconButton>
@@ -148,5 +147,9 @@ function FileManager() {
     </RouterDataConnector>
   );
 }
+
+FileManager.propTypes = {
+  files: PropTypes.array.isRequired,
+};
 
 export default FileManager;

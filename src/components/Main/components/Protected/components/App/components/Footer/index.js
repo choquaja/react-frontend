@@ -6,9 +6,9 @@ import Status from './components/Status';
 
 const FooterWrapper = styled.footer`
   text-align: center;
-  border-top: 1px solid ${themeColor('cloudGray')};
+  border-top: 1px solid ${themeColor('gray2')};
   font-size: 1.2rem;
-  background-color: #fff;
+  background-color: ${themeColor('white')};
   padding: 1rem 0;
 `;
 

@@ -1,80 +1,63 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-// import styled, { css } from 'styled-components';
-// import { Link } from 'react-router-dom';
-// import { MdPlayArrow, MdPause, MdDeleteForever, MdAddCircleOutline } from 'react-icons/lib/md';
-// import TabPane from '../../../../components/TabPane';
-import SelectedContainer from './components/SelectedContainer';
-// import ServerDetails from './components/ServerDetails';
-import Grid from '../../../../components/Grid';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import connector from './connector';
+import ServerActions from './scenes/ServerActions';
+import ServerDetails from './scenes/ServerDetails';
+import StatusUpdater from './components/StatusUpdater';
+import Grid, { GridWrapper, GridActions } from '../../../../components/Grid';
+import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
-// import {
-//   deleteResources,
-//   startResources,
-//   stopResources,
-// } from './actions';
-
-// const TableToolbar = styled.div`
-//   font-size: 18px;
-//   float: right;
-//   margin-bottom: 10px;
-// `;
-//
-// const iconStyles = css`
-//   margin-right: 5px;
-//   margin-left: 5px;
-// `;
-//
-// const IconPlay = styled(MdPlayArrow)`${iconStyles}`;
-// const IconPause = styled(MdPause)`${iconStyles}`;
-// const IconDelete = styled(MdDeleteForever)`${iconStyles}`;
-// const IconAdd = styled(MdAddCircleOutline)`${iconStyles}`;
+import LoadingIndicator from '../../../../components/LoadingIndicator';
+import NoContent from '../../../../components/NoContent';
+import AnimFade from '../../../../components/AnimFade';
 
 const columns = [
-  { id: 'id', title: 'ID' },
+  // { id: 'id', title: 'ID' },
   { id: 'name', title: 'Name' },
   { id: 'status', title: 'Status' },
-  { id: 'type', title: 'Type' },
+  { id: 'config.type', title: 'Type' },
 ];
 
-export function Resources(props) {
+function Resources(props) {
+  const { loading, data, selected, actions, match: { url } } = props;
+  if (loading && !data) return <LoadingIndicator size={128} />;
   return (
-    <SelectedContainer>
-      {({ handleSelected: onSelected }) => (
-        <div>
-          <CardTitle>Resources</CardTitle>
-          <Grid
-            columns={columns}
-            events={{ onSelected }}
-            data={props.resources.toJS()}
-            selectable
-          />
-          {/* {selected.length === 1 && <ServerDetails id={selected[0]} />} */}
-        </div>
-      )}
-    </SelectedContainer>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Resources</CardTitle>
+        {data && data.length > 0 ? (
+          <GridWrapper>
+            {data.map(server => <StatusUpdater key={server.id} server={server} />)}
+            <GridActions>
+              <ServerActions serverList={selected} />
+            </GridActions>
+            <Grid
+              columns={columns}
+              events={{ onSelected: actions.updateSelected }}
+              data={data}
+              selectable
+            />
+          </GridWrapper>
+        ) : (
+          <NoContent>You don&apos;t have any servers yet.<br />Why don&apos;t you <Link to={`${url}/new`}>create one</Link>?</NoContent>
+        )}
+        {selected.length === 1 && <ServerDetails server={selected[0]} />}
+      </ContentCard>
+    </AnimFade>
   );
 }
 
 Resources.propTypes = {
-  resources: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  data: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
+  selected: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
-  resources: state.scenes.project.resources,
-});
-//
-// const mapDispatchToProps = dispatch => ({
-//   onDelete: (resources) => {
-//     dispatch(deleteResources(resources));
-//   },
-//   onStart: (resources) => {
-//     dispatch(startResources(resources));
-//   },
-//   onStop: (resources) => {
-//     dispatch(stopResources(resources));
-//   },
-// });
+Resources.defaultProps = {
+  data: [],
+};
 
-export default connect(mapStateToProps)(Resources);
+export default connector(Resources);

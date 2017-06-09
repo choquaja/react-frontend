@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { themeColor } from '../../../../../../../../services/theme';
+import { themeColor } from '../../../../../../../../services/theme';
 import logo from './images/logo.svg';
 import Row from '../../../../../../../shared/row';
 import Column from '../../../../../../../shared/column';
@@ -11,10 +11,9 @@ import PageWidth from '../../../../../../../PageWidth';
 import ProfileDropdown from './components/ProfileDropdown';
 
 const HeaderWrapper = styled.div`
-  ${''/* border-bottom: 1px solid ${themeColor('cloudGray')}; */}
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   position: relative;
-  background-color: #fff;
+  background-color: ${themeColor('white')};
 `;
 
 const HeaderPageWidth = styled(PageWidth)`

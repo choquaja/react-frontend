@@ -1,3 +1,4 @@
+require('dotenv').config({ silent: true })
 process.env.NODE_ENV = 'production';
 
 var chalk = require('chalk');

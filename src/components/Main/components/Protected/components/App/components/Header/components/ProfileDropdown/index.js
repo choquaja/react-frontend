@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import timingFunctions from 'polished/lib/mixins/timingFunctions';
 import profileImg from './images/profile.png';
+import { themeColor } from '../../../../../../../../../../services/theme';
 import Button from '../../../../../../../../../Button';
+import connector from './connector';
 
 class ProfileDropdownContainer extends Component {
   state = {
@@ -44,7 +46,6 @@ const ProfileImg = styled.img`
 `;
 
 const DropdownList = styled.ul`
-  ${''/* display: none; */}
   position: absolute;
   top: 100%;
   right: 0;
@@ -53,8 +54,7 @@ const DropdownList = styled.ul`
   padding: .3rem 0;
   margin: .2rem 0 0;
   list-style: none;
-  background-color: #fff;
-  border: 1px solid #e2e2e2;
+  background-color: ${themeColor('white')};
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
   transition: transform 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -62,7 +62,6 @@ const DropdownList = styled.ul`
   transform: scaleY(0);
   transform-origin: top left;
   ${props => props.open && css`
-    ${''/* display: block; */}
     opacity: 1;
     transform: scaleY(1);
   `}
@@ -76,36 +75,36 @@ const DropdownItem = styled.li`
 const DropdownStaticText = styled.div`
   display: block;
   padding: .7rem 2rem;
-  color: #777;
+  color: ${themeColor('gray4')};
   font-weight: 700;
 `;
 
 const DropdownSeparator = styled.hr`
   margin: 0;
   border: 0;
-  border-bottom: 1px solid #ecf0f1;
+  border-bottom: 1px solid ${themeColor('gray2')};
 `;
 
 const DropdownLink = styled(Link)`
   display: block;
   padding: .7rem 2rem;
   text-decoration: none;
-  color: #333;
+  color: ${themeColor('tertiary')};
   font-weight: 500;
   transition: all .15s ${timingFunctions('easeIn')};
   &:hover {
-    background-color: #f2994a;
-    color: #fff;
+    background-color: ${themeColor('primary')};
+    color: ${themeColor('white')};
   }
 `;
 
-function ProfileDropdown() {
+function ProfileDropdown({ avatar }) {
   return (
     <ProfileDropdownContainer>
       {({ handleClick, open }) => (
         <ProfileDropdownGroup>
           <ProfileImgButton flat onClick={handleClick}>
-            <ProfileImg src={profileImg} />
+            <ProfileImg src={avatar || profileImg} />
           </ProfileImgButton>
           <DropdownList open={open}>
             <DropdownItem><DropdownStaticText>User Name</DropdownStaticText></DropdownItem>
@@ -122,4 +121,12 @@ function ProfileDropdown() {
   );
 }
 
-export default ProfileDropdown;
+ProfileDropdown.propTypes = {
+  avatar: PropTypes.string.isRequired,
+};
+
+ProfileDropdown.defaultProps = {
+  avatar: '',
+};
+
+export default connector(ProfileDropdown);

@@ -8,6 +8,7 @@ import GriddleTable from 'griddle-react/dist/module/components/Table';
 import GriddleTableHeading from 'griddle-react/dist/module/components/TableHeading';
 import { MdSwapVert, MdArrowUpward, MdArrowDownward } from 'react-icons/lib/md';
 import SelectablePlugin, { CustomComponent, CustomHeader } from './selectablePlugin';
+import { themeColor } from '../../services/theme';
 
 import LayoutComponent from './components/LayoutComponent';
 import FilterComponent from './components/FilterComponent';
@@ -17,23 +18,24 @@ const TableComponent = styled(GriddleTable)`
   border-collapse: collapse;
 `;
 const RowComponent = styled(GriddleRow)`
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${themeColor('gray2')};
   &:last-child {
     border-bottom: none;
   }
   &:hover {
-    background-color: #f9f9f9;
+    background-color: ${themeColor('gray1')};
   }
   ${props => props.isSelected && css`
-    background-color: #f2994a;
-    color: white;
+    background-color: ${themeColor('primary')};
+    color: ${themeColor('white')};
     &:hover {
-      background-color: #f2994a;
+      background-color: ${themeColor('primary')};
     }
   `}
 `;
 const TableHeadingComponent = styled(GriddleTableHeading)`
-  background: #efefef;
+  background-color: ${themeColor('tertiaryVariant2')};
+  color: ${themeColor('white')};
 `;
 const TableHeadingCellEl = styled.th`
   text-align: left;
@@ -184,3 +186,13 @@ class Grid extends Component {
 }
 
 export default Grid;
+
+export const GridWrapper = styled.div`
+  position: relative;
+`;
+
+export const GridActions = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;

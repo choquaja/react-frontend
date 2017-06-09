@@ -30,24 +30,6 @@ const Input = styled.input`
   }
 `;
 
-const A = styled.a`
-  text-decoration:none;
-  color: #f2994a;
-`;
-
-const ButtonImg = styled(Button)`
-  background-color: #f2994a;
-  color: white;
-  border: none;
-  font-family: inherit;
-  font-size: 1.6rem;
-  height: 3.6rem;
-  font-weight: 700;
-  letter-spacing: normal;
-  padding: .5em 1.25em;
-  text-align: center;
-`;
-
 export default function Profile() {
   return (
     <Container>
@@ -60,20 +42,19 @@ export default function Profile() {
         <Input />
         <h3>Confirm New Password</h3>
         <Input />
-        <h5><A href="#">Forgot Password?</A></h5>
-        <h5><ButtonImg>Update Password</ButtonImg></h5>
+        <Button primary block>Update Password</Button>
         <Title>Change Username</Title>
         <p>Changing username could have unintended side effects</p>
         <h3>New username</h3>
         <Input />
         <h3>Confirm New Username</h3>
         <Input />
-        <h5><ButtonImg>Change Username</ButtonImg></h5>
+        <Button primary block>Change Username</Button>
         <Title>API Key</Title>
-        <h4>Your API Key<A href="#">Reveal</A></h4>
-        <h5><ButtonImg>Reset API Key</ButtonImg></h5>
+        <h4>Your API Key</h4>
+        <Button primary block>Reset API Key</Button>
         <Title>Delete Account</Title>
-        <h5><ButtonImg>Delete Account</ButtonImg></h5>
+        <Button primary block>Delete Account</Button>
       </Column2>
     </Container>
   );

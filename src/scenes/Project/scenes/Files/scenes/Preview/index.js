@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import 'codemirror/lib/codemirror.css';
-// import 'notebook-preview/styles/main.css';
-// import 'notebook-preview/styles/theme-light.css';
 import NotebookPreview from '@nteract/notebook-preview';
-import notebookJSON from './Finance_Book.ipynb.json';
-import fakeFiles from '../fakeData';
+import Markdown from 'react-remarkable';
+import connector from './connector';
+import LoadingIndicator from '../../../../../../components/LoadingIndicator';
+import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
+import AnimFade from '../../../../../../components/AnimFade';
+import { themeColor } from '../../../../../../services/theme';
 
-const PreviewMarkdown = () => <span>Previewing a Markdown file.</span>;
-const PreviewJupyter = () => <NotebookPreview notebook={notebookJSON} />;
+const MarkdownContainer = styled.div`
+  border: 1px solid ${themeColor('gray3')};
+  border-radius: 3px;
+  padding: 1rem;
+`;
 function UnsupportedFileType() {
   return (
     <NoContent>
@@ -19,33 +25,47 @@ function UnsupportedFileType() {
   );
 }
 
-const getFileById = id => fakeFiles.find(file => file.id === id);
 const parseFileExt = filename => filename.split('.').pop().toLowerCase();
 const getPreviewComponent = (file) => {
   const ext = parseFileExt(file.path);
   switch (ext) {
     case 'md':
     case 'markdown':
-      return <PreviewMarkdown file={file} />;
+      return <Markdown source={window.atob(file.content)} container={MarkdownContainer} />;
     case 'ipynb':
-      return <PreviewJupyter file={file} />;
+      return <NotebookPreview notebook={window.atob(file.content)} />;
     default:
       return <UnsupportedFileType />;
   }
 };
 
-export default function Preview(props) {
-  const { fileId } = props.match.params;
-  const file = getFileById(fileId);
-  // console.log(props, fileId, file);
+function Preview(props) {
+  const { loading, data } = props;
+  if (loading && !data) return <LoadingIndicator size={128} />;
   return (
-    <div>
-      <CardTitle>Previewing: {file.path}</CardTitle>
-      {getPreviewComponent(file)}
-    </div>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Previewing: {data && data.path}</CardTitle>
+        {data ? (
+          getPreviewComponent(data)
+        ) : (
+          <NoContent>
+            The file you are looking for doesn&apos;t exist.<br />
+            Why don&apos;t you <a href="#empty">create one?</a>
+          </NoContent>
+        )}
+      </ContentCard>
+    </AnimFade>
   );
 }
 
 Preview.propTypes = {
-  match: PropTypes.object.isRequired,
+  data: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
 };
+
+Preview.defaultProps = {
+  data: {},
+};
+
+export default connector(Preview);

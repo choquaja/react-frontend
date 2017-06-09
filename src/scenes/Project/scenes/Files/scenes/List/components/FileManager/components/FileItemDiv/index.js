@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { themeColor } from '../../../../../../../../../../services/theme';
 
 const FileItemDiv = styled.div`
   display: flex;
@@ -8,13 +9,13 @@ const FileItemDiv = styled.div`
   cursor: pointer;
   ${props => css`padding-left: ${props.depth * 3}rem;`}
   &:hover {
-    background-color: #f2f7fa;
+    background-color: ${themeColor('gray1')};
   }
   ${props => props.isSelected && css`
     &,
     &:hover {
-      background-color: #1fa2f3;
-      color: white;
+      background-color: ${themeColor('secondary')};
+      color: ${themeColor('white')};
     }
   `}
 `;

@@ -6,14 +6,16 @@ import 'brace/theme/github';
 import 'brace/theme/monokai';
 import 'brace/mode/markdown';
 import 'brace/mode/python';
-import fakeFiles from '../fakeData';
+import connector from './connector';
+import LoadingIndicator from '../../../../../../components/LoadingIndicator';
+import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
+import NoContent from '../../../../../../components/NoContent';
+import AnimFade from '../../../../../../components/AnimFade';
 
-
-const getFileById = id => fakeFiles.find(file => file.id === id);
 const parseFileExt = filename => filename.split('.').pop().toLowerCase();
-const getMode = (file) => {
-  const ext = parseFileExt(file.path);
+const getMode = (path) => {
+  const ext = parseFileExt(path);
   switch (ext) {
     case 'md':
     case 'markdown':
@@ -27,19 +29,39 @@ const getMode = (file) => {
   }
 };
 
-export default function Edit(props) {
-  const { fileId } = props.match.params;
-  const file = getFileById(fileId);
-  // console.log(props, fileId, file);
+function Edit(props) {
+  const { loading, data } = props;
+  if (loading && !data) return <LoadingIndicator size={128} />;
   return (
-    <div>
-      <CardTitle>Editing: {file.path}</CardTitle>
-      <AceEditor theme="monokai" width="100%" mode={getMode(file)} focus />
-    </div>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Editing: {data && data.path}</CardTitle>
+        {data ? (
+          <AceEditor
+            theme="monokai"
+            width="100%"
+            mode={getMode(data.path)}
+            value={window.atob(data.content)}
+            focus
+          />
+        ) : (
+          <NoContent>
+            The file you are looking for doesn&apos;t exist.<br />
+            Why don&apos;t you <a href="#empty">create one?</a>
+          </NoContent>
+        )}
+      </ContentCard>
+    </AnimFade>
   );
 }
 
 Edit.propTypes = {
-  // file: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
+  data: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
 };
+
+Edit.defaultProps = {
+  data: {},
+};
+
+export default connector(Edit);

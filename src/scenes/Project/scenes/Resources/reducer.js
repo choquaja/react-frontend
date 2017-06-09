@@ -1,12 +1,38 @@
-import { handleActions } from 'redux-actions';
-import * as types from './types';
+import { createDataReducer } from '../../../../services/store/helpers';
+import { types } from './constants';
+import logic from './logic';
+import serverActionsLogic from './scenes/ServerActions/logic';
 
-export default handleActions({
-  [types.DELETE_RESOURCE]: function deleteResource(state, action) {
-    const { id } = action;
-    return state.filter(resource => resource.get('id') !== id);
+const filterIfArray = predicate => data => (
+  Array.isArray(data) ? data.filter(predicate) : data
+);
+
+export default createDataReducer(
+  types.GET_SERVERS_REQUEST,
+  types.GET_SERVERS_SUCCESS,
+  types.GET_SERVERS_FAIL,
+)({
+  [types.UPDATE_SELECTED](state, action) {
+    const selected = (!Array.isArray(action.payload) ? [action.payload] : action.payload);
+    return {
+      ...state,
+      selected,
+    };
   },
-  [types.START_WORKSPACE]: function startWorkspace(state) {
-    return state;
+  [types.DELETE_RESOURCE](state, action) {
+    const filterData = filterIfArray(x => x !== action.payload);
+    const filterSelected = filterIfArray(x => x.id !== action.payload);
+    const data = filterData(state.data);
+    const selected = filterSelected(state.selected);
+    return {
+      ...state,
+      data,
+      selected,
+    };
   },
-}, {});
+}, { selected: [] });
+
+export const resourcesLogic = [
+  ...logic,
+  ...serverActionsLogic,
+];

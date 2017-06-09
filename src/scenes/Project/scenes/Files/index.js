@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import List from './scenes/List';
 import Preview from './scenes/Preview';
 import Edit from './scenes/Edit';
@@ -13,6 +12,7 @@ export default function Files(props) {
       <Route path={`${url}/`} component={List} exact />
       <Route path={`${url}/edit/:fileId`} component={Edit} />
       <Route path={`${url}/preview/:fileId`} component={Preview} />
+      <Redirect to={`${url}/`} />
     </Switch>
   );
 }
@@ -20,9 +20,3 @@ export default function Files(props) {
 Files.propTypes = {
   match: PropTypes.object.isRequired,
 };
-//
-// const mapStateToProps = state => ({
-//   data: state.files,
-// });
-//
-// export default connect(mapStateToProps)(Files);

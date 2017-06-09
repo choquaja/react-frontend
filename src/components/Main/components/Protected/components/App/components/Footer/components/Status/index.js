@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled, { css } from 'styled-components';
+import { themeColor } from '../../../../../../../../../../services/theme';
 
 const CHECK_INTERVAL = 5 * 60 * 1000;
 const STATUSPAGE_URL = 'https://5jbj2wr0jv52.statuspage.io/api/v2/summary.json';
@@ -11,10 +12,10 @@ const StatusIndicator = styled.span`
   height: 8px;
   margin-right: 4px;
   border-radius: 99px;
-  background-color: #7ae43b;
-  ${props => props.status === 'minor' && css`background-color: #ffbc01;`}
-  ${props => props.status === 'major' && css`background-color: #f2994a;`}
-  ${props => props.status === 'critical' && css`background-color: #ff3f80;`}
+  background-color: ${themeColor('success')};
+  ${props => props.status === 'minor' && css`background-color: ${themeColor('info')};`}
+  ${props => props.status === 'major' && css`background-color: ${themeColor('warning')};`}
+  ${props => props.status === 'critical' && css`background-color: ${themeColor('error')};`}
 `;
 
 export default class Status extends Component {

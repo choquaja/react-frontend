@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overview renders data regardless of loading 1`] = `
+<AnimFade>
+  <ContentCard__ContentCard
+    column={true}
+  >
+    <CardTitle__CardTitle
+      invert={false}
+    >
+      Overview
+    </CardTitle__CardTitle>
+    <p>
+      # Sample Title
+    </p>
+  </ContentCard__ContentCard>
+</AnimFade>
+`;
+
+exports[`Overview renders data regardless of loading 2`] = `
+<AnimFade>
+  <ContentCard__ContentCard
+    column={true}
+  >
+    <CardTitle__CardTitle
+      invert={false}
+    >
+      Overview
+    </CardTitle__CardTitle>
+    <p>
+      # Sample Title
+    </p>
+  </ContentCard__ContentCard>
+</AnimFade>
+`;
+
+exports[`Overview renders empty content message 1`] = `
+<AnimFade>
+  <ContentCard__ContentCard
+    column={true}
+  >
+    <CardTitle__CardTitle
+      invert={false}
+    >
+      Overview
+    </CardTitle__CardTitle>
+    <NoContent>
+      You're project doesn't contain a README.md file.
+      <br />
+      Why don't you 
+      <a
+        href="#empty"
+      >
+        create one?
+      </a>
+    </NoContent>
+  </ContentCard__ContentCard>
+</AnimFade>
+`;
+
+exports[`Overview renders loading indicator 1`] = `
+<LoadingIndicator
+  size={128}
+/>
+`;
