@@ -26,6 +26,18 @@ export default function Details({ server }) {
         <Item>{server.name}</Item>
       </Line>
       <Line>
+        <Label>Endpoint</Label>
+        <Item>
+          <a
+            href={server.endpoint}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {server.endpoint}
+          </a>
+        </Item>
+      </Line>
+      <Line>
         <Label>Image</Label>
         <Item>
           <a
