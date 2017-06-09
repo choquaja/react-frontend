@@ -1,0 +1,1 @@
+global.atob = x => x

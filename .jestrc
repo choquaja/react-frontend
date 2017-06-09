@@ -6,6 +6,12 @@
     "json",
     "lcov"
   ],
+  "setupFiles": [
+    "<rootDir>/config/jest/globals.js"
+  ],
+  "snapshotSerializers": [
+    "<rootDir>/node_modules/enzyme-to-json/serializer"
+  ],
   "testPathIgnorePatterns": [
     "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
   ],
