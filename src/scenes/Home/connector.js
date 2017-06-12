@@ -5,6 +5,7 @@ import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
 import { actions } from './constants';
 import { projectSchema } from '../../services/api/schema';
+import withLoader from '../../components/withLoader';
 
 const dataSelector = createSelector(
   state => state.scenes.home.data,
@@ -24,5 +25,9 @@ export default compose(
     componentWillMount() {
       this.props.actions.getProjectsRequest();
     },
+  }),
+  withLoader({
+    condition: props => props.loading && !props.data,
+    size: 256,
   }),
 );

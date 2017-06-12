@@ -7,7 +7,6 @@ import 'brace/theme/monokai';
 import 'brace/mode/markdown';
 import 'brace/mode/python';
 import connector from './connector';
-import LoadingIndicator from '../../../../../../components/LoadingIndicator';
 import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
@@ -30,8 +29,7 @@ const getMode = (path) => {
 };
 
 function Edit(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data } = props;
   return (
     <AnimFade>
       <ContentCard column key="card">
@@ -57,7 +55,6 @@ function Edit(props) {
 
 Edit.propTypes = {
   data: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
 };
 
 Edit.defaultProps = {

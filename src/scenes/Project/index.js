@@ -9,7 +9,6 @@ import Column from '../../components/shared/column';
 import Navigation from './components/Navigation';
 import ContentCard from '../../components/ContentCard';
 import NoContent from '../../components/NoContent';
-import LoadingIndicator from '../../components/LoadingIndicator';
 import AnimFade from '../../components/AnimFade';
 
 import Overview from './scenes/Overview';
@@ -31,8 +30,7 @@ const Slash = styled.span`
 `;
 
 function Project(props) {
-  const { match: { params, url }, loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={256} />;
+  const { match: { params, url }, data } = props;
   if (!data) return <NoContent>The project you are looking for could not be found.</NoContent>;
   return (
     <AnimFade>
@@ -69,7 +67,6 @@ function Project(props) {
 
 Project.propTypes = {
   data: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
   match: PropTypes.object.isRequired,
 };
 

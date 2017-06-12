@@ -4,12 +4,10 @@ import connector from './connector';
 import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
-import LoadingIndicator from '../../../../components/LoadingIndicator';
 import AnimFade from '../../../../components/AnimFade';
 
 export function Overview(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data } = props;
   return (
     <AnimFade>
       <ContentCard column key="card">
@@ -29,7 +27,6 @@ export function Overview(props) {
 
 Overview.propTypes = {
   data: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
 };
 
 Overview.defaultProps = {

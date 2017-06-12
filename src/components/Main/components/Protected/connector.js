@@ -2,6 +2,7 @@ import { bindActionCreators, compose } from 'redux';
 import { lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { actions } from '../../../../data/user/constants';
+import withLoader from '../../../../components/withLoader';
 
 const mapStateToProps = state => ({ loading: state.data.user.loading });
 
@@ -16,5 +17,9 @@ export default compose(
     componentWillUnmount() {
       this.props.actions.resetUser();
     },
+  }),
+  withLoader({
+    condition: props => props.loading,
+    size: 256,
   }),
 );

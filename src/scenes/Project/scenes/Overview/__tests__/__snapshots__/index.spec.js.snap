@@ -1,23 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Overview renders data regardless of loading 1`] = `
-<AnimFade>
-  <ContentCard__ContentCard
-    column={true}
-  >
-    <CardTitle__CardTitle
-      invert={false}
-    >
-      Overview
-    </CardTitle__CardTitle>
-    <p>
-      # Sample Title
-    </p>
-  </ContentCard__ContentCard>
-</AnimFade>
-`;
-
-exports[`Overview renders data regardless of loading 2`] = `
+exports[`Overview always renders data regardless 1`] = `
 <AnimFade>
   <ContentCard__ContentCard
     column={true}
@@ -56,10 +39,4 @@ exports[`Overview renders empty content message 1`] = `
     </NoContent>
   </ContentCard__ContentCard>
 </AnimFade>
-`;
-
-exports[`Overview renders loading indicator 1`] = `
-<LoadingIndicator
-  size={128}
-/>
 `;

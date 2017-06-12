@@ -35,5 +35,6 @@ export default compose(
   }),
   withLoader({
     condition: props => props.loading,
+    size: 128,
   }),
 );

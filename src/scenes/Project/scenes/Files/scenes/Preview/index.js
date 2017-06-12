@@ -5,7 +5,6 @@ import 'codemirror/lib/codemirror.css';
 import NotebookPreview from '@nteract/notebook-preview';
 import Markdown from 'react-remarkable';
 import connector from './connector';
-import LoadingIndicator from '../../../../../../components/LoadingIndicator';
 import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
@@ -40,8 +39,7 @@ const getPreviewComponent = (file) => {
 };
 
 function Preview(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data } = props;
   return (
     <AnimFade>
       <ContentCard column key="card">
@@ -61,7 +59,6 @@ function Preview(props) {
 
 Preview.propTypes = {
   data: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
 };
 
 Preview.defaultProps = {

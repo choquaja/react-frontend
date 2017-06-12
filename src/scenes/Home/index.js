@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 import PageWidth from '../../components/PageWidth';
 import CardTitle from '../../components/CardTitle';
 import ContentCard from '../../components/ContentCard';
-import LoadingIndicator from '../../components/LoadingIndicator';
 import NoContent from '../../components/NoContent';
 import NameLinkCell from './components/NameLinkCell';
 import AnimFade from '../../components/AnimFade';
@@ -25,8 +24,7 @@ const Link = Button.withComponent(NavLink).extend`
 `;
 
 function Home(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={256} />;
+  const { data } = props;
   return (
     <PageWidth small>
       <AnimFade>
@@ -46,7 +44,6 @@ function Home(props) {
 
 Home.propTypes = {
   data: PropTypes.array,
-  loading: PropTypes.bool.isRequired,
 };
 
 Home.defaultProps = {

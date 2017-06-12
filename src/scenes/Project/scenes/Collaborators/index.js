@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { MdGroupAdd } from 'react-icons/lib/md';
 import connector from './connector';
-import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Grid from '../../../../components/Grid';
 import FormInput from '../../../../components/FormInput';
 import Button from '../../../../components/Button';
@@ -35,8 +34,7 @@ const columns = [
 ];
 
 function Collaborators(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data } = props;
   return (
     <AnimFade>
       <ContentCard column key="card">
@@ -62,7 +60,6 @@ function Collaborators(props) {
 
 Collaborators.propTypes = {
   data: PropTypes.array,
-  loading: PropTypes.bool.isRequired,
 };
 
 Collaborators.defaultProps = {

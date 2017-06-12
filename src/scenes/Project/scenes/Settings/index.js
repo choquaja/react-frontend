@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import connector from './connector';
-import LoadingIndicator from '../../../../components/LoadingIndicator';
 import Button from '../../../../components/Button';
 import FormInput from '../../../../components/FormInput';
 import FormTextarea from '../../../../components/FormTextarea';
@@ -14,8 +13,7 @@ import AnimFade from '../../../../components/AnimFade';
 const noop = () => {};
 
 function Settings(props) {
-  const { loading, data } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data } = props;
   const isPrivate = data.private;
   return (
     <AnimFade>
@@ -57,7 +55,6 @@ function Settings(props) {
 
 Settings.propTypes = {
   data: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
 };
 
 Settings.defaultProps = {

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import has from 'lodash/has';
+import set from 'lodash/set';
 import { isLoggedIn, getToken } from '../authToken';
 import callsList from './callsList';
 import * as helpers from './helpers';
@@ -18,26 +20,13 @@ const prepareAxios = ({ history }) => call => (data, options = {}, cancelled$) =
 .catch(helpers.redirectIfAuthInvalid({ history }))
 .catch(helpers.filterCancelledRequests);
 
-const apiCreator = ({ history }) => {
-  const curriedAxios = prepareAxios({ history });
-
-  /* eslint-disable no-param-reassign */
-  const recursivelyAddMethod = (obj = {}, call, currentIndex = 0) => {
-    const pathArray = call.name.split('.');
-    const currentPath = pathArray[currentIndex];
-    if (currentIndex === (pathArray.length - 1)) {
-      if (obj[currentPath]) throw new Error(`Call already exists for ${call.name}`);
-      obj[currentPath] = curriedAxios(call);
-    } else {
-      obj[currentPath] = recursivelyAddMethod(obj[currentPath], call, (currentIndex + 1));
-    }
-    return obj;
-  };
-  /* eslint-enable */
+const apiCreator = (dependencies) => {
+  const axiosWithDependencies = prepareAxios(dependencies);
 
   const api = callsList.reduce((obj, call, index) => {
     if (!call.name) throw Error(`No name provided for call at index ${index}`);
-    return recursivelyAddMethod(obj, call);
+    if (has(obj, call.name)) throw new Error(`Call already exists for ${call.name}`);
+    return set(obj, call.name, axiosWithDependencies(call));
   }, {});
 
   api.helpers = helpers;
