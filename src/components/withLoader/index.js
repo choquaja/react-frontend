@@ -7,7 +7,7 @@ import {
 } from 'recompose';
 import LoadingIndicator from '../LoadingIndicator';
 
-const loadingHoc = ({ size = 128 }) => compose(
+const loadingHoc = ({ size }) => compose(
   mapProps(() => null),
   defaultProps({ size }),
   renderComponent(LoadingIndicator),
