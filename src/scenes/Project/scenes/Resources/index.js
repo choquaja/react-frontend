@@ -8,7 +8,6 @@ import StatusUpdater from './components/StatusUpdater';
 import Grid, { GridWrapper, GridActions } from '../../../../components/Grid';
 import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
-import LoadingIndicator from '../../../../components/LoadingIndicator';
 import NoContent from '../../../../components/NoContent';
 import AnimFade from '../../../../components/AnimFade';
 
@@ -20,8 +19,7 @@ const columns = [
 ];
 
 function Resources(props) {
-  const { loading, data, selected, actions, match: { url } } = props;
-  if (loading && !data) return <LoadingIndicator size={128} />;
+  const { data, selected, actions, match: { url } } = props;
   return (
     <AnimFade>
       <ContentCard column key="card">
@@ -51,7 +49,6 @@ function Resources(props) {
 Resources.propTypes = {
   actions: PropTypes.object.isRequired,
   data: PropTypes.array,
-  loading: PropTypes.bool.isRequired,
   match: PropTypes.object.isRequired,
   selected: PropTypes.array.isRequired,
 };

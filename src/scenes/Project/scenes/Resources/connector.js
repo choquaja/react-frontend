@@ -6,6 +6,7 @@ import { createSelector } from 'reselect';
 import get from 'lodash/get';
 import { actions } from './constants';
 import { projectSchema, resourceSchema } from '../../../../services/api/schema';
+import withLoader from '../../../../components/withLoader';
 
 const dataSelector = createSelector(
   state => state.scenes.project.details.data,
@@ -38,5 +39,9 @@ export default compose(
       this.props.actions.getServersRequest({ account, project });
     },
     componentWillUnmount() {},
+  }),
+  withLoader({
+    condition: props => props.loading && !props.data,
+    size: 128,
   }),
 );
