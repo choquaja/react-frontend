@@ -1,4 +1,4 @@
-FROM node:8.0-apline
+FROM node:latest
 
 MAINTAINER 3Blades <contact@3blades.io>
 
