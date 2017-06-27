@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const isEmpty = require('lodash/isEmpty');
+const chalk = require('chalk')
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolvePath = path1 => path2 => path.resolve(path1, path2);
@@ -27,7 +28,14 @@ function getGlobals() {
   );
 
   if (isMissing) {
-    throw new Error(`Missing one or more environment variables: ${REQUIRED_ENV_VARS.join(',')}`)
+    console.log()
+    console.log(chalk.red('ERROR'))
+    console.log('Missing one or more required environment variables:')
+    console.log(REQUIRED_ENV_VARS.map(x => `- ${x}`).join('\n'))
+    console.log()
+    console.log('Please set all of the required environment variables and run the command again.')
+    console.log()
+    process.exit(1)
   }
 
   const raw = {
