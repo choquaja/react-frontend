@@ -27,7 +27,7 @@ function getGlobals() {
   );
 
   if (isMissing) {
-    throw new Error(`Missing one or more environment variables: ${required.join(',')}`)
+    throw new Error(`Missing one or more environment variables: ${REQUIRED_ENV_VARS.join(',')}`)
   }
 
   const raw = {
