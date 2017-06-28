@@ -4,6 +4,7 @@ import createLogger from 'redux-logger';
 import { createLogicMiddleware } from 'redux-logic';
 import rootReducer, { logic } from '../../reducer';
 import apiCreator from '../../services/api';
+import { extract } from './helpers';
 
 export const history = createBrowserHistory();
 export const api = apiCreator({ history });
@@ -14,7 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 const middlewares = [
   (!isProd && createLogger()),
-  createLogicMiddleware(logic, { api, history }),
+  createLogicMiddleware(logic, { api, history, extract }),
 ].filter(Boolean);
 
 export const configureStore = (initialState) => {

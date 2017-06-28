@@ -93,7 +93,7 @@ export function NewForm(props) {
   const { handleSubmit, error, submitting, valid } = props;
   return (
     <form onSubmit={handleSubmit}>
-      {error && <Error>{error}<br />Please try again.</Error>}
+      {error && <FormError>{error}<br />Please try again.</FormError>}
       <Field
         name="name"
         component={renderInput}
