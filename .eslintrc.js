@@ -6,7 +6,6 @@ module.exports = {
     "expect": true,
     "it": true,
     "describe": true,
-    "__API_URL__": true
   },
   "parser": "babel-eslint",
   "rules": {

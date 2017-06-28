@@ -59,7 +59,6 @@ function getGlobals() {
         env[key] = JSON.stringify(raw[key]);
         return env;
       }, {}),
-    '__API_URL__': JSON.stringify(raw.API_URL)
   };
 
   return { raw, stringified };

@@ -6,7 +6,7 @@ import callsList from './callsList';
 import * as helpers from './helpers';
 
 const instance = axios.create({
-  baseURL: __API_URL__,
+  baseURL: process.env.UI_API_URL,
 });
 
 const prepareAxios = ({ history }) => call => (data, options = {}, cancelled$) => instance({
