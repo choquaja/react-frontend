@@ -14,7 +14,7 @@ An API-agnostic frontend for 3Blades in ReactJs.
 
 Clone repo and install dependencies:
 
-```bash
+```
 git clone https://github.com/3blades/react-frontend
 cd react-frontend
 npm install
@@ -22,13 +22,13 @@ npm install
 
 Run application in development:
 
-```bash
+```
 npm run start
 ```
 
 Test:
 
-```bash
+```
 npm test
 ```
 
