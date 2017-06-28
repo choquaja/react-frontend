@@ -7,7 +7,12 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolvePath = path1 => path2 => path.resolve(path1, path2);
 const resolveApp = resolvePath(appDirectory);
 
-const REQUIRED_ENV_VARS = [ 'API_URL' ];
+const REQUIRED_ENV_VARS = [ 'UI_API_URL' ];
+const OPTIONAL_ENV_VARS = [];
+const addEnvVarToObject = (obj, v) => {
+  obj[v] = process.env[v];
+  return obj;
+}
 
 const paths = {
   appBuild: resolveApp('build'),
@@ -38,11 +43,14 @@ function getGlobals() {
     process.exit(1)
   }
 
-  const raw = {
-    'NODE_ENV': process.env.NODE_ENV || 'development',
-    'PUBLIC_URL': paths.publicUrl,
-    'API_URL': process.env.API_URL,
-  };
+  const raw = Object.assign(
+    {
+      'NODE_ENV': process.env.NODE_ENV || 'development',
+      'PUBLIC_URL': paths.publicUrl,
+    },
+    REQUIRED_ENV_VARS.reduce(addEnvVarToObject, {}),
+    OPTIONAL_ENV_VARS.reduce(addEnvVarToObject, {})
+  );
 
   const stringified = {
     'process.env': Object
