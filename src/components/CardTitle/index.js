@@ -5,7 +5,7 @@ import { themeColor } from '../../services/theme';
 const isInverted = props => props.invert && css`
   margin: -1rem -1rem 1rem;
   padding: 1rem;
-  background: ${themeColor('gray6')};
+  background: ${themeColor('black')};
   color: ${themeColor('white')};
 `;
 
