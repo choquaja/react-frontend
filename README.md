@@ -7,25 +7,44 @@
 [![slack in](https://slack.3blades.io/badge.svg)](https://slack.3blades.io)
 
 # 3Blades Web UI
-#
+
 An API-agnostic frontend for 3Blades in ReactJs.
+
+## Getting Started
 
 Clone repo and install dependencies:
 
-    git clone https://github.com/3blades/react-frontend
-    cd react-frontend
-    npm install
+```
+git clone https://github.com/3blades/react-frontend
+cd react-frontend
+npm install
+```
 
-Run application:
+Run application in development:
 
-    npm run start
+```
+npm run start
+```
 
 Test:
 
-    npm test
+```
+npm test
+```
 
-This project enforces the [Contributor Covenant](./CODE_OF_CONDUCT.md). Be kind
-and build a nice open source community with us.
+## Environment Variables
+
+The tables below describes the environment variables that can be passed in at build time:
+
+| Variable Name | Required | Default Value | Description |
+| ------------- | :------: | :-----------: | ----------- |
+| `UI_API_URL` | Yes | `null` | The URL for the 3Blades API with which the application should interact. |
+
+## Contributing
+
+All contributions are welcome! File an issue or send a pull request. For more information on contributing, see our [Contributing Guidelines](./CONTRIBUTING.md).
+
+This project enforces a [Contributor Covenant](./CODE_OF_CONDUCT.md). Be kind and build a healthy open source community with us. :heart:
 
 ## Copyright and license
 
