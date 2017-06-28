@@ -7,6 +7,7 @@ import files, { filesLogic } from './scenes/Files/reducer';
 import newResource, { newResourceLogic } from './scenes/NewResource/reducer';
 import resources, { resourcesLogic } from './scenes/Resources/reducer';
 import collaborators, { collaboratorsLogic } from './scenes/Collaborators/reducer';
+import { settingsLogic } from './scenes/Settings/reducer';
 import logic from './logic';
 
 const reducer = createDataReducer(
@@ -39,4 +40,5 @@ export const projectLogic = [
   ...newResourceLogic,
   ...resourcesLogic,
   ...collaboratorsLogic,
+  ...settingsLogic,
 ];

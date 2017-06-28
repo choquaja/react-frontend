@@ -1,4 +1,8 @@
 import { handleActions, createAction as createActionCreator } from 'redux-actions';
+import { denormalize } from 'normalizr';
+import get from 'lodash/fp/get';
+import getOr from 'lodash/fp/getOr';
+import { projectSchema } from '../api/schema';
 
 const payload = x => x;
 const meta = (x, y) => y;
@@ -52,4 +56,21 @@ export const resetReducer = TYPE_RESET => reducer => (state, action) => {
     state = undefined; // eslint-disable-line
   }
   return reducer(state, action);
+};
+
+export const extract = {
+  action: {
+    resolve: getOr(() => {})('meta.resolve'),
+    reject: getOr(() => {})('meta.reject'),
+  },
+  state: {
+    project: (state) => {
+      const entities = get('data.entities')(state);
+      const projectId = get('scenes.project.details.data')(state);
+      const project = denormalize(projectId, projectSchema, entities);
+      const owner = get('owner')(project);
+      const name = get('name')(project);
+      return { account: owner, project: projectId, id: projectId, name };
+    },
+  },
 };
