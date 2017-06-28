@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnimFade renders with the right props 1`] = `
+<Transition
+  component="div"
+  enter={
+    Object {
+      "opacity": 1,
+    }
+  }
+  leave={
+    Object {
+      "opacity": 0,
+    }
+  }
+  onEnter={[Function]}
+  onLeave={[Function]}
+  runOnMount={true}
+>
+  <div>
+    Hello World 
+  </div>
+</Transition>
+`;
