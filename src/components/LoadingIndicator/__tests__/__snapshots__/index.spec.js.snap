@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingIndicator Renders with a size prop 1`] = `
+<LoadingIndicator__ImgWrapper>
+  <LoadingIndicator__AnimatedImg
+    size={59}
+    src="logo-spinner.svg"
+  />
+</LoadingIndicator__ImgWrapper>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoContent renders with a child  1`] = `
+<NoContent__NoContentContainer>
+  <NoContent__NoContentText>
+    <div>
+      Test
+    </div>
+  </NoContent__NoContentText>
+</NoContent__NoContentContainer>
+`;

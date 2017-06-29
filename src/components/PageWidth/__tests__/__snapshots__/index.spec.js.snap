@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageWidth renders with fluid set true 1`] = `
+<div
+  className="PageWidth__PageWidth-GUDLM bfwNHj"
+/>
+`;
+
+exports[`PageWidth renders with small set true 1`] = `
+<div
+  className="PageWidth__PageWidth-GUDLM crGNoI"
+/>
+`;
