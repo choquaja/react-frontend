@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentCard renders with the column prop 1`] = `
+<div
+  className="ContentCard__ContentCard-kKBMhH kUIZGp"
+/>
+`;
+
+exports[`ContentCard renders with the tight prop 1`] = `
+<div
+  className="ContentCard__ContentCard-kKBMhH haWMJS"
+/>
+`;
