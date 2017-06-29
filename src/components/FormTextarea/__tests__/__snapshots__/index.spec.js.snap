@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormTextarea renders with block set true 1`] = `
+<textarea
+  className="FormTextarea__FormTextarea-hoGdLG eWXqSE"
+/>
+`;
+
+exports[`FormTextarea renders with full set true 1`] = `
+<textarea
+  className="FormTextarea__FormTextarea-hoGdLG giOorR"
+/>
+`;
+
+exports[`FormTextarea renders with grouped set true 1`] = `
+<textarea
+  className="FormTextarea__FormTextarea-hoGdLG iQpwBC"
+/>
+`;
+
+exports[`FormTextarea renders with large set true 1`] = `
+<textarea
+  className="FormTextarea__FormTextarea-hoGdLG lfwnu"
+/>
+`;
+
+exports[`FormTextarea renders with small set true 1`] = `
+<textarea
+  className="FormTextarea__FormTextarea-hoGdLG kEDprJ"
+/>
+`;

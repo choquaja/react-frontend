@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormLabel renders with inline set true 1`] = `
+<label
+  className="FormLabel__FormLabel-eRZfOl kwHyEn"
+/>
+`;

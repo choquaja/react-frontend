@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInput render with block true 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv brUyRq"
+  type="text"
+/>
+`;
+
+exports[`FormInput render with full true 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv jiuqWu"
+  type="text"
+/>
+`;
+
+exports[`FormInput render with grouped true 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv jLxrLJ"
+  type="text"
+/>
+`;
+
+exports[`FormInput render with large true 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv kumkId"
+  type="text"
+/>
+`;
+
+exports[`FormInput render with small true 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv cordqx"
+  type="text"
+/>
+`;
+
+exports[`FormInput render with text 1`] = `
+<input
+  className="FormInput__FormInput-hffHYv ibYDkF"
+  type="hello"
+/>
+`;

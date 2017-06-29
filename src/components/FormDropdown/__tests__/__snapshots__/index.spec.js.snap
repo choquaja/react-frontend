@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormDropdown renders with a placeholder 1`] = `
+<FormDropdown__Dropdown
+  block={false}
+  full={false}
+  grouped={false}
+  large={false}
+  small={false}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Test
+  </option>
+</FormDropdown__Dropdown>
+`;
+
+exports[`FormDropdown renders with block set to true 1`] = `
+<FormDropdown__Dropdown
+  block={true}
+  full={false}
+  grouped={false}
+  large={false}
+  small={false}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Select an option...
+  </option>
+</FormDropdown__Dropdown>
+`;
+
+exports[`FormDropdown renders with full set to true 1`] = `
+<FormDropdown__Dropdown
+  block={false}
+  full={true}
+  grouped={false}
+  large={false}
+  small={false}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Select an option...
+  </option>
+</FormDropdown__Dropdown>
+`;
+
+exports[`FormDropdown renders with grouped set to true 1`] = `
+<FormDropdown__Dropdown
+  block={false}
+  full={false}
+  grouped={true}
+  large={false}
+  small={false}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Select an option...
+  </option>
+</FormDropdown__Dropdown>
+`;
+
+exports[`FormDropdown renders with large set to true 1`] = `
+<FormDropdown__Dropdown
+  block={false}
+  full={false}
+  grouped={false}
+  large={true}
+  small={false}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Select an option...
+  </option>
+</FormDropdown__Dropdown>
+`;
+
+exports[`FormDropdown renders with small set to true 1`] = `
+<FormDropdown__Dropdown
+  block={false}
+  full={false}
+  grouped={false}
+  large={false}
+  small={true}
+>
+  <option
+    disabled={true}
+    value={false}
+  >
+    Select an option...
+  </option>
+</FormDropdown__Dropdown>
+`;
