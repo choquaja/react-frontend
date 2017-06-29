@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTitle Acts appropriately when given prop invert 1`] = `
+<h1
+  className="CardTitle__CardTitle-bwxVvc kkeJLu"
+>
+  <div>
+    Test
+  </div>
+</h1>
+`;

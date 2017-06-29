@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Renders a block variant of button 1`] = `
+<button
+  className="Button__Button-jkHDFw cKjEvr"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a error button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw iZudAB"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a full button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw kIFhOk"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a grouped button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw gDTZol"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a info button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw gRFuIj"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a large button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw hBENRW"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a primary button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw hStQNt"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a secondary button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw gkJDPU"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a small button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw kxAkNX"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a success button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw caAocj"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;
+
+exports[`Button Renders a warning button variant 1`] = `
+<button
+  className="Button__Button-jkHDFw gnGDMo"
+>
+  <div>
+    Hello
+  </div>
+</button>
+`;

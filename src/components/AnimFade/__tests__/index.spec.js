@@ -4,7 +4,7 @@ import AnimFade from '../';
 
 describe('AnimFade', () => {
   it('renders without crashing', () => {
-    shallow(<AnimFade />);
+    shallow(<AnimFade><div>Hello</div></AnimFade>);
   });
 
   it('renders with the right props', () => {
