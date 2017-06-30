@@ -11,6 +11,7 @@ import FormTextarea from '../../../../../../components/FormTextarea';
 import FormLabel from '../../../../../../components/FormLabel';
 import FormGroup from '../../../../../../components/FormGroup';
 import { actions } from './constants';
+import './logic';
 
 const formatRadio = value => typeof value !== 'undefined' && String(value);
 const normalizeRadio = value => typeof value !== 'undefined' && (value === 'true');
