@@ -10,6 +10,7 @@ import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
 import AnimFade from '../../../../components/AnimFade';
+import './logic';
 
 const Form = styled.div`
   display: flex;
