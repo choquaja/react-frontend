@@ -7,6 +7,6 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const accountLogic = [
+export const settingsLogic = [
   ...sshkeysLogic,
 ];

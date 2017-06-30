@@ -109,9 +109,8 @@ function ProfileDropdown({ avatar }) {
           <DropdownList open={open}>
             <DropdownItem><DropdownStaticText>User Name</DropdownStaticText></DropdownItem>
             <DropdownSeparator />
-            <DropdownItem><DropdownLink to="/account/profile">Profile</DropdownLink></DropdownItem>
+            <DropdownItem><DropdownLink to="/settings/profile">Settings</DropdownLink></DropdownItem>
             <DropdownItem><DropdownLink to="#">Invite a Friend</DropdownLink></DropdownItem>
-            <DropdownItem><DropdownLink to="/account/settings">Settings</DropdownLink></DropdownItem>
             <DropdownSeparator />
             <DropdownItem><DropdownLink to="/auth/logout">Sign Out</DropdownLink></DropdownItem>
           </DropdownList>
