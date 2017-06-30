@@ -122,7 +122,7 @@ function ProfileDropdown({ avatar }) {
 }
 
 ProfileDropdown.propTypes = {
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
 };
 
 ProfileDropdown.defaultProps = {
