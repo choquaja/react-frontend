@@ -1,10 +1,10 @@
 import { createAction } from '../../../../services/store/helpers';
 
 export const types = {
-  GET_SSHKEYS_REQUEST: 'data.account.settings.GET_SSHKEYS_REQUEST',
-  GET_SSHKEYS_SUCCESS: 'data.account.settings.GET_SSHKEYS_SUCCESS',
-  GET_SSHKEYS_FAIL: 'data.account.settings.GET_SSHKEYS_FAIL',
-  RESET_SSHKEY: 'data.account.settings.RESET_SSHKEY',
+  GET_SSHKEYS_REQUEST: 'data.settings.sshkeys.GET_SSHKEYS_REQUEST',
+  GET_SSHKEYS_SUCCESS: 'data.settings.sshkeys.GET_SSHKEYS_SUCCESS',
+  GET_SSHKEYS_FAIL: 'data.settings.sshkeys.GET_SSHKEYS_FAIL',
+  RESET_SSHKEY: 'data.settings.sshkeys.RESET_SSHKEY',
 };
 
 export const actions = {

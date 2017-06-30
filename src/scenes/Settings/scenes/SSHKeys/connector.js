@@ -8,8 +8,8 @@ import withLoader from '../../../../components/withLoader';
 const mapStateToProps = state => ({
   user: get(state, 'data.user.data.id'),
   account: get(state, 'data.user.data.username'),
-  data: get(state, 'scenes.account.sshkeys.data'),
-  loading: get(state, 'scenes.account.sshkeys.loading'),
+  data: get(state, 'scenes.settings.sshkeys.data'),
+  loading: get(state, 'scenes.settings.sshkeys.loading'),
 });
 
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
