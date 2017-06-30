@@ -1,37 +1,53 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from '../../../../components/Button';
+import connector from './connector';
+import ResetSshKeysForm from './components/ResetSshKeysForm';
+import ContentCard from '../../../../components/ContentCard';
+import CardTitle from '../../../../components/CardTitle';
+import NoContent from '../../../../components/NoContent';
+import AnimFade from '../../../../components/AnimFade';
+import { themeColor } from '../../../../services/theme';
 
-
-const Title = styled.h1`
-  font-size: 2em;
+const KeyDisplay = styled.code`
+  display: block;
+  word-break: break-all;
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: ${themeColor('gray6')};
+  color: ${themeColor('gray1')};
 `;
 
-const Container = styled.div`
-  display: flex;
+const KeyWrapper = styled.div`
+  margin-bottom: 2rem;
 `;
 
-const Column2 = styled.div`
-  width: 70%;
-`;
-
-export default function Profile() {
+export function SSHKeys({ data }) {
   return (
-    <Container>
-      <Column2>
-        <Title>SSH Keys</Title>
-        <h2>SSH Public Key</h2>
-        <Button primary block>Reset SSH Key</Button>
-      </Column2>
-    </Container>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>SSH Public Key</CardTitle>
+        <KeyWrapper>
+          { data ? (
+            <KeyDisplay>{data}</KeyDisplay>
+          ) : (
+            <NoContent>
+              You don&apos;t have a public key. Use the <b>Reset SSH Key</b> button to get one.
+            </NoContent>
+          )}
+        </KeyWrapper>
+        <ResetSshKeysForm />
+      </ContentCard>
+    </AnimFade>
   );
 }
 
-Profile.defaultProps = {
-
+SSHKeys.propTypes = {
+  data: PropTypes.string,
 };
 
-Profile.propTypes = {
-  match: PropTypes.object.isRequired,
+SSHKeys.defaultProps = {
+  data: '',
 };
+
+export default connector(SSHKeys);
