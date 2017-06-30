@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import { actions as entityActions } from '../../../../../../data/entities/constants';
 import { projectSchema } from '../../../../../../services/api/schema';
 import { types } from './constants';
+import { addLogic } from '../../../../../../services/store';
 
 export const updateProjectLogic = createLogic({
   type: types.UPDATE_PROJECT,
@@ -24,6 +25,6 @@ export const updateProjectLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   updateProjectLogic,
-];
+]);
