@@ -19,8 +19,12 @@ const FormField = ({ type, input, meta, label, ...rest }) => ( // eslint-disable
   </FormGroup>
 );
 
+FormField.defaultProps = {
+  type: '',
+};
+
 FormField.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
