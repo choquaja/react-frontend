@@ -1,23 +1,15 @@
 import { createLogic } from 'redux-logic';
-import { denormalize } from 'normalizr';
-import get from 'lodash/fp/get';
 import { types } from './constants';
 import { actions as resourceActions } from '../../constants';
 import { actions as entityActions } from '../../../../../../data/entities/constants';
-import { projectSchema, resourceSchema } from '../../../../../../services/api/schema';
-
-const getProject = (state) => {
-  const entities = get('data.entities')(state);
-  const projectId = get('scenes.project.details.data')(state);
-  const owner = get('owner')(denormalize(projectId, projectSchema, entities));
-  return { account: owner, project: projectId };
-};
+import { resourceSchema } from '../../../../../../services/api/schema';
+import { addLogic } from '../../../../../../services/store';
 
 export const serverStartLogic = createLogic({
   type: types.SERVER_START,
   latest: true,
-  async process({ getState, action, api }, dispatch, done) {
-    const { account, project } = getProject(getState());
+  async process({ getState, action, api, extract }, dispatch, done) {
+    const { account, project } = extract.state.project(getState());
     const createParams = id => ({ urlParams: { account, project, id } });
     const servers = action.payload;
     try {
@@ -36,8 +28,8 @@ export const serverStartLogic = createLogic({
 export const serverStopLogic = createLogic({
   type: types.SERVER_STOP,
   latest: true,
-  async process({ getState, action, api }, dispatch, done) {
-    const { account, project } = getProject(getState());
+  async process({ getState, action, api, extract }, dispatch, done) {
+    const { account, project } = extract.state.project(getState());
     const createParams = id => ({ urlParams: { account, project, id } });
     const servers = action.payload;
     try {
@@ -56,8 +48,8 @@ export const serverStopLogic = createLogic({
 export const serverDeleteLogic = createLogic({
   type: types.SERVER_DELETE,
   latest: true,
-  async process({ getState, action, api }, dispatch, done) {
-    const { account, project } = getProject(getState());
+  async process({ getState, action, api, extract }, dispatch, done) {
+    const { account, project } = extract.state.project(getState());
     const createParams = id => ({ urlParams: { account, project, id } });
     const servers = action.payload;
     try {
@@ -80,8 +72,8 @@ export const serverDeleteLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   serverStartLogic,
   serverStopLogic,
   serverDeleteLogic,
-];
+]);

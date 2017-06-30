@@ -4,7 +4,7 @@ import { types } from './constants';
 import overview, { overviewLogic } from './scenes/Overview/reducer';
 import files, { filesLogic } from './scenes/Files/reducer';
 import newResource, { newResourceLogic } from './scenes/NewResource/reducer';
-import resources, { resourcesLogic } from './scenes/Resources/reducer';
+import resources from './scenes/Resources/reducer';
 import collaborators from './scenes/Collaborators/reducer';
 
 const reducer = createDataReducer(
@@ -33,5 +33,4 @@ export const projectLogic = [
   ...overviewLogic,
   ...filesLogic,
   ...newResourceLogic,
-  ...resourcesLogic,
 ];
