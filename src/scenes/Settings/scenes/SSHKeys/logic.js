@@ -1,5 +1,6 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from './constants';
+import { addLogic } from '../../../../services/store';
 
 export const getSshkeysLogic = createLogic({
   type: types.GET_SSHKEYS_REQUEST,
@@ -36,7 +37,7 @@ export const resetSshKeyLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   getSshkeysLogic,
   resetSshKeyLogic,
-];
+]);

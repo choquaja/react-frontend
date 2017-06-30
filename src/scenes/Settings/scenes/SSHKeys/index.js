@@ -8,6 +8,7 @@ import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
 import AnimFade from '../../../../components/AnimFade';
 import { themeColor } from '../../../../services/theme';
+import './logic';
 
 const KeyDisplay = styled.code`
   display: block;
