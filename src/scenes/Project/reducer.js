@@ -3,7 +3,7 @@ import { createDataReducer, resetReducer } from '../../services/store/helpers';
 import { types } from './constants';
 import overview from './scenes/Overview/reducer';
 import files, { filesLogic } from './scenes/Files/reducer';
-import newResource, { newResourceLogic } from './scenes/NewResource/reducer';
+import newResource from './scenes/NewResource/reducer';
 import resources from './scenes/Resources/reducer';
 import collaborators from './scenes/Collaborators/reducer';
 
@@ -31,5 +31,4 @@ export default rootReducer;
 
 export const projectLogic = [
   ...filesLogic,
-  ...newResourceLogic,
 ];

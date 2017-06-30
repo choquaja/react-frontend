@@ -10,6 +10,7 @@ import FormLabel from '../../../../../../components/FormLabel';
 import FormGroup from '../../../../../../components/FormGroup';
 import { actions } from './constants';
 import connector from './connector';
+import './logic';
 
 const renderInput = ({ input, meta, label, ...rest }) => ( // eslint-disable-line
   <FormGroup>
