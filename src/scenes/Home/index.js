@@ -10,6 +10,7 @@ import NoContent from '../../components/NoContent';
 import NameLinkCell from './components/NameLinkCell';
 import AnimFade from '../../components/AnimFade';
 import connector from './connector';
+import './logic';
 
 const columns = [
   { id: 'name', title: 'Name', customComponent: NameLinkCell },
