@@ -1,33 +1,19 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import ContentCard from '../../../../components/ContentCard';
+import CardTitle from '../../../../components/CardTitle';
+import NoContent from '../../../../components/NoContent';
+import AnimFade from '../../../../components/AnimFade';
 
-const Title = styled.h1`
-  font-size: 2em;
-`;
-
-const Container = styled.div`
-  display: flex;
-`;
-
-const Column2 = styled.div`
-  width: 70%;
-`;
-
-export default function Profile() {
+export default function Integations() {
   return (
-    <Container>
-      <Column2>
-        <Title>Integrations</Title>
-      </Column2>
-    </Container>
+    <AnimFade>
+      <ContentCard column key="card">
+        <CardTitle>Integrations</CardTitle>
+        <NoContent>
+          Integrations have not been enabled yet. We&apos;re working on them
+          though! So check back soon.
+        </NoContent>
+      </ContentCard>
+    </AnimFade>
   );
 }
-
-Profile.defaultProps = {
-
-};
-
-Profile.propTypes = {
-  match: PropTypes.object.isRequired,
-};
