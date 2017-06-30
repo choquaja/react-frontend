@@ -37,7 +37,7 @@ function Navigation({ url }) {
       </VerticalNavLink> */}
       <VerticalNavLink to={`${url}/sshkeys`}>
         <SshKeysIcon size={20} />
-        SSH-Key
+        SSH Key
       </VerticalNavLink>
       <VerticalNavLink to={`${url}/integrations`}>
         <IntegrationsIcon size={20} />
