@@ -72,5 +72,6 @@ export const extract = {
       const name = get('name')(project);
       return { account: owner, project: projectId, id: projectId, name };
     },
+    user: get('data.user.data'),
   },
 };
