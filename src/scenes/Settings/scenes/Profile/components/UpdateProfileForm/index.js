@@ -7,6 +7,7 @@ import FormError from '../../../../../../components/FormError';
 import FormGroup from '../../../../../../components/FormGroup';
 import FormField from '../../../../../../components/FormField';
 import { actions } from './constants';
+import './logic';
 
 export function UpdateProfileForm(props) {
   const { handleSubmit, error, submitting, valid } = props;

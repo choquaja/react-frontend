@@ -1,6 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { types } from './constants';
 import { actions as userActions } from '../../../../../../data/user/constants';
+import { addLogic } from '../../../../../../services/store';
 
 export const updateProfileLogic = createLogic({
   type: types.UPDATE_PROFILE,
@@ -21,6 +22,6 @@ export const updateProfileLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   updateProfileLogic,
-];
+]);
