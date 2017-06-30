@@ -9,6 +9,6 @@ exports[`Column renders with getFlex prop 1`] = `
 exports[`Column renders with size prop 1`] = `
 <div
   className="column__Column-ioyXO lneHDN"
-  size={15}
+  size={true}
 />
 `;
