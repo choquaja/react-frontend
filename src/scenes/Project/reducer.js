@@ -1,7 +1,7 @@
 import { combineReducers, compose } from 'redux';
 import { createDataReducer, resetReducer } from '../../services/store/helpers';
 import { types } from './constants';
-import overview, { overviewLogic } from './scenes/Overview/reducer';
+import overview from './scenes/Overview/reducer';
 import files, { filesLogic } from './scenes/Files/reducer';
 import newResource, { newResourceLogic } from './scenes/NewResource/reducer';
 import resources from './scenes/Resources/reducer';
@@ -30,7 +30,6 @@ const rootReducer = compose(
 export default rootReducer;
 
 export const projectLogic = [
-  ...overviewLogic,
   ...filesLogic,
   ...newResourceLogic,
 ];
