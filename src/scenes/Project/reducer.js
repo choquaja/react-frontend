@@ -8,7 +8,6 @@ import newResource, { newResourceLogic } from './scenes/NewResource/reducer';
 import resources, { resourcesLogic } from './scenes/Resources/reducer';
 import collaborators, { collaboratorsLogic } from './scenes/Collaborators/reducer';
 import { settingsLogic } from './scenes/Settings/reducer';
-import logic from './logic';
 
 const reducer = createDataReducer(
   types.GET_PROJECT_REQUEST,
@@ -34,7 +33,6 @@ const rootReducer = compose(
 export default rootReducer;
 
 export const projectLogic = [
-  ...logic,
   ...overviewLogic,
   ...filesLogic,
   ...newResourceLogic,
