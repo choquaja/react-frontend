@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`row renders with justify prop 1`] = `
+<div
+  className="row__Row-kCedir bEVabT"
+/>
+`;
+
+exports[`row renders with the align prop 1`] = `
+<div
+  className="row__Row-kCedir kuhlph"
+/>
+`;
