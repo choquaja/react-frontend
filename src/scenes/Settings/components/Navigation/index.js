@@ -27,7 +27,7 @@ function Navigation({ url }) {
         <ProfileIcon size={20} />
         Profile
       </VerticalNavLink>
-      <VerticalNavLink to={`${url}/settings`}>
+      <VerticalNavLink to={`${url}/account`}>
         <SettingsIcon size={20} />
         Settings
       </VerticalNavLink>
