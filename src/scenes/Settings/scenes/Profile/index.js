@@ -10,7 +10,7 @@ export function Profile({ user }) {
   return (
     <AnimFade>
       <ContentCard column key="card">
-        <CardTitle>Your Profile</CardTitle>
+        <CardTitle>Public Profile</CardTitle>
         <UpdateProfileForm user={user} />
       </ContentCard>
     </AnimFade>
