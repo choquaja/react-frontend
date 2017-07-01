@@ -11,6 +11,7 @@ import ContentCard from '../../../../../../components/ContentCard';
 import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import AnimFade from '../../../../../../components/AnimFade';
+import './logic';
 
 const parseFileExt = filename => filename.split('.').pop().toLowerCase();
 const getMode = (path) => {

@@ -2,7 +2,7 @@ import { combineReducers, compose } from 'redux';
 import { createDataReducer, resetReducer } from '../../services/store/helpers';
 import { types } from './constants';
 import overview from './scenes/Overview/reducer';
-import files, { filesLogic } from './scenes/Files/reducer';
+import files from './scenes/Files/reducer';
 import newResource from './scenes/NewResource/reducer';
 import resources from './scenes/Resources/reducer';
 import collaborators from './scenes/Collaborators/reducer';
@@ -28,7 +28,3 @@ const rootReducer = compose(
 });
 
 export default rootReducer;
-
-export const projectLogic = [
-  ...filesLogic,
-];
