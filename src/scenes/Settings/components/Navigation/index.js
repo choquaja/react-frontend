@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import {
   MdPerson,
-  MdSettingsApplications,
+  MdSettings,
   // MdEmail,
   MdVpnKey,
   MdCompareArrows,
@@ -15,7 +15,7 @@ const iconStyles = css`
 `;
 
 const ProfileIcon = styled(MdPerson)`${iconStyles}`;
-const SettingsIcon = styled(MdSettingsApplications)`${iconStyles}`;
+const SettingsIcon = styled(MdSettings)`${iconStyles}`;
 // const EmailsIcon = styled(MdEmail)`${iconStyles}`;
 const SshKeysIcon = styled(MdVpnKey)`${iconStyles}`;
 const IntegrationsIcon = styled(MdCompareArrows)`${iconStyles}`;
@@ -29,7 +29,7 @@ function Navigation({ url }) {
       </VerticalNavLink>
       <VerticalNavLink to={`${url}/account`}>
         <SettingsIcon size={20} />
-        Settings
+        Account
       </VerticalNavLink>
       {/* <VerticalNavLink to={`${url}/email`}>
         <EmailsIcon size={20} />
