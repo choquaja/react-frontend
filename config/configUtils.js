@@ -71,8 +71,17 @@ function getEnvironmentFlags(env) {
   };
 }
 
+function setEnvVars() {
+  if (!isEmpty(process.env.TRAVIS_BRANCH)) {
+    if (process.env.TRAVIS_BRANCH === 'master') {
+      process.env.UI_API_URL = process.env.UI_API_URL_STAGING;
+    }
+  }
+}
+
 module.exports = {
   paths,
   getGlobals,
-  getEnvironmentFlags
+  getEnvironmentFlags,
+  setEnvVars
 };

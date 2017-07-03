@@ -103,6 +103,7 @@
     "reselect": "^3.0.1",
     "rx": "^4.1.0",
     "rxjs": "^5.4.0",
+    "s3": "^4.4.0",
     "serve": "^6.0.0",
     "style-loader": "^0.17.0",
     "styled-components": "^2.0.0",

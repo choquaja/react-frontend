@@ -25,8 +25,10 @@ install:
 script:
   - npm run lint
   - npm test -- --coverage
+  - npm run build
 
 after_success:
+  - node config/deployArtifacts
   - npm install -g codecov
   - bash <(curl -s https://codecov.io/bash)
 
