@@ -11,7 +11,7 @@ const {
 } = process.env;
 
 // Bail for pull requests
-// if (!isEmpty(TRAVIS_PULL_REQUEST)) process.exit()
+if (!isEmpty(TRAVIS_PULL_REQUEST)) process.exit()
 
 let bucketName;
 if (TRAVIS_BRANCH === 'master') {
@@ -52,7 +52,6 @@ console.log('Upload process started.');
 
 uploader.on('error', function(err) {
   console.error('Could not complete. Error during upload:', err.stack);
-  console.dir(err)
   process.exit(1);
 });
 
