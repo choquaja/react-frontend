@@ -24,6 +24,7 @@ if (TRAVIS_BRANCH === 'master') {
 const client = s3.createClient({
   s3Options: {
     accessKeyId: AWS_ACCESS_KEY_ID,
+    region: 'us-west-2',
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
     sslEnabled: true
   },
@@ -51,6 +52,7 @@ console.log('Upload process started.');
 
 uploader.on('error', function(err) {
   console.error('Could not complete. Error during upload:', err.stack);
+  console.dir(err)
   process.exit(1);
 });
 
