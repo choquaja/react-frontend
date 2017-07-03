@@ -11,7 +11,10 @@ const {
 } = process.env;
 
 // Bail for pull requests
-if (!isEmpty(TRAVIS_PULL_REQUEST)) process.exit()
+if (!isEmpty(TRAVIS_PULL_REQUEST)) {
+  console.log('Pull requests are not deployed. Exiting...');
+  process.exit();
+}
 
 let bucketName;
 if (TRAVIS_BRANCH === 'master') {
