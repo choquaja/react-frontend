@@ -4,7 +4,7 @@ import NoContent from '../';
 
 describe('NoContent', () => {
   it('renders without crashing', () => {
-    shallow(<NoContent />);
+    shallow(<NoContent><div>Hello</div></NoContent>);
   });
 
   it('renders with a child ', () => {

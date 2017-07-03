@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalNavLink renders with to string prop 1`] = `
+<NavLink
+  activeClassName="active"
+  className="VerticalNavLink__VerticalNavLink-dLQMAE fIsCYa"
+  to="test"
+/>
+`;
