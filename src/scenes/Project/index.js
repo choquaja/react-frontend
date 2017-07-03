@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import connector from './connector';
+import './logic';
 
 import Row from '../../components/shared/row';
 import Column from '../../components/shared/column';

@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import { actions as entityActions } from '../../../../../../data/entities/constants';
 import { projectSchema } from '../../../../../../services/api/schema';
 import { types } from './constants';
+import { addLogic } from '../../../../../../services/store';
 
 export const toggleProjectVisibilityLogic = createLogic({
   type: types.TOGGLE_PROJECT_VISIBILITY,
@@ -24,6 +25,6 @@ export const toggleProjectVisibilityLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   toggleProjectVisibilityLogic,
-];
+]);

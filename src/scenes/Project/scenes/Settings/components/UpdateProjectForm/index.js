@@ -7,6 +7,7 @@ import FormField from '../../../../../../components/FormField';
 import FormError from '../../../../../../components/FormError';
 import Button from '../../../../../../components/Button';
 import { actions } from './constants';
+import './logic';
 
 export function UpdateProjectForm(props) {
   const { handleSubmit, error, submitting, valid } = props;

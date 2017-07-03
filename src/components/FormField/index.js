@@ -12,15 +12,19 @@ const FormField = ({ type, input, meta, label, ...rest }) => ( // eslint-disable
     {type === 'textarea' ? (
       <FormTextarea id={`${meta.form}-${input.name}`} {...input} {...rest} full />
     ) : (
-      <FormInput id={`${meta.form}-${input.name}`} {...input} {...rest} full />
+      <FormInput id={`${meta.form}-${input.name}`} type={type} {...input} {...rest} full />
     )}
     {meta.touched && meta.error &&
     <FormError>{meta.error}</FormError>}
   </FormGroup>
 );
 
+FormField.defaultProps = {
+  type: '',
+};
+
 FormField.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,

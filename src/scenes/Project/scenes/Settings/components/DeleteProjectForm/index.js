@@ -6,6 +6,7 @@ import FormGroup from '../../../../../../components/FormGroup';
 import FormError from '../../../../../../components/FormError';
 import Button from '../../../../../../components/Button';
 import { actions } from './constants';
+import './logic';
 
 export function DeleteProjectForm(props) {
   const { handleSubmit, error, submitting } = props;
@@ -29,7 +30,7 @@ export default compose(
     form: 'deleteProject',
     onSubmit(values, dispatch) {
       const message = 'Are you sure you want to delete this project FOREVER?';
-      if (!window.confirm(message)) return null; // eslint-disable-line 
+      if (!window.confirm(message)) return null; // eslint-disable-line
       return new Promise((resolve, reject) => {
         dispatch(actions.deleteProject(null, { resolve, reject }));
       });

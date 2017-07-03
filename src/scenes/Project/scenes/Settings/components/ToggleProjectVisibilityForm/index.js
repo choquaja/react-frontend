@@ -6,6 +6,7 @@ import FormGroup from '../../../../../../components/FormGroup';
 import FormError from '../../../../../../components/FormError';
 import Button from '../../../../../../components/Button';
 import { actions } from './constants';
+import './logic';
 
 export function ToggleProjectVisibilityForm(props) {
   const { handleSubmit, error, submitting, isPrivate } = props;

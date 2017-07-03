@@ -10,6 +10,7 @@ import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import AnimFade from '../../../../../../components/AnimFade';
 import { themeColor } from '../../../../../../services/theme';
+import './logic';
 
 const MarkdownContainer = styled.div`
   border: 1px solid ${themeColor('gray3')};
@@ -26,13 +27,13 @@ function UnsupportedFileType() {
 
 const parseFileExt = filename => filename.split('.').pop().toLowerCase();
 const getPreviewComponent = (file) => {
-  const ext = parseFileExt(file.path);
+  const ext = parseFileExt(file.file);
   switch (ext) {
     case 'md':
     case 'markdown':
-      return <Markdown source={window.atob(file.content)} container={MarkdownContainer} />;
+      return <Markdown source={file.file} container={MarkdownContainer} />;
     case 'ipynb':
-      return <NotebookPreview notebook={window.atob(file.content)} />;
+      return <NotebookPreview notebook={''} />;
     default:
       return <UnsupportedFileType />;
   }
@@ -43,7 +44,7 @@ function Preview(props) {
   return (
     <AnimFade>
       <ContentCard column key="card">
-        <CardTitle>Previewing: {data && data.path}</CardTitle>
+        <CardTitle>Previewing: {data && data.file}</CardTitle>
         {data ? (
           getPreviewComponent(data)
         ) : (

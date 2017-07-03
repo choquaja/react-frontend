@@ -2,6 +2,7 @@ import { createLogic } from 'redux-logic';
 import { actions as entityActions } from '../../../../../../data/entities/constants';
 import { projectSchema } from '../../../../../../services/api/schema';
 import { types } from './constants';
+import { addLogic } from '../../../../../../services/store';
 
 export const deleteProjectLogic = createLogic({
   type: types.DELETE_PROJECT,
@@ -23,6 +24,6 @@ export const deleteProjectLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   deleteProjectLogic,
-];
+]);
