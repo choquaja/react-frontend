@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { themeColor } from '../../../../../../../../services/theme';
-import logo from './images/logo.svg';
 import Row from '../../../../../../../shared/row';
 import Column from '../../../../../../../shared/column';
 import Button from '../../../../../../../Button';
 import FormInput from '../../../../../../../FormInput';
+import Logo from '../../../../../../../Logo';
 import PageWidth from '../../../../../../../PageWidth';
 import ProfileDropdown from './components/ProfileDropdown';
 
@@ -20,12 +20,9 @@ const HeaderPageWidth = styled(PageWidth)`
   padding: 1rem 0;
 `;
 
-const HeaderLogo = styled.img`
+const HeaderLogo = Logo.extend`
   vertical-align: middle;
-  display: block;
-  width: 100%;
   max-width: 150px;
-  height: auto;
 `;
 
 const SearchColumn = styled(Column)`
@@ -45,7 +42,7 @@ function Header() {
         <Row align="center">
           <Column flex="0 1 auto">
             <Link to="/">
-              <HeaderLogo src={logo} alt="3blades" />
+              <HeaderLogo />
             </Link>
           </Column>
           <SearchColumn flex="1 0 auto">

@@ -7,7 +7,7 @@ import Logout from './scenes/Logout';
 import ResetPassword from './scenes/ResetPassword';
 import DoResetPassword from './scenes/DoResetPassword';
 import ContentCard from '../../components/ContentCard';
-import logo from './images/logo.svg';
+import Logo from '../../components/Logo';
 
 const Layout = styled.div`
   display: flex;
@@ -21,13 +21,9 @@ const Content = styled.div`
   position: relative;
 `;
 
-const Logo = styled.img`
-  display: block;
+const AuthLogo = Logo.extend`
   width: 28rem;
-  position: absolute;
-  left: 50%;
-  top: -11rem;
-  transform: translateX(-50%);
+  margin: 0 auto 3rem;
 `;
 
 export default function Auth(props) {
@@ -35,8 +31,8 @@ export default function Auth(props) {
   return (
     <Layout>
       <Content>
+        <AuthLogo />
         <ContentCard>
-          <Logo src={logo} />
           <Switch>
             <Redirect from={`${url}/`} to={`${url}/login`} exact />
             {/* <Redirect from={`${url}/logout`} to={`${url}/login`} exact /> */}

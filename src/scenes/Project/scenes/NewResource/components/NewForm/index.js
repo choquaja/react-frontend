@@ -10,6 +10,7 @@ import FormLabel from '../../../../../../components/FormLabel';
 import FormGroup from '../../../../../../components/FormGroup';
 import { actions } from './constants';
 import connector from './connector';
+import './logic';
 
 const renderInput = ({ input, meta, label, ...rest }) => ( // eslint-disable-line
   <FormGroup>
@@ -38,7 +39,7 @@ export function NewForm(props) {
   const { handleSubmit, error, submitting, valid, data } = props;
   return (
     <form onSubmit={handleSubmit}>
-      {error && <Error>{error}<br />Please try again.</Error>}
+      {error && <FormError>{error}<br />Please try again.</FormError>}
       <Field
         name="name"
         component={renderInput}

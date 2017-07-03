@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import { types, actions } from './constants';
 import { actions as entityActions } from '../../../../data/entities/constants';
 import { collaboratorSchema } from '../../../../services/api/schema';
+import { addLogic } from '../../../../services/store';
 
 export const getCollaboratorsLogic = createLogic({
   type: types.GET_COLLABORATORS_REQUEST,
@@ -22,6 +23,6 @@ export const getCollaboratorsLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   getCollaboratorsLogic,
-];
+]);

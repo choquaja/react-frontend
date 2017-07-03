@@ -1,5 +1,7 @@
 import { compose } from 'redux';
 
+const FILENAME_REGEX = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/(.*)$/;
+
 export const sortDirFirst = (a, b) => {
   if (a.isDirectory !== b.isDirectory) {
     return a.isDirectory ? -1 : 1;
@@ -44,5 +46,9 @@ export const reduceToFileTree = depth => files => [
 export const startReducing = reduceToFileTree(0);
 export const addName = file => ({ ...file, name: file.parts[file.parts.length - 1] });
 export const addPathParts = file => ({ ...file, parts: file.path.split('/') });
-export const prepareFiles = files => files.map(addPathParts).map(addName);
+export const createPath = file => ({
+  ...file,
+  path: (file.file.match(FILENAME_REGEX) || [])[1],
+});
+export const prepareFiles = files => files.map(createPath).map(addPathParts).map(addName);
 export const getFileTree = compose(startReducing, prepareFiles);

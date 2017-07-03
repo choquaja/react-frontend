@@ -2,6 +2,7 @@ import { createLogic } from 'redux-logic';
 import get from 'lodash/fp/get';
 import getOr from 'lodash/fp/getOr';
 import { types } from './constants';
+import { addLogic } from '../../../../../../services/store';
 
 const getResolve = getOr(() => {})('meta.resolve');
 const getReject = getOr(() => {})('meta.reject');
@@ -25,6 +26,6 @@ export const newProjectLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   newProjectLogic,
-];
+]);

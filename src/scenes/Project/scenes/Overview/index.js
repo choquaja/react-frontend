@@ -5,6 +5,7 @@ import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
 import NoContent from '../../../../components/NoContent';
 import AnimFade from '../../../../components/AnimFade';
+import './logic';
 
 export function Overview(props) {
   const { data } = props;

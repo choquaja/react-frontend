@@ -4,27 +4,25 @@ import createLogger from 'redux-logger';
 import { createLogicMiddleware } from 'redux-logic';
 import rootReducer, { logic } from '../../reducer';
 import apiCreator from '../../services/api';
+import { extract } from './helpers';
 
+export const INITIAL_STATE = {};
 export const history = createBrowserHistory();
 export const api = apiCreator({ history });
 
-const isProd = process.env.NODE_ENV === 'production';
-/* eslint-disable no-underscore-dangle */
+// eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-/* eslint-enable */
+const isProd = process.env.NODE_ENV === 'production';
+const logicMiddleware = createLogicMiddleware(logic, { api, history, extract });
 const middlewares = [
   (!isProd && createLogger()),
-  createLogicMiddleware(logic, { api, history }),
+  logicMiddleware,
 ].filter(Boolean);
 
-export const configureStore = (initialState) => {
-  const store = createStore(
-    rootReducer,
-    initialState,
-    composeEnhancers(applyMiddleware(...middlewares)),
-  );
+export const store = createStore(
+  rootReducer,
+  INITIAL_STATE,
+  composeEnhancers(applyMiddleware(...middlewares)),
+);
 
-  return store;
-};
-
-export const INITIAL_STATE = {};
+export const addLogic = logicMiddleware.addLogic;

@@ -26,17 +26,19 @@ export default class Status extends Component {
 
   componentDidMount = () => {
     this.checkServer();
+    this.mounted = true;
     this.timer = window.setInterval(this.checkServer, CHECK_INTERVAL);
   }
 
   componentWillUnmount = () => {
+    this.mounted = false;
     window.clearInterval(this.timer);
   }
 
   checkServer = async () => {
     try {
       const response = await axios.get(STATUSPAGE_URL);
-      if (response.data && response.data.status) {
+      if (response.data && response.data.status && this.mounted) {
         this.setState(stateReducer(response.data.status));
       }
     } catch (err) {

@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import { types, actions } from './constants';
 import { actions as entityActions } from '../../../../data/entities/constants';
 import { resourceSchema } from '../../../../services/api/schema';
+import { addLogic } from '../../../../services/store';
 
 export const getServersLogic = createLogic({
   type: types.GET_SERVERS_REQUEST,
@@ -13,10 +14,6 @@ export const getServersLogic = createLogic({
     try {
       const response = await api.projects.servers.list(null, { urlParams });
       const normalized = normalize(response.data, [resourceSchema]);
-      // console.log('---------------------------------------');
-      // console.log('response.data:', response.data);
-      // console.log('normalized:', normalized);
-      // console.log('---------------------------------------');
       dispatch(entityActions.updateEntities(normalized.entities));
       dispatch(actions.getServersSuccess(normalized.result));
     } catch (error) {
@@ -26,6 +23,6 @@ export const getServersLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   getServersLogic,
-];
+]);

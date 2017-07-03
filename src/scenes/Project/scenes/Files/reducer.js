@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import edit, { editLogic } from './scenes/Edit/reducer';
-import list, { listLogic } from './scenes/List/reducer';
-import preview, { previewLogic } from './scenes/Preview/reducer';
+import edit from './scenes/Edit/reducer';
+import list from './scenes/List/reducer';
+import preview from './scenes/Preview/reducer';
 
 const rootReducer = combineReducers({
   edit,
@@ -10,9 +10,3 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
-
-export const filesLogic = [
-  ...editLogic,
-  ...listLogic,
-  ...previewLogic,
-];

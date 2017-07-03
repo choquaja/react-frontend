@@ -4,6 +4,7 @@ import get from 'lodash/fp/get';
 import { types, actions } from './constants';
 import { actions as entityActions } from '../../data/entities/constants';
 import { projectSchema } from '../../services/api/schema';
+import { addLogic } from '../../services/store';
 
 export const getProjectsLogic = createLogic({
   type: types.GET_PROJECTS_REQUEST,
@@ -23,6 +24,6 @@ export const getProjectsLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   getProjectsLogic,
-];
+]);

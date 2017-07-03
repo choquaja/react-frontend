@@ -3,6 +3,7 @@ import { normalize } from 'normalizr';
 import { types, actions } from './constants';
 import { actions as entityActions } from '../../../../../../data/entities/constants';
 import { fileSchema } from '../../../../../../services/api/schema';
+import { addLogic } from '../../../../../../services/store';
 
 export const getFileLogic = createLogic({
   type: types.GET_FILE_REQUEST,
@@ -22,6 +23,6 @@ export const getFileLogic = createLogic({
   },
 });
 
-export default [
+addLogic([
   getFileLogic,
-];
+]);

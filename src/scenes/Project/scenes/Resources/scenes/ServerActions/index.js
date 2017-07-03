@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { MdPlayArrow, MdDeleteForever, MdStop, MdAdd } from 'react-icons/lib/md';
 import Button from '../../../../../../components/Button';
 import connector from './connector';
+import './logic';
 
 const halfSizeRem = props => props.size && ((props.size / 2) * 0.1);
 const iconStyles = css`

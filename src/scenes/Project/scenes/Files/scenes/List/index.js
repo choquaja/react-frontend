@@ -6,6 +6,7 @@ import CardTitle from '../../../../../../components/CardTitle';
 import NoContent from '../../../../../../components/NoContent';
 import FileManager from './components/FileManager';
 import AnimFade from '../../../../../../components/AnimFade';
+import './logic';
 
 function List(props) {
   const { data } = props;

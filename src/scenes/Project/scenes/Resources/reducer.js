@@ -1,11 +1,6 @@
+import filter from 'lodash/fp/filter';
 import { createDataReducer } from '../../../../services/store/helpers';
 import { types } from './constants';
-import logic from './logic';
-import serverActionsLogic from './scenes/ServerActions/logic';
-
-const filterIfArray = predicate => data => (
-  Array.isArray(data) ? data.filter(predicate) : data
-);
 
 export default createDataReducer(
   types.GET_SERVERS_REQUEST,
@@ -20,9 +15,9 @@ export default createDataReducer(
     };
   },
   [types.DELETE_RESOURCE](state, action) {
-    const filterData = filterIfArray(x => x !== action.payload);
-    const filterSelected = filterIfArray(x => x.id !== action.payload);
+    const filterData = filter(x => x !== action.payload);
     const data = filterData(state.data);
+    const filterSelected = filter(x => x.id !== action.payload);
     const selected = filterSelected(state.selected);
     return {
       ...state,
@@ -31,8 +26,3 @@ export default createDataReducer(
     };
   },
 }, { selected: [] });
-
-export const resourcesLogic = [
-  ...logic,
-  ...serverActionsLogic,
-];
