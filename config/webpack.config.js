@@ -80,7 +80,8 @@ module.exports = (env = {}) => {
           minifyJS: true,
           minifyCSS: true,
           minifyURLs: true
-        }
+        },
+        isProd
       }),
       new webpack.DefinePlugin(globals.stringified),
       (isDev && new webpack.HotModuleReplacementPlugin()),
