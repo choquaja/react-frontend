@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import connector from './connector';
 
@@ -7,10 +8,11 @@ import Project from '../../../../scenes/Project';
 import Projects from '../../../../scenes/Projects';
 import Search from '../../../../scenes/Search';
 import Settings from '../../../../scenes/Settings';
+import SentryManageUser from './components/SentryManageUser';
 
 import App from './components/App';
 
-function Protected() {
+function Protected(props) {
   return (
     <App>
       <Switch>
@@ -20,8 +22,13 @@ function Protected() {
         <Route path="/:userName/:projectName" component={Project} />
         <Route path="/" component={Home} />
       </Switch>
+      <SentryManageUser user={props.data} />
     </App>
   );
 }
+
+Protected.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default connector(Protected);
