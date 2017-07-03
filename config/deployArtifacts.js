@@ -11,7 +11,7 @@ const {
 } = process.env;
 
 // Bail for pull requests
-if (!isEmpty(TRAVIS_PULL_REQUEST)) {
+if (TRAVIS_PULL_REQUEST !== 'false') {
   console.log('Pull requests are not deployed. Exiting...');
   process.exit();
 }
