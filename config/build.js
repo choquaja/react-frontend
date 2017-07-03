@@ -7,7 +7,7 @@ var path = require('path');
 var url = require('url');
 var webpack = require('webpack');
 var config = require('./webpack.config');
-const { paths } = require('./configUtils');
+const { paths, setEnvVars } = require('./configUtils');
 var checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 
 // Warn and crash if required files are missing
@@ -16,6 +16,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 fs.emptyDirSync(paths.appBuild);
+setEnvVars();
 build();
 copyPublicFolder();
 
