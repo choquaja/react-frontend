@@ -32,11 +32,12 @@ export default compose(
     componentWillMount() {
       const { account, id: project } = this.props;
       const { fileId: id } = this.props.match.params;
+      if (!id) return;
       this.props.actions.getFileRequest({ account, project, id });
     },
   }),
   withLoader({
-    condition: props => props.loading && !props.data,
+    condition: props => props.loading && props.match.params.fileId && !get(props, 'data.content'),
     size: 128,
   }),
 );
