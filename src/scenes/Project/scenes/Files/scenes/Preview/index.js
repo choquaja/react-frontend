@@ -28,11 +28,11 @@ function UnsupportedFileType() {
 
 const parseFileExt = filename => filename.split('.').pop().toLowerCase();
 const getPreviewComponent = (file) => {
-  const ext = parseFileExt(file.file);
+  const ext = parseFileExt(file.name);
   switch (ext) {
     case 'md':
     case 'markdown':
-      return <Markdown source={file.file} container={MarkdownContainer} />;
+      return <Markdown source={window.atob(file.content)} container={MarkdownContainer} />;
     case 'ipynb':
       return <NotebookPreview notebook={''} />;
     default:
@@ -45,9 +45,11 @@ function Preview(props) {
   return (
     <AnimFade>
       <ContentCard column key="card">
-        <CardTitle>Previewing: {data && data.file}</CardTitle>
         {data ? (
-          getPreviewComponent(data)
+          <div>
+            <CardTitle>Previewing: {data.path + data.name}</CardTitle>
+            {getPreviewComponent(data)}
+          </div>
         ) : (
           <NoContent>
             The file you are looking for doesn&apos;t exist.<br />
