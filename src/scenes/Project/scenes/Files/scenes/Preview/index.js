@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import 'codemirror/lib/codemirror.css';
 import NotebookPreview from '@nteract/notebook-preview';
 import Markdown from 'react-remarkable';
@@ -50,7 +51,7 @@ function Preview(props) {
         ) : (
           <NoContent>
             The file you are looking for doesn&apos;t exist.<br />
-            Why don&apos;t you <a href="#empty">create one?</a>
+            Why don&apos;t you <Link to="../create">create one?</Link>
           </NoContent>
         )}
       </ContentCard>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import connector from './connector';
 import ContentCard from '../../../../components/ContentCard';
 import CardTitle from '../../../../components/CardTitle';
@@ -18,7 +19,7 @@ export function Overview(props) {
         ) : (
           <NoContent>
             You&apos;re project doesn&apos;t contain a README.md file.<br />
-            Why don&apos;t you <a href="#empty">create one?</a>
+            Why don&apos;t you <Link to="files/create">create one?</Link>
           </NoContent>
         )}
       </ContentCard>
