@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ef85611c4ca4417fb61e4850f1ea57ee)](https://www.codacy.com/app/3Blades/react-frontend?utm_source=github.com&utm_medium=referral&utm_content=3Blades/react-frontend&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/3Blades/react-frontend.svg?branch=master)](https://travis-ci.org/3Blades/react-frontend)
 [![codecov](https://codecov.io/gh/3Blades/react-frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/3Blades/react-frontend)
 [![Test Coverage](https://codeclimate.com/github/3Blades/react-frontend/badges/coverage.svg)](https://codeclimate.com/github/3Blades/react-frontend/coverage)
