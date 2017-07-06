@@ -10,6 +10,7 @@ export default function Files(props) {
   return (
     <Switch>
       <Route path={`${url}/`} component={List} exact />
+      <Route path={`${url}/create`} component={Edit} />
       <Route path={`${url}/edit/:fileId`} component={Edit} />
       <Route path={`${url}/preview/:fileId`} component={Preview} />
       <Redirect to={`${url}/`} />
