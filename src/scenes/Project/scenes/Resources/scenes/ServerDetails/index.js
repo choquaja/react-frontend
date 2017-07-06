@@ -16,15 +16,9 @@ export default function ServerDetails({ server }) {
       <Tabs>
         <TabList>
           <Tab>Details</Tab>
-          <Tab disabled>Environment Variables</Tab>
-          <Tab disabled>SSH Tunnels</Tab>
-          <Tab disabled>Data Sources</Tab>
           <Tab>Logs</Tab>
         </TabList>
         <TabPanel><Details server={server} /></TabPanel>
-        <TabPanel />
-        <TabPanel />
-        <TabPanel />
         <TabPanel><Logs logsUrl={server.logs_url} /></TabPanel>
       </Tabs>
     </DetailsWrapper>
