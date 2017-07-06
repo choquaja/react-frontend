@@ -40,7 +40,7 @@ function FileUploadForm(props) {
         {({ handleDrop, accepted, rejected }) => (
           <div>
             <Field
-              name="file"
+              name="files"
               component={FileFieldUpdater}
               accepted={accepted}
             />
