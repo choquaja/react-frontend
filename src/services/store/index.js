@@ -15,7 +15,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const isProd = process.env.NODE_ENV === 'production';
 const logicMiddleware = createLogicMiddleware(logic, { api, history, extract });
 const middlewares = [
-  (!isProd && createLogger()),
+  (!isProd && createLogger({
+    collapsed: (_, action) => !action.error,
+  })),
   logicMiddleware,
 ].filter(Boolean);
 
