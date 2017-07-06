@@ -10,6 +10,11 @@ export const INITIAL_STATE = {};
 export const history = createBrowserHistory();
 export const api = apiCreator({ history });
 
+// Remove trailing slash on paths
+history.listen((location) => {
+  if (location.pathname.endsWith('/')) history.replace(location.pathname.slice(0, -1));
+});
+
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const isProd = process.env.NODE_ENV === 'production';
