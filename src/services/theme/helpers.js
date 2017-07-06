@@ -27,7 +27,9 @@ export const formElementStyles = css`
   background-color: ${themeColor('white')};
   border: 1px solid ${themeColor('gray2')};
   border-radius: 2px;
-  padding: .7em 1.4em;
+  padding: .7em;
+  font-size: 1.6rem;
+  transition: all .2s ease-in-out;
   ${props => props.large && css`
     font-size: 1.9rem;
     height: 4.2rem;
@@ -35,6 +37,17 @@ export const formElementStyles = css`
   ${props => props.small && css`
     font-size: 1.3rem;
     height: 2.6rem;
+  `}
+  ${props => props.camo && css`
+    padding: .4rem;
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    border-color: transparent;
+    &:hover {
+      border-color: ${themeColor('gray2')};
+    }
   `}
   &:disabled {
     cursor: default;
