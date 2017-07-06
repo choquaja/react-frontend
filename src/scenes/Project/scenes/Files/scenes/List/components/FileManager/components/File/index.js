@@ -4,8 +4,8 @@ import FileItem from '../FileItem';
 import DirItem from '../DirItem';
 
 export default function File({ file, depth, selected, updateSelected }) {
-  const onClick = () => updateSelected(file.path);
-  const isSelected = selected.includes(file.path);
+  const onClick = e => updateSelected(e, file.id);
+  const isSelected = selected.includes(file.id);
   return (
     file.isDirectory ?
       <DirItem {...{ depth, file, selected, updateSelected }} files={file.files} /> :
