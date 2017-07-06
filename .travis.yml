@@ -6,11 +6,11 @@ branches:
   only:
     - master
 
-sudo: false
+services:
+# enable docker service inside travis
+  - docker
 
-addons:
-    code_climate:
-        repo_token: $CODE_CLIMATE
+sudo: false
 
 cache:
   directories:
@@ -31,6 +31,10 @@ after_success:
   - node config/deployArtifacts
   - npm install -g codecov
   - bash <(curl -s https://codecov.io/bash)
+  - bash config/buildDockerImage.sh
 
 notifications:
   slack: 3blades:ycSapbO8XmfCrdT0vX2yw090
+
+env:
+  - $DOCKER_IMAGE_NAME="3blades/react-frontend"
