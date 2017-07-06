@@ -35,6 +35,9 @@ export default compose(
       if (!id) return;
       this.props.actions.getFileRequest({ account, project, id });
     },
+    componentWillUnmount() {
+      this.props.actions.resetReducer();
+    },
   }),
   withLoader({
     condition: props => props.loading && props.match.params.fileId && !get(props, 'data.content'),

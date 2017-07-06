@@ -5,4 +5,5 @@ export default createDataReducer(
   types.GET_FILE_REQUEST,
   types.GET_FILE_SUCCESS,
   types.GET_FILE_FAIL,
+  types.RESET_REDUCER,
 )();
