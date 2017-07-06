@@ -39,6 +39,7 @@ The tables below describes the environment variables that can be passed in at bu
 | Variable Name | Required | Default Value | Description |
 | ------------- | :------: | :-----------: | ----------- |
 | `UI_API_URL` | Yes | `null` | The URL for the 3Blades API with which the application should interact. |
+| `UI_MAX_UPLOAD_SIZE` | No | 15MB | The max file size limit (in bytes) for file uploads through the UI. |
 
 ## Contributing
 
