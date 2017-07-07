@@ -37,5 +37,9 @@ injectGlobal`
   h6 {
     font-family: ${themeFont('heading')({ theme })};
   }
+  a {
+    color: ${themeColor('link')({ theme })};
+    text-decoration: none;
+  }
 `;
 /* eslint-enable */
