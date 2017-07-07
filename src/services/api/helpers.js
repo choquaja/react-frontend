@@ -22,7 +22,7 @@ export const redirectIfAuthInvalid = ({ history }) => (error) => {
       state: { next: history.location.pathname },
     });
   }
-  return error;
+  throw error;
 };
 
 export const createCancelToken = cancelled$ => new CancelToken((cancel) => {
