@@ -6,8 +6,8 @@ export const getApiKeyLogic = createLogic({
   type: types.GET_APIKEY_REQUEST,
   latest: true,
   async process({ action, api }, dispatch, done) {
-    const { account, user } = action.payload;
-    const urlParams = { account, user };
+    const { user } = action.payload;
+    const urlParams = { user };
     try {
       const response = await api.users.apiKey.get(null, { urlParams });
       dispatch(actions.getApiKeySuccess(response.data.key));
@@ -24,8 +24,8 @@ export const resetApiKeyLogic = createLogic({
   async process({ getState, action, api, extract }, dispatch, done) {
     const resolve = extract.action.resolve(action);
     const reject = extract.action.reject(action);
-    const { username: account, id: user } = extract.state.user(getState());
-    const urlParams = { account, user };
+    const { id: user } = extract.state.user(getState());
+    const urlParams = { user };
     try {
       const response = await api.users.apiKey.reset(null, { urlParams });
       dispatch(actions.getApiKeySuccess(response.data.key));

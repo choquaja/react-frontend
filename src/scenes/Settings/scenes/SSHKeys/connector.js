@@ -7,7 +7,6 @@ import withLoader from '../../../../components/withLoader';
 
 const mapStateToProps = state => ({
   user: get(state, 'data.user.data.id'),
-  account: get(state, 'data.user.data.username'),
   data: get(state, 'scenes.settings.sshkeys.data'),
   loading: get(state, 'scenes.settings.sshkeys.loading'),
 });
@@ -18,9 +17,9 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
     componentWillMount() {
-      const { account, user } = this.props;
+      const { user } = this.props;
       if (!user) return;
-      this.props.actions.getSshkeysRequest({ account, user });
+      this.props.actions.getSshkeysRequest({ user });
     },
   }),
   withLoader({

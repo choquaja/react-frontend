@@ -7,8 +7,8 @@ export const getUserLogic = createLogic({
   type: types.GET_USER_REQUEST,
   latest: true,
   async process({ action, api }, dispatch, done) {
-    const { username, user_id } = jwtDecode(getToken());
-    const urlParams = { account: username, id: user_id };
+    const { user_id } = jwtDecode(getToken());
+    const urlParams = { id: user_id };
     try {
       const response = await api.users.get(null, { urlParams });
       dispatch(actions.getUserSuccess(response.data));
