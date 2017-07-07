@@ -4,16 +4,23 @@ import styled from 'styled-components';
 import AnimFade from '../../../../../../../../components/AnimFade';
 import { themeColor } from '../../../../../../../../services/theme';
 
+const getTextFromBlob = blob => new Promise((resolve) => {
+  const reader = new FileReader();
+  reader.addEventListener('loadend', () => resolve(reader.result));
+  reader.readAsText(blob);
+});
+
 const LogList = styled.div`
-  padding: 1rem;
+  padding: 1rem 1rem 3rem;
   min-height: 10rem;
   max-height: 40rem;
   overflow-y: auto;
   background: ${themeColor('tertiary')};
+  white-space: nowrap;
 `;
 
 const LogLine = styled.div`
-  color: ${themeColor('white')};
+  color: ${themeColor('gray1')};
   font-size: .9em;
   font-family: monospace;
 `;
@@ -23,6 +30,11 @@ const renderLogLine = line => (
     <LogLine key={line}>{line}</LogLine>
   </AnimFade>
 );
+
+const addLogLineReducer = line => (state) => {
+  const logs = [...state.logs, line];
+  return { logs };
+};
 
 export default class Logs extends Component {
   constructor(props) {
@@ -40,8 +52,9 @@ export default class Logs extends Component {
 
   componentDidMount = () => {
     if (this.socket) {
-      this.socket.addEventListener('message', (event) => {
-        console.log(event, event.data) // eslint-disable-line
+      this.socket.addEventListener('message', async (event) => {
+        const text = await getTextFromBlob(event.data);
+        this.setState(addLogLineReducer(text));
       });
     }
   }
@@ -52,7 +65,13 @@ export default class Logs extends Component {
 
   render() {
     return (
-      <LogList>{this.state.logs.map(renderLogLine)}</LogList>
+      <LogList>
+        {this.state.logs.length ? (
+          this.state.logs.map(renderLogLine)
+        ) : (
+          <LogLine>Loading logs...</LogLine>
+        )}
+      </LogList>
     );
   }
 }
