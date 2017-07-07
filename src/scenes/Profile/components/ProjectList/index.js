@@ -54,7 +54,7 @@ const MetaDatum = styled.div`
   padding-right: 1.4rem;
 `;
 
-function ProjectList({ projects }) {
+export default function ProjectList({ projects }) {
   if (!projects.length) return <NoContent>This user doesn&apos;t have any projects.</NoContent>;
   return (
     <Projects>
@@ -77,5 +77,3 @@ function ProjectList({ projects }) {
 ProjectList.propTypes = {
   projects: PropTypes.array.isRequired,
 };
-
-export default ProjectList;

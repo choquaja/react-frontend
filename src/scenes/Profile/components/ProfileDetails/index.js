@@ -31,7 +31,7 @@ const ProfileSeparator = styled.hr`
 
 const ProfileBio = styled.div``;
 
-function ProfileDetails({ user }) {
+export default function ProfileDetails({ user }) {
   return (
     <div>
       <ProfileImg src={profileImg} alt={user.username} />
@@ -46,5 +46,3 @@ function ProfileDetails({ user }) {
 ProfileDetails.propTypes = {
   user: PropTypes.object.isRequired,
 };
-
-export default ProfileDetails;
