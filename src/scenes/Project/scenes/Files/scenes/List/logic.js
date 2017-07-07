@@ -23,6 +23,31 @@ export const getFilesLogic = createLogic({
   },
 });
 
+export const deleteFilesLogic = createLogic({
+  type: types.DELETE_FILES,
+  latest: true,
+  async process({ getState, action, api, extract }, dispatch, done) {
+    const { account, project } = extract.state.project(getState());
+    const createParams = id => ({ urlParams: { account, project, id } });
+    const fileIds = action.payload;
+    try {
+      await Promise.all(fileIds.map(id =>
+        api.projects.files.delete(null, createParams(id)),
+      ));
+      fileIds.forEach(id =>
+        dispatch(entityActions.deleteEntity({
+          id,
+          entityType: fileSchema._key, // eslint-disable-line no-underscore-dangle
+        })),
+      );
+    } catch (error) {
+      console.error(error); // eslint-disable-line no-console
+    }
+    done();
+  },
+});
+
 addLogic([
   getFilesLogic,
+  deleteFilesLogic,
 ]);

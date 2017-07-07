@@ -1,7 +1,5 @@
 import { compose } from 'redux';
 
-const FILENAME_REGEX = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/(.*)$/;
-
 export const sortDirFirst = (a, b) => {
   if (a.isDirectory !== b.isDirectory) {
     return a.isDirectory ? -1 : 1;
@@ -12,7 +10,7 @@ export const sortDirFirst = (a, b) => {
 export const createDirectory = (parts, firstFile) => ({
   parts,
   name: parts[parts.length - 1],
-  path: parts.join('/'),
+  relPath: parts.join('/'),
   isDirectory: true,
   files: [firstFile],
 });
@@ -21,7 +19,7 @@ export const groupByDirectory = depth => (map, file) => {
   // TODO: handle empty directories
   // Below will treat empty dirs like a file
   if (file.parts.length === (depth + 1)) {
-    return map.set(file.path, file);
+    return map.set(file.relPath, file);
   }
   if (map.has(file.parts[depth])) {
     const directory = map.get(file.parts[depth]);
@@ -45,10 +43,11 @@ export const reduceToFileTree = depth => files => [
 ].sort(sortDirFirst).map(recurseIfDir(depth));
 export const startReducing = reduceToFileTree(0);
 export const addName = file => ({ ...file, name: file.parts[file.parts.length - 1] });
-export const addPathParts = file => ({ ...file, parts: file.path.split('/') });
-export const createPath = file => ({
+export const addPathParts = file => ({ ...file, parts: file.relPath.split('/') });
+export const createRelPath = file => ({
   ...file,
-  path: (file.file.match(FILENAME_REGEX) || [])[1],
+  relPath: file.path + file.name,
 });
-export const prepareFiles = files => files.map(createPath).map(addPathParts).map(addName);
+export const prepareFiles = files =>
+  files.filter(Boolean).map(createRelPath).map(addPathParts).map(addName);
 export const getFileTree = compose(startReducing, prepareFiles);

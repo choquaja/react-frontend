@@ -31,11 +31,12 @@ exports[`Overview renders empty content message 1`] = `
       You're project doesn't contain a README.md file.
       <br />
       Why don't you 
-      <a
-        href="#empty"
+      <Link
+        replace={false}
+        to="files/create"
       >
         create one?
-      </a>
+      </Link>
     </NoContent>
   </ContentCard__ContentCard>
 </AnimFade>

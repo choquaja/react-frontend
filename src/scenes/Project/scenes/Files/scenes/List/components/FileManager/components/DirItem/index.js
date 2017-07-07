@@ -8,7 +8,7 @@ import File from '../File';
 import IconContainer from '../IconContainer';
 
 const renderFiles = ({ files, ...rest }) => files.map(file =>
-  <File key={file.path} file={file} {...rest} />,
+  <File key={file.relPath} file={file} {...rest} />,
 );
 
 // const Collapse = styled.div`

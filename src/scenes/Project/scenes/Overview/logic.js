@@ -11,7 +11,7 @@ export const getReadmeLogic = createLogic({
   async process({ action, api }, dispatch, done) {
     const { account, project } = action.payload;
     const urlParams = { account, project };
-    const params = { path: 'README' };
+    const params = { filename: 'README.md', content: true };
     try {
       const response = await api.projects.files.list(null, { urlParams, params });
       const normalized = normalize(response.data[0], fileSchema);
