@@ -10,9 +10,9 @@ const FormField = ({ type, input, meta, label, ...rest }) => ( // eslint-disable
   <FormGroup>
     <FormLabel htmlFor={`${meta.form}-${input.name}`}>{label}</FormLabel>
     {type === 'textarea' ? (
-      <FormTextarea id={`${meta.form}-${input.name}`} {...input} {...rest} full />
+      <FormTextarea id={`${meta.form}-${input.name}`} {...input} full {...rest} />
     ) : (
-      <FormInput id={`${meta.form}-${input.name}`} type={type} {...input} {...rest} full />
+      <FormInput id={`${meta.form}-${input.name}`} type={type} {...input} full {...rest} />
     )}
     {meta.touched && meta.error &&
     <FormError>{meta.error}</FormError>}

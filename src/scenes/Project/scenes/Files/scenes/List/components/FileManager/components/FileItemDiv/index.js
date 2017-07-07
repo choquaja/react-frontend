@@ -4,7 +4,7 @@ import { themeColor } from '../../../../../../../../../../services/theme';
 
 const FileItemDiv = styled.div`
   display: flex;
-  padding: .6rem 0;
+  padding: .8rem 0;
   font-size: 1.8rem;
   cursor: pointer;
   ${props => css`padding-left: ${props.depth * 3}rem;`}

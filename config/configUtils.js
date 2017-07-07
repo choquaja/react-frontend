@@ -8,7 +8,7 @@ const resolvePath = path1 => path2 => path.resolve(path1, path2);
 const resolveApp = resolvePath(appDirectory);
 
 const REQUIRED_ENV_VARS = [ 'UI_API_URL' ];
-const OPTIONAL_ENV_VARS = [ 'UI_SENTRY_DSN' ];
+const OPTIONAL_ENV_VARS = [ 'UI_SENTRY_DSN', 'UI_MAX_UPLOAD_SIZE' ];
 const addEnvVarToObject = (obj, v) => {
   obj[v] = process.env[v];
   return obj;
