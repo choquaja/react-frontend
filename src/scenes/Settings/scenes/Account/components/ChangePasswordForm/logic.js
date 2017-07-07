@@ -8,8 +8,8 @@ export const changePasswordLogic = createLogic({
   async process({ getState, action, api, history, extract }, dispatch, done) {
     const resolve = extract.action.resolve(action);
     const reject = extract.action.reject(action);
-    const { username: account, id } = extract.state.user(getState());
-    const urlParams = { account, id };
+    const { id } = extract.state.user(getState());
+    const urlParams = { id };
     const password = action.payload.new_password;
     try {
       await api.users.update({ password }, { urlParams });

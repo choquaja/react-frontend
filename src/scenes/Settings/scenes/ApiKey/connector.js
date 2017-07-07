@@ -7,7 +7,6 @@ import withLoader from '../../../../components/withLoader';
 
 const mapStateToProps = state => ({
   user: get(state, 'data.user.data.id'),
-  account: get(state, 'data.user.data.username'),
   data: get(state, 'scenes.settings.apikey.data'),
   loading: get(state, 'scenes.settings.apikey.loading'),
 });
@@ -18,8 +17,8 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle({
     componentWillMount() {
-      const { account, user } = this.props;
-      this.props.actions.getApiKeyRequest({ account, user });
+      const { user } = this.props;
+      this.props.actions.getApiKeyRequest({ user });
     },
   }),
   withLoader({

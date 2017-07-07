@@ -9,8 +9,8 @@ export const updateProfileLogic = createLogic({
   async process({ getState, action, api, history, extract }, dispatch, done) {
     const resolve = extract.action.resolve(action);
     const reject = extract.action.reject(action);
-    const { username: account, id } = extract.state.user(getState());
-    const urlParams = { account, id };
+    const { id } = extract.state.user(getState());
+    const urlParams = { id };
     try {
       const response = await api.users.update(action.payload, { urlParams });
       dispatch(userActions.getUserSuccess(response.data));
