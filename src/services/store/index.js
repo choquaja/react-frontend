@@ -12,7 +12,9 @@ export const api = apiCreator({ history });
 
 // Remove trailing slash on paths
 history.listen((location) => {
-  if (location.pathname.endsWith('/')) history.replace(location.pathname.slice(0, -1));
+  if (location.pathname !== '/' && location.pathname.endsWith('/')) {
+    history.replace(location.pathname.slice(0, -1));
+  }
 });
 
 // eslint-disable-next-line no-underscore-dangle
