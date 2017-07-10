@@ -59,8 +59,9 @@ function ProfileDropdown({ avatar, username }) {
         </ProfileImgButton>
       )}
     >
-      <li><DropdownStaticText>{username}</DropdownStaticText></li>
+      <DropdownStaticText>{username}</DropdownStaticText>
       <DropdownSeparator />
+      <li><DropdownLink to={`/${username}`}>Profile</DropdownLink></li>
       <li><DropdownLink to="/settings/profile">Settings</DropdownLink></li>
       <li><DropdownLink to="#">Invite a Friend</DropdownLink></li>
       <DropdownSeparator />

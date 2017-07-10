@@ -33,6 +33,7 @@ export const theme = {
     gray6: '#3b3b3b',
     black: '#111',
     backdrop: '#f2f7fa',
+    link: '#0048f0',
   },
   fonts: {
     body: "'Nunito Sans', sans-serif",
