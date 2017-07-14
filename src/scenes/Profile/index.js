@@ -10,6 +10,7 @@ import ProjectList from './components/ProjectList';
 import connector from './connector';
 import './logic';
 
+
 function Profile(props) {
   if (!props.data) return <NoContent>The user you are looking for could not be found.</NoContent>;
   const { user, projects } = props.data;
