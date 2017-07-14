@@ -34,7 +34,7 @@ const ProfileBio = styled.div``;
 export default function ProfileDetails({ user }) {
   return (
     <div>
-      <ProfileImg src={profileImg} alt={user.username} />
+      <ProfileImg src={user.profile.avatar_url || profileImg} alt={user.username} />
       {user.first_name && <ProfileName>{user.first_name} {user.last_name}</ProfileName>}
       <ProfileUsername>{user.username}</ProfileUsername>
       {user.profile.bio && <ProfileSeparator />}
